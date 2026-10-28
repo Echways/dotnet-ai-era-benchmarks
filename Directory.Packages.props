@@ -1,0 +1,21 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+    <EmberTrace Condition="'$(EmberTrace)' == ''">0.4.0</EmberTrace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildThisFileDirectory)matrix/versions.props" />
+  <ItemGroup>
+    <PackageVersion Include="EmberTrace" Version="$(EmberTrace)" />
+    <PackageVersion Include="EmberTrace.Abstractions" Version="$(EmberTrace)" />
+    <PackageVersion Include="EmberTrace.Generator" Version="$(EmberTrace)" />
+    <PackageVersion Include="EmberTrace.Analysis" Version="$(EmberTrace)" />
+    <PackageVersion Include="EmberTrace.Format" Version="$(EmberTrace)" />
+    <PackageVersion Include="EmberTrace.ReportText" Version="$(EmberTrace)" />
+    <PackageVersion Include="EmberTrace.Export" Version="$(EmberTrace)" />
+    <PackageVersion Include="EmberTrace.Testing" Version="$(EmberTrace)" />
+    <PackageVersion Include="BenchmarkDotNet" Version="0.15.8" />
+    <PackageVersion Include="System.CommandLine" Version="2.0.14" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="5.9.0" />
+  </ItemGroup>
+</Project>
