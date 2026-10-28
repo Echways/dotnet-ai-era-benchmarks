@@ -1,0 +1,57 @@
+{
+  "repos": {
+    "runtime": {"owner": "dotnet", "name": "runtime", "url": "https://github.com/dotnet/runtime.git", "mirror": ".work/repos/runtime.git"},
+    "efcore": {"owner": "dotnet", "name": "efcore", "url": "https://github.com/dotnet/efcore.git", "mirror": ".work/repos/efcore.git"}
+  },
+  "default_range": {"from": "v7.0.20", "to": "v10.0.14"},
+  "servicing": {"baseline_major": 7, "current_major": 10, "window_days": 365},
+  "libraries": {
+    "DependencyInjection": {
+      "repo": "runtime",
+      "paths": [
+        "src/libraries/Microsoft.Extensions.DependencyInjection/src",
+        "src/libraries/Microsoft.Extensions.DependencyInjection.Abstractions/src"
+      ]
+    },
+    "Configuration": {
+      "repo": "runtime",
+      "paths": [
+        "src/libraries/Microsoft.Extensions.Configuration/src",
+        "src/libraries/Microsoft.Extensions.Configuration.Abstractions/src",
+        "src/libraries/Microsoft.Extensions.Configuration.Json/src",
+        "src/libraries/Microsoft.Extensions.Configuration.Binder/src",
+        "src/libraries/Microsoft.Extensions.Configuration.FileExtensions/src"
+      ]
+    },
+    "Options": {
+      "repo": "runtime",
+      "paths": [
+        "src/libraries/Microsoft.Extensions.Options/src",
+        "src/libraries/Microsoft.Extensions.Options.ConfigurationExtensions/src",
+        "src/libraries/Microsoft.Extensions.Options.DataAnnotations/src"
+      ]
+    },
+    "Logging": {
+      "repo": "runtime",
+      "paths": [
+        "src/libraries/Microsoft.Extensions.Logging/src",
+        "src/libraries/Microsoft.Extensions.Logging.Abstractions/src"
+      ]
+    },
+    "Caching": {
+      "repo": "runtime",
+      "paths": [
+        "src/libraries/Microsoft.Extensions.Caching.Memory/src",
+        "src/libraries/Microsoft.Extensions.Caching.Abstractions/src"
+      ]
+    },
+    "Primitives": {
+      "repo": "runtime",
+      "paths": ["src/libraries/Microsoft.Extensions.Primitives/src"]
+    },
+    "EFCore": {
+      "repo": "efcore",
+      "paths": ["src/EFCore", "src/EFCore.Relational", "src/EFCore.Sqlite.Core", "src/Microsoft.Data.Sqlite.Core"]
+    }
+  }
+}
