@@ -11,7 +11,7 @@
     <Ef>$(TrackBMajor)</Ef>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="../Harness/Scenarios/EfScenario.cs" Link="Scenarios/EfScenario.cs" />
+    <Compile Include="../Harness/Scenarios/EfScenario.cs;../Harness/Scenarios/EfModel.cs" LinkBase="Scenarios" />
     <AssemblyMetadata Include="ExpectedMajor:runtime" Value="$(TrackBMajor)" />
     <AssemblyMetadata Include="ExpectedMajor:msext" Value="$(TrackBMajor)" />
     <AssemblyMetadata Include="ExpectedMajor:ef" Value="$(TrackBMajor)" />

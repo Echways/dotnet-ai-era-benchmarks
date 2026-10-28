@@ -9,6 +9,8 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <MSBuildTreatWarningsAsErrors>true</MSBuildTreatWarningsAsErrors>
     <NuGetAudit>false</NuGetAudit>
+    <CheckEolTargetFramework>false</CheckEolTargetFramework>
+    <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
     <InvariantGlobalization>true</InvariantGlobalization>
     <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
@@ -17,6 +19,8 @@
     <NewOnlyMinMajor>8</NewOnlyMinMajor>
     <DefaultItemExcludes>$(DefaultItemExcludes);obj/**;bin/**</DefaultItemExcludes>
     <BaseIntermediateOutputPath>$(MSBuildProjectDirectory)/obj/msext$(MsExt)-ef$(Ef)/</BaseIntermediateOutputPath>
+    <BdnInBoxOnly Condition="$(MSBuildProjectDirectory.Replace('\', '/').Contains('/bench/Bdn/Bdn.TrackB'))">true</BdnInBoxOnly>
     <RepoRoot>$(MSBuildThisFileDirectory)</RepoRoot>
   </PropertyGroup>
+  <Import Project="$(MSBuildThisFileDirectory)bench/Bdn/BdnInBox.props" Condition="'$(BdnInBoxOnly)' == 'true'" />
 </Project>

@@ -11,7 +11,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Scenarios/NewOnly/**" />
-    <Compile Remove="Scenarios/EfScenario.cs" Condition="'$(HarnessEf)' != 'true'" />
+    <Compile Remove="Scenarios/EfScenario.cs;Scenarios/EfModel.cs" Condition="'$(HarnessEf)' != 'true'" />
     <AssemblyMetadata Include="ExpectedMajor:msext" Value="$(MsExt)" />
     <AssemblyMetadata Include="ExpectedMajor:ef" Value="$(Ef)" Condition="'$(HarnessEf)' == 'true'" />
   </ItemGroup>

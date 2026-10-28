@@ -1,0 +1,14 @@
+<Project>
+  <ItemGroup Condition="'$(TargetFramework)' != '' and $([MSBuild]::VersionLessThan($([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')), '9.0'))">
+    <PackageReference Include="System.Text.Json" ExcludeAssets="all" />
+    <PackageReference Include="System.Text.Encodings.Web" ExcludeAssets="all" />
+    <PackageReference Include="System.Collections.Immutable" ExcludeAssets="all" />
+    <PackageReference Include="System.Reflection.Metadata" ExcludeAssets="all" />
+    <PackageReference Include="System.Text.Encoding.CodePages" ExcludeAssets="all" />
+  </ItemGroup>
+  <Target Name="BdnUseInBoxGenerators" AfterTargets="ResolveLockFileAnalyzers" Condition="$([MSBuild]::VersionLessThan($([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')), '9.0'))">
+    <ItemGroup>
+      <Analyzer Remove="@(Analyzer)" Condition="'%(Analyzer.NuGetPackageId)' == 'System.Text.Json' or '%(Analyzer.NuGetPackageId)' == 'System.Collections.Immutable'" />
+    </ItemGroup>
+  </Target>
+</Project>

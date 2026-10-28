@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Bdn.TrackA</RootNamespace>
+    <EnableConfigurationBindingGenerator>false</EnableConfigurationBindingGenerator>
+    <BdnEf Condition="$(MatrixTrackAEf.Contains(';$(Ef);'))">true</BdnEf>
+    <DefineConstants Condition="'$(BdnEf)' == 'true'">$(DefineConstants);BDN_EF</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(RepoRoot)src/Harness.Core/Sink.cs;$(RepoRoot)src/Harness.Core/Data/*.cs" LinkBase="Shared" />
+    <Compile Include="$(RepoRoot)src/Harness/Scenarios/DiGraph.cs;$(RepoRoot)src/Harness/Scenarios/SlotTypes.cs;$(RepoRoot)src/Harness/Scenarios/NoIoLogger.cs" LinkBase="Shared" />
+    <Compile Include="$(RepoRoot)src/Harness/Scenarios/EfModel.cs" LinkBase="Shared" Condition="'$(BdnEf)' == 'true'" />
+    <Compile Remove="EfBenchmarks.cs" Condition="'$(BdnEf)' != 'true'" />
+    <AssemblyMetadata Include="ExpectedMajor:msext" Value="$(MsExt)" />
+    <AssemblyMetadata Include="ExpectedMajor:ef" Value="$(Ef)" Condition="'$(BdnEf)' == 'true'" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" />
+    <PackageReference Include="Microsoft.Extensions.Options" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" />
+    <PackageReference Include="Microsoft.Extensions.Logging" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(BdnEf)' == 'true'">
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" />
+  </ItemGroup>
+</Project>
