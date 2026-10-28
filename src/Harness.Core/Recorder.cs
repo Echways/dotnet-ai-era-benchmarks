@@ -31,6 +31,9 @@ public sealed class Recorder
     public void Measure(int scopeId, int operations, Action body) =>
         Measure(scopeId, operations, body, ScopeKind.Batch);
 
+    public void MeasureProcessWide(int scopeId, int operations, Action body) =>
+        Measure(scopeId, operations, body, ScopeKind.ProcessBatch);
+
     public void MeasureParallel(int scopeId, int workers, int operationsPerWorker, Action<int> body)
     {
         var options = new ParallelOptions { MaxDegreeOfParallelism = workers };
@@ -46,13 +49,14 @@ public sealed class Recorder
             return;
         }
 
-        var before = GC.GetAllocatedBytesForCurrentThread();
+        var processWide = kind == ScopeKind.ProcessBatch;
+        var before = processWide ? GC.GetTotalAllocatedBytes(precise: true) : GC.GetAllocatedBytesForCurrentThread();
         using (Tracer.Scope(scopeId))
         {
             body();
         }
 
-        var allocated = GC.GetAllocatedBytesForCurrentThread() - before;
+        var allocated = (processWide ? GC.GetTotalAllocatedBytes(precise: true) : GC.GetAllocatedBytesForCurrentThread()) - before;
         lock (_gate)
         {
             if (!_records.TryGetValue(scopeId, out var record))
@@ -71,6 +75,7 @@ public enum ScopeKind
     Cold,
     Batch,
     ThreadBatch,
+    ProcessBatch,
 }
 
 public sealed class ScopeRecord(int scopeId, int operations, ScopeKind kind)

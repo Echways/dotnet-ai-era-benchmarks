@@ -63,6 +63,7 @@ public static class ScenarioRunner
         });
 
         TraceSession session;
+        var stem = $"{registration.Name}-{Environment.ProcessId}";
         using (var scenario = factory())
         {
             recorder.Recording = true;
@@ -81,9 +82,9 @@ public static class ScenarioRunner
 
             recorder.Recording = false;
             session = Tracer.Stop();
+            (scenario as IScenarioArtifacts)?.WriteArtifacts(directory, stem);
         }
 
-        var stem = $"{registration.Name}-{Environment.ProcessId}";
         var tracePath = Path.Combine(directory, stem + ".ember");
         TraceFormat.Write(session, tracePath);
         var metadata = Tracer.CreateMetadata();

@@ -3,5 +3,6 @@
     <Project Path="src/Harness.Core/Harness.Core.csproj" />
     <Project Path="src/Harness/Harness.csproj" />
     <Project Path="src/Harness/Scenarios/NewOnly/Harness.NewOnly.csproj" />
+    <Project Path="src/Harness.TrackB/Harness.TrackB.csproj" />
   </Folder>
 </Solution>

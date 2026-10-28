@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>net10.0</TargetFrameworks>
+    <TargetFrameworks Condition="$([MSBuild]::VersionGreaterThanOrEquals('$(NETCoreSdkVersion)', '11.0'))">net10.0;net11.0</TargetFrameworks>
+    <RootNamespace>Harness.TrackB</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' != ''">
+    <TrackBMajor>$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)', 1))</TrackBMajor>
+    <MsExt>$(TrackBMajor)</MsExt>
+    <Ef>$(TrackBMajor)</Ef>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../Harness/Scenarios/EfScenario.cs" Link="Scenarios/EfScenario.cs" />
+    <AssemblyMetadata Include="ExpectedMajor:runtime" Value="$(TrackBMajor)" />
+    <AssemblyMetadata Include="ExpectedMajor:msext" Value="$(TrackBMajor)" />
+    <AssemblyMetadata Include="ExpectedMajor:ef" Value="$(TrackBMajor)" />
+    <AssemblyMetadata Include="ExpectedMajor:aspnetcore" Value="$(TrackBMajor)" />
+  </ItemGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <ProjectReference Include="../Harness.Core/Harness.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="EmberTrace.Generator" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" />
+  </ItemGroup>
+</Project>

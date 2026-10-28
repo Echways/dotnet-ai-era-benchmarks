@@ -8,3 +8,8 @@ public interface IScenario : IDisposable
 
     void Iteration(Recorder recorder);
 }
+
+public interface IScenarioArtifacts
+{
+    void WriteArtifacts(string directory, string stem);
+}
