@@ -1,0 +1,6 @@
+root = true
+
+[*.cs]
+charset = utf-8
+dotnet_analyzer_diagnostic.severity = warning
+dotnet_diagnostic.CS1591.severity = none

@@ -24,6 +24,7 @@ libraries = [line.strip() for line in open(libraries_file) if line.strip()]
 patterns = set()
 for library in libraries:
     patterns.add(f"/src/libraries/{library}/src/")
+    patterns.add(f"/src/libraries/{library}/tests/")
     project = f"src/libraries/{library}/src/{library}.csproj"
     text = subprocess.run(["git", "-C", mirror, "show", f"{tag}:{project}"], capture_output=True, text=True, check=True).stdout
     for match in re.finditer(r"\$\(CommonPath\)([^\"]+?\.cs)", text):
