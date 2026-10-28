@@ -67,3 +67,75 @@ Chosen pin for Track A: **2.1.13** for `SQLitePCLRaw.bundle_e_sqlite3`, `SQLiteP
 ## F4. EmberTrace
 
 Source: `https://api.nuget.org/v3-flatcontainer/embertrace/index.json` (and the same for every EmberTrace package). Latest stable: **0.4.0**, pinned as `$(EmberTrace)` in `Directory.Packages.props`. `EmberTrace.Format` and `EmberTrace.Testing` exist only from 0.3.0. Every EmberTrace package has only a `net10.0` lib folder (`EmberTrace.Abstractions` also `netstandard2.0`), checked in `~/.nuget/packages/embertrace*/0.4.0/lib/`. `EmberTrace.Extensions.Hosting` and `EmberTrace.All` are published but deliberately not referenced.
+
+## F5. Tag formats of dotnet/runtime and dotnet/efcore
+
+Source: `git ls-remote --tags https://github.com/dotnet/runtime` and `git ls-remote --tags https://github.com/dotnet/efcore` (and the blobless mirrors in `.work/repos/`).
+
+- Releases are tagged `v<major>.<minor>.<patch>`, previews and release candidates `v<version>-<label>.<n>.<build>`, e.g. `v7.0.20`, `v10.0.14`, `v11.0.0-rc.3.26522.148`. The same tag names exist in both repositories.
+- Latest tag per major (runtime = efcore): `v6.0.36`, `v7.0.20`, `v8.0.33`, `v9.0.22`, `v10.0.14`, `v11.0.0-rc.3.26522.148`.
+- `v11.0.0-rc.2.26504.105` and `v11.0.0-rc.3.26522.148` point at the same commit: `474ed963699fc29809015392738a15231aaae2de` in runtime, `f05a97f83d8fe43366d92d561cce59f02c6dd102` in efcore.
+- dotnet/efcore additionally carries `v10.0.104`, `v10.0.105` (same commit `9dae88ee8afe88ac03286758b568d628fe05e5c6`) and `v11.0.100`; they are SDK-band style names that do not follow the library tag scheme and are not used.
+- `v7.0.20` in runtime is `0fb6ac59fb1edbe4ed3ad62661df0eb7eacd7903`, `v10.0.14` is `6aa72daa24f66c01c3d7b6a32519e9d21396deec`.
+
+## F6. How Copilot coding agent pull requests are detected
+
+Sources and commands:
+
+1. `GET https://api.github.com/search/issues?q=repo:dotnet/runtime+is:pr+author:app/copilot-swe-agent&sort=created&order=asc` (the `gh search prs --repo dotnet/runtime --author app/copilot-swe-agent` qualifier works). Total: 1,734 PRs, 1,205 merged (`+is:merged`). The five oldest:
+   | PR | created | title |
+   |---|---|---|
+   | [#115730](https://github.com/dotnet/runtime/pull/115730) | 2025-05-19T17:16:02Z | Fix CancellationTokenRegistration leak in AsyncOperation.TrySetCanceled |
+   | [#115732](https://github.com/dotnet/runtime/pull/115732) | 2025-05-19T17:53:56Z | Fix DataTable.Compute throws exception on "true NOT= false" |
+   | [#115733](https://github.com/dotnet/runtime/pull/115733) | 2025-05-19T17:58:31Z | Fix IndexOutOfRangeException in RegexInterpreter.Backtrack method |
+   | [#115735](https://github.com/dotnet/runtime/pull/115735) | 2025-05-19T18:10:26Z | Fix HTTP/2 pings not working with zero connection lifetime |
+   | [#115736](https://github.com/dotnet/runtime/pull/115736) | 2025-05-19T19:13:29Z | [Failed] Port System.Text documentation for .NET 8.0 APIs |
+2. On these PRs the author is `user.login = "Copilot"`, `user.type = "Bot"`, `user.id = 198982749`, `author_association = "CONTRIBUTOR"`.
+3. `GET https://api.github.com/user/198982749` resolves to `https://github.com/apps/copilot-swe-agent`.
+4. dotnet/efcore: the same query returns 302 PRs, the first being [#36136](https://github.com/dotnet/efcore/pull/36136) (2025-05-24).
+5. In git, the squash commit of an agent PR has author `Copilot <198982749+Copilot@users.noreply.github.com>`, committer `GitHub <noreply@github.com>`, and the trailer `Co-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>` (e.g. `3c5f74af89e331a5474025ce56d146ee180e1887`, #115735). Command: `git log -1 --format='%an <%ae>%n%B' 3c5f74af89e3`.
+6. Other Copilot co-author trailers exist and are **not** the coding agent: `175728472+Copilot@users.noreply.github.com` = `https://github.com/apps/copilot-pull-request-reviewer` (accepted review suggestions, often "Copilot Autofix powered by AI"), `223556219+Copilot@users.noreply.github.com` = `https://github.com/apps/github-copilot-cli`. Sources: `GET https://api.github.com/user/175728472`, `GET https://api.github.com/user/223556219`; counts across all branches since 2025-05-01: `git log --all --since=2025-05-01 --format=%b | grep -i '^co-authored-by:.*copilot' | sort | uniq -c`.
+
+Detection rule used by `attribution/classify.py`: class `cca` when the PR author id is 198982749 (login `Copilot`, type `Bot`), or, for a commit without a PR, when the commit author e-mail is `198982749+Copilot@users.noreply.github.com`. Flag `cca_coauthored` when a non-agent commit carries a co-author trailer with id 198982749. Ids 175728472 and 223556219 produce the separate flags `copilot_review_coauthored` and `copilot_cli_coauthored`.
+
+## F7. Labels
+
+Source: `GET https://api.github.com/repos/dotnet/runtime/labels/tenet-performance` ("Performance related issue") and `.../labels/regression-from-last-release` (no description). Both exist.
+
+## F8. Release dates and support phase
+
+Source: `https://builds.dotnet.microsoft.com/dotnet/release-metadata/<major>.0/releases.json` (fields `release-date`, `latest-release`, `support-phase`).
+
+| major | GA (`<major>.0.0` release-date) | latest | support phase |
+|---|---|---|---|
+| 6.0 | 2021-11-08 | 6.0.36 | eol |
+| 7.0 | 2022-11-08 | 7.0.20 (2024-05-28) | eol |
+| 8.0 | 2023-11-14 | 8.0.33 (2026-10-25) | maintenance |
+| 9.0 | 2024-12-03 in the feed (the public launch was 2024-11-12) | 9.0.22 (2026-10-25) | maintenance |
+| 10.0 | 2025-11-11 | 10.0.14 (2026-10-25) | active |
+| 11.0 | not released | 11.0.0-rc.3 (2026-10-25) | go-live |
+
+`attribution/regressions.py` uses these dates for the 12-month servicing windows (7.0: 2022-11-08 → 2023-11-08; 10.0: 2025-11-11 → 2026-11-11, still open at collection time).
+
+## F9. Toolchain and package versions
+
+| item | version | source |
+|---|---|---|
+| .NET SDK (Track A, `global.json` 10.0.100 + latestFeature) | 10.0.111 | `dotnet --list-sdks` |
+| .NET runtime used by Track A here | 10.0.11 | `dotnet --list-runtimes`, `run-meta.json` |
+| .NET 11 SDK installed by `scripts/ensure-sdk11.sh` | 11.0.100-rc.3.26522.148 (runtime 11.0.0-rc.3.26522.148) | `dotnet-install.sh --channel 11.0 --quality preview` |
+| runtimes for BenchmarkDotNet Track B | 6.0.36, 7.0.20, 8.0.33, 9.0.22, 10.0.14 (+ ASP.NET Core) | `scripts/ensure-runtimes.sh`, `.dotnet/dotnet --list-runtimes` |
+| BenchmarkDotNet | 0.15.8 (no net11.0 moniker; its CLI accepts up to `net10_0`) | `https://api.nuget.org/v3-flatcontainer/benchmarkdotnet/index.json`; error message of `--runtimes net11.0` |
+| Microsoft.CodeAnalysis.CSharp | 5.9.0 | NuGet flat container |
+| System.CommandLine | 2.0.14 | NuGet flat container |
+| numpy / pandas / scipy / matplotlib | 2.5.4 / 3.1.0 / 1.18.1 / 3.11.2 | `https://pypi.org/pypi/<name>/json` |
+| GitHub Actions | checkout v7 (7.0.1), setup-dotnet v6 (6.0.0), setup-python v7 (7.1.0), upload-artifact v7 (7.0.2) | `git ls-remote --tags https://github.com/actions/<name>` |
+| bombardier | v2.0.2 is the latest release, not installed | `GET https://api.github.com/repos/codesenberg/bombardier/releases/latest` |
+| git | 2.34.1 | `git --version` |
+
+## F10. Facts found while building that affect the design
+
+- On a net10.0 consumer the 6.x packages resolve to a mix of `net6.0`, `netstandard2.1` and `netstandard2.0` assets; 7.x to `net7.0`; 8.x to `net8.0`; 9.x to `net9.0`; 10.x and 11.0-rc to `net10.0` (`net10_asset_tfm` in `matrix/versions.json`).
+- `Microsoft.Extensions.Configuration.Binder` 8.0.x's source generator emits file-path `InterceptsLocation`, which the .NET 10 SDK compiler rejects with CS9270 (observed when building `Harness.NewOnly` with `-p:MsExt=8`).
+- BenchmarkDotNet 0.15.8 depends on `Microsoft.CodeAnalysis.CSharp` 4.14.0 (→ `System.Collections.Immutable` 9.0.0, `System.Reflection.Metadata` 9.0.0) and `Microsoft.Diagnostics.Tracing.TraceEvent` 3.1.21 (→ `System.Text.Json` 8.0.5); on net6.0–net8.0 these replace the in-box assemblies unless excluded (`project.assets.json` of `bench/Bdn/Bdn.TrackB`).
+- EmberTrace: names registered with `Tracer.Id` resolve in a session only with `SessionOptions.EnableRuntimeMetadata = true` (XML docs of `EmberTrace` 0.4.0); `Tracer.Id` hashes the string on every call.

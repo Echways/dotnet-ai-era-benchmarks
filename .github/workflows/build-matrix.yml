@@ -1,0 +1,109 @@
+name: build-matrix
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+env:
+  DOTNET_NOLOGO: "1"
+  DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+
+jobs:
+  points:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.points.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v7
+      - id: points
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          points = json.load(open("matrix/versions.json"))["points"]
+          include = [{"label": p["label"], "major": p["major"]} for p in points]
+          print("matrix=" + json.dumps({"include": include}))
+          PY
+
+  lint-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - run: pip install ruff
+      - run: ruff check .
+      - run: ruff format --check .
+      - name: Build the solution with warnings as errors
+        run: dotnet build ms-ai-hotpaths.slnx -c Release
+
+  smoke:
+    needs: points
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJson(needs.points.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
+      - name: Restore and build ${{ matrix.label }}
+        run: dotnet build src/Harness/Harness.csproj -c Release -p:MsExt=${{ matrix.major }} -p:Ef=${{ matrix.major }} -o bin/${{ matrix.label }}
+      - name: Run every scenario and the loaded-version check
+        run: |
+          dotnet bin/${{ matrix.label }}/Harness.dll --scenario all --include-new --iterations 2 --warmup 1 --label ${{ matrix.label }} --out results/raw | tee smoke.log
+          test "$(grep -c '^\[assembly\] Microsoft.Extensions.' smoke.log)" -gt 0
+          ! grep -q 'MISMATCH' smoke.log
+      - uses: actions/upload-artifact@v7
+        with:
+          name: smoke-${{ matrix.label }}
+          path: results/raw/${{ matrix.label }}/*.run-meta.json
+
+  version-guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
+      - name: Build two adjacent points
+        run: |
+          dotnet build src/Harness/Harness.csproj -c Release -p:MsExt=7 -p:Ef=7 -o bin/e0-7
+          dotnet build src/Harness/Harness.csproj -c Release -p:MsExt=8 -p:Ef=8 -o bin/e1-8
+      - name: A mismatched Microsoft.Extensions assembly must stop the run with exit code 3
+        run: |
+          cp -r bin/e0-7 bin/mismatch
+          cp bin/e1-8/Microsoft.Extensions.Logging.dll bin/mismatch/
+          set +e
+          dotnet bin/mismatch/Harness.dll --scenario di --iterations 1 --warmup 0 --label mismatch --out results/raw
+          status=$?
+          set -e
+          test "$status" -eq 3
+      - name: A wrong expected major must stop the run with exit code 3
+        run: |
+          set +e
+          dotnet bin/e0-7/Harness.dll --scenario di --iterations 1 --warmup 0 --label mismatch --out results/raw --expect-msext 8
+          status=$?
+          set -e
+          test "$status" -eq 3
+
+  track-b:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
+      - name: Install the .NET 11 SDK into .dotnet
+        run: ./scripts/ensure-sdk11.sh
+      - name: Build and run Track B on net10.0 and net11.0
+        run: |
+          for tfm in net10.0 net11.0; do
+            ./scripts/dotnet11.sh build src/Harness.TrackB/Harness.TrackB.csproj -c Release -f "$tfm" -o "bin/b-${tfm%.0}"
+            DOTNET_ROOT="$PWD/.dotnet" .dotnet/dotnet "bin/b-${tfm%.0}/Harness.TrackB.dll" --scenario all --iterations 2 --warmup 1 --label "b-${tfm%.0}" --out results/raw
+          done
