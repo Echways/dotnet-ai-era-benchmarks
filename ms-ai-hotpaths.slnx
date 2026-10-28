@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Harness.Core/Harness.Core.csproj" />
+    <Project Path="src/Harness/Harness.csproj" />
+    <Project Path="src/Harness/Scenarios/NewOnly/Harness.NewOnly.csproj" />
+  </Folder>
+</Solution>

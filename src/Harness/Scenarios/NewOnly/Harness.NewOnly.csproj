@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Harness.NewOnly</RootNamespace>
+    <HarnessBinderSourceGen Condition="$(MsExt) &gt;= 9">true</HarnessBinderSourceGen>
+    <EnableConfigurationBindingGenerator>$(HarnessBinderSourceGen)</EnableConfigurationBindingGenerator>
+    <EnableConfigurationBindingGenerator Condition="'$(HarnessBinderSourceGen)' != 'true'">false</EnableConfigurationBindingGenerator>
+    <DefineConstants Condition="'$(HarnessBinderSourceGen)' == 'true'">$(DefineConstants);HARNESS_BINDER_SOURCEGEN</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="SourceGeneratedBinderScenario.cs" Condition="'$(HarnessBinderSourceGen)' != 'true'" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../../Harness.Core/Harness.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="EmberTrace.Generator" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" />
+  </ItemGroup>
+</Project>
