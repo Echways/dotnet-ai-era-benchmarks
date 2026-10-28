@@ -1,0 +1,6 @@
+target-version = "py312"
+line-length = 160
+extend-exclude = [".work", ".venv", ".dotnet", "glassbox/src", "attribution/cache"]
+
+[lint]
+select = ["E", "F", "W", "I", "B", "UP", "RUF", "ISC", "EXE", "SIM"]

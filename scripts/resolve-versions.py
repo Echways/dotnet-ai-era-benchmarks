@@ -101,11 +101,7 @@ def dependency_groups(root: ET.Element) -> dict[str, list[tuple[str, str]]]:
         if strip_ns(element.tag) != "group":
             continue
         tfm = normalize_tfm(element.get("targetFramework", "any"))
-        deps = [
-            (d.get("id", ""), d.get("version", ""))
-            for d in element
-            if strip_ns(d.tag) == "dependency"
-        ]
+        deps = [(d.get("id", ""), d.get("version", "")) for d in element if strip_ns(d.tag) == "dependency"]
         groups[tfm] = deps
     return groups
 
@@ -189,11 +185,7 @@ class Resolver:
 
 
 def sqlite_minimum(ef_packages: dict[str, dict]) -> str | None:
-    floors = [
-        info["dependencies"][SQLITE_BUNDLE]
-        for info in ef_packages.values()
-        if info.get("version") and SQLITE_BUNDLE in info.get("dependencies", {})
-    ]
+    floors = [info["dependencies"][SQLITE_BUNDLE] for info in ef_packages.values() if info.get("version") and SQLITE_BUNDLE in info.get("dependencies", {})]
     return max(floors, key=version_key) if floors else None
 
 
@@ -250,9 +242,7 @@ def choose_sqlite(resolver: Resolver, points: list[dict]) -> dict:
         "track_a_minimum_per_point": floors,
         "track_a_pinned": highest,
         "track_a_single_minor_line": len({".".join(v.split(".")[:2]) for v in floors.values()}) == 1,
-        "track_b_minimum_per_point": {
-            p["label"]: p["sqlitepclraw_min"] for p in points if p["ef_track"] == "B"
-        },
+        "track_b_minimum_per_point": {p["label"]: p["sqlitepclraw_min"] for p in points if p["ef_track"] == "B"},
         "latest_stable": stable[-1],
         "rule": "Track A pins the highest minimum required by any Track A EF point",
     }
@@ -320,8 +310,7 @@ def main() -> int:
     args.out.write_text(json.dumps(document, indent=2) + "\n", encoding="utf-8")
     write_props(document, args.props)
     for point in points:
-        print(f"{point['label']}: msext<= {point['msext_max']} ef={point['ef_package_version']} "
-              f"track={point['ef_track']} sqlite>={point['sqlitepclraw_min']}")
+        print(f"{point['label']}: msext<= {point['msext_max']} ef={point['ef_package_version']} track={point['ef_track']} sqlite>={point['sqlitepclraw_min']}")
     print(f"sqlitepclraw track A pinned: {document['sqlitepclraw']['track_a_pinned']}")
     for label, pid in missing:
         print(f"missing: {label} {pid}", file=sys.stderr)
