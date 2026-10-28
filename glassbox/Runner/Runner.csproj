@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Glassbox.Runner</RootNamespace>
+    <GlassboxTag Condition="'$(GlassboxTag)' == ''">v10.0.14</GlassboxTag>
+    <GlassboxDirectory>$(MSBuildThisFileDirectory)../generated/$(GlassboxTag)/</GlassboxDirectory>
+    <GlassboxMajor>$(GlassboxTag.TrimStart('v').Split('.')[0])</GlassboxMajor>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(GlassboxDirectory)scenarios/*.cs" LinkBase="Scenarios" />
+    <AssemblyMetadata Include="GlassboxTag" Value="$(GlassboxTag)" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(RepoRoot)src/Harness.Core/Harness.Core.csproj" />
+    <ProjectReference Include="$(GlassboxDirectory)DependencyInjection/Glassbox.V$(GlassboxMajor).DependencyInjection.csproj" />
+    <ProjectReference Include="$(GlassboxDirectory)Caching.Memory/Glassbox.V$(GlassboxMajor).Caching.Memory.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="EmberTrace.Generator" PrivateAssets="all" />
+    <PackageReference Include="EmberTrace.Analysis" />
+    <PackageReference Include="EmberTrace.Format" />
+    <PackageReference Include="EmberTrace.ReportText" />
+    <PackageReference Include="System.CommandLine" />
+  </ItemGroup>
+</Project>

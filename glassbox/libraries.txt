@@ -1,0 +1,4 @@
+Microsoft.Extensions.DependencyInjection.Abstractions
+Microsoft.Extensions.DependencyInjection
+Microsoft.Extensions.Caching.Abstractions
+Microsoft.Extensions.Caching.Memory

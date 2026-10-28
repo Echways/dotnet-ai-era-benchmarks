@@ -10,4 +10,7 @@
     <Project Path="bench/Bdn/Bdn.TrackA/Bdn.TrackA.csproj" />
     <Project Path="bench/Bdn/Bdn.TrackB/Bdn.TrackB.csproj" />
   </Folder>
+  <Folder Name="/glassbox/">
+    <Project Path="glassbox/Instrumenter/Instrumenter.csproj" />
+  </Folder>
 </Solution>

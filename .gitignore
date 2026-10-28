@@ -12,3 +12,4 @@ results/summary/plots/*.tmp
 glassbox/src/
 glassbox/generated/
 attribution/cache/
+results/summary/traces/**/*.chrome.json
