@@ -82,7 +82,7 @@ def main() -> int:
     }
     write_json(Path(args.out), document)
     with open(Path(args.out).with_suffix(".csv"), "w", newline="", encoding="utf-8") as handle:
-        writer = csv.writer(handle)
+        writer = csv.writer(handle, lineterminator="\n")
         writer.writerow(
             [
                 "library",

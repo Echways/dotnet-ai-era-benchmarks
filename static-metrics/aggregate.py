@@ -104,7 +104,7 @@ def main() -> int:
         short = library.removeprefix("Microsoft.Extensions.")
         path = args.out / f"static-{short}.csv"
         with open(path, "w", newline="", encoding="utf-8") as handle:
-            writer = csv.DictWriter(handle, fieldnames=COLUMNS)
+            writer = csv.DictWriter(handle, fieldnames=COLUMNS, lineterminator="\n")
             writer.writeheader()
             writer.writerows(rows)
         print(f"{path}: {len(rows)} tags")

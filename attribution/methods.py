@@ -141,7 +141,7 @@ def main() -> int:
             )
         print(f"{target}: {len(commits)} commits in {path}")
     with open(args.out, "w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=["method", "library", "file", "sha", "pr_number", "class", "cca_coauthored"])
+        writer = csv.DictWriter(handle, fieldnames=["method", "library", "file", "sha", "pr_number", "class", "cca_coauthored"], lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
     print(f"-> {args.out}")

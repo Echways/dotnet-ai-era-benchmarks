@@ -98,7 +98,7 @@ def main() -> int:
     args = parser.parse_args()
     rows = [row for library in libraries(args.library) for row in rows_for(library, args.start, args.end)]
     with open(args.out, "w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=COLUMNS)
+        writer = csv.DictWriter(handle, fieldnames=COLUMNS, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
     counts: dict[str, int] = {}
