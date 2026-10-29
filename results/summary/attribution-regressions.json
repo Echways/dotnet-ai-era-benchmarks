@@ -1,0 +1,375 @@
+{
+  "perf_labelled": [
+    {
+      "class": "community",
+      "labels": "area-Extensions-DependencyInjection;tenet-performance",
+      "library": "DependencyInjection",
+      "pr_number": "99383",
+      "sha": "4707b43380c9ae95ad95897678a5d51bddd72579",
+      "subject": "Improve perf\\allocs of ActivatorUtilities.CreateInstance() (#99383)"
+    },
+    {
+      "class": "community",
+      "labels": "area-Extensions-DependencyInjection;tenet-performance",
+      "library": "DependencyInjection",
+      "pr_number": "91290",
+      "sha": "00937b28fe980944b694b17999dc61145ea6150a",
+      "subject": "Improve perf of ActivatorUtilities.CreateInstance() (#91290)"
+    },
+    {
+      "class": "msft-human",
+      "labels": "area-Extensions-DependencyInjection;os-android;tenet-performance",
+      "library": "DependencyInjection",
+      "pr_number": "91133",
+      "sha": "fecf3eeffd3650566555e15292f9df0d3abcdfc6",
+      "subject": "[DependencyInjection] introduce feature switch to disable S.R.E (#91133)"
+    },
+    {
+      "class": "community",
+      "labels": "area-Extensions-DependencyInjection;tenet-performance",
+      "library": "DependencyInjection",
+      "pr_number": "90119",
+      "sha": "a48e73a3187d8d040b698cba7b6c5542ef3c7db8",
+      "subject": "For perf, use the new ConstructorInvoker APIs for ActivatorUtilities.CreateFactory (#90119)"
+    },
+    {
+      "class": "community",
+      "labels": "area-Extensions-DependencyInjection;tenet-performance",
+      "library": "DependencyInjection",
+      "pr_number": "89573",
+      "sha": "c41696644436d6ba8d7bc6f06b20273d99d8dc70",
+      "subject": "For perf, use the new ConstructorInvoker APIs for ActivatorUtilities.CreateFactory (#89573)"
+    },
+    {
+      "class": "community",
+      "labels": "arch-wasm;area-System.Reflection;tenet-performance",
+      "library": "DependencyInjection",
+      "pr_number": "85065",
+      "sha": "d11ed579a34b9650faba9275054e5990587c17f7",
+      "subject": "Use emit-based invoke for all of WASM including DI (#85065)"
+    }
+  ],
+  "reverts": [
+    {
+      "class": "msft-human",
+      "library": "DependencyInjection",
+      "pr_number": "89992",
+      "sha": "ba196ced46b2c46e8d4521a2e7458cf297289b8f",
+      "subject": "Revert \"For perf, use the new ConstructorInvoker APIs for ActivatorUtilities.CreateFactory (#89573)\" (#89992)"
+    }
+  ],
+  "servicing": [
+    {
+      "commits_in_window": 0,
+      "days_observed": 365,
+      "ga_date": "2022-11-08",
+      "library": "DependencyInjection",
+      "major": 7,
+      "patches": [
+        {
+          "commits": 0,
+          "date": "2022-12-13",
+          "tag": "v7.0.1"
+        },
+        {
+          "commits": 0,
+          "date": "2023-01-10",
+          "tag": "v7.0.2"
+        },
+        {
+          "commits": 0,
+          "date": "2023-02-14",
+          "tag": "v7.0.3"
+        },
+        {
+          "commits": 0,
+          "date": "2023-03-14",
+          "tag": "v7.0.4"
+        },
+        {
+          "commits": 0,
+          "date": "2023-04-11",
+          "tag": "v7.0.5"
+        },
+        {
+          "commits": 0,
+          "date": "2023-06-13",
+          "tag": "v7.0.7"
+        },
+        {
+          "commits": 0,
+          "date": "2023-06-22",
+          "tag": "v7.0.8"
+        },
+        {
+          "commits": 0,
+          "date": "2023-07-11",
+          "tag": "v7.0.9"
+        },
+        {
+          "commits": 0,
+          "date": "2023-08-08",
+          "tag": "v7.0.10"
+        },
+        {
+          "commits": 0,
+          "date": "2023-09-12",
+          "tag": "v7.0.11"
+        },
+        {
+          "commits": 0,
+          "date": "2023-10-10",
+          "tag": "v7.0.12"
+        },
+        {
+          "commits": 0,
+          "date": "2023-10-24",
+          "tag": "v7.0.13"
+        }
+      ],
+      "patches_in_window": 12,
+      "patches_touching_paths": 0,
+      "window_complete": true,
+      "window_end": "2023-11-08"
+    },
+    {
+      "commits_in_window": 0,
+      "days_observed": 352,
+      "ga_date": "2025-11-11",
+      "library": "DependencyInjection",
+      "major": 10,
+      "patches": [
+        {
+          "commits": 0,
+          "date": "2025-12-09",
+          "tag": "v10.0.1"
+        },
+        {
+          "commits": 0,
+          "date": "2026-01-13",
+          "tag": "v10.0.2"
+        },
+        {
+          "commits": 0,
+          "date": "2026-02-10",
+          "tag": "v10.0.3"
+        },
+        {
+          "commits": 0,
+          "date": "2026-03-10",
+          "tag": "v10.0.4"
+        },
+        {
+          "commits": 0,
+          "date": "2026-03-12",
+          "tag": "v10.0.5"
+        },
+        {
+          "commits": 0,
+          "date": "2026-04-14",
+          "tag": "v10.0.6"
+        },
+        {
+          "commits": 0,
+          "date": "2026-04-21",
+          "tag": "v10.0.7"
+        },
+        {
+          "commits": 0,
+          "date": "2026-05-12",
+          "tag": "v10.0.8"
+        },
+        {
+          "commits": 0,
+          "date": "2026-06-09",
+          "tag": "v10.0.9"
+        },
+        {
+          "commits": 0,
+          "date": "2026-07-14",
+          "tag": "v10.0.10"
+        },
+        {
+          "commits": 0,
+          "date": "2026-08-11",
+          "tag": "v10.0.11"
+        },
+        {
+          "commits": 0,
+          "date": "2026-09-08",
+          "tag": "v10.0.12"
+        },
+        {
+          "commits": 0,
+          "date": "2026-10-13",
+          "tag": "v10.0.13"
+        },
+        {
+          "commits": 0,
+          "date": "2026-10-25",
+          "tag": "v10.0.14"
+        }
+      ],
+      "patches_in_window": 14,
+      "patches_touching_paths": 0,
+      "window_complete": false,
+      "window_end": "2026-11-11"
+    },
+    {
+      "commits_in_window": 0,
+      "days_observed": 365,
+      "ga_date": "2022-11-08",
+      "library": "Caching",
+      "major": 7,
+      "patches": [
+        {
+          "commits": 0,
+          "date": "2022-12-13",
+          "tag": "v7.0.1"
+        },
+        {
+          "commits": 0,
+          "date": "2023-01-10",
+          "tag": "v7.0.2"
+        },
+        {
+          "commits": 0,
+          "date": "2023-02-14",
+          "tag": "v7.0.3"
+        },
+        {
+          "commits": 0,
+          "date": "2023-03-14",
+          "tag": "v7.0.4"
+        },
+        {
+          "commits": 0,
+          "date": "2023-04-11",
+          "tag": "v7.0.5"
+        },
+        {
+          "commits": 0,
+          "date": "2023-06-13",
+          "tag": "v7.0.7"
+        },
+        {
+          "commits": 0,
+          "date": "2023-06-22",
+          "tag": "v7.0.8"
+        },
+        {
+          "commits": 0,
+          "date": "2023-07-11",
+          "tag": "v7.0.9"
+        },
+        {
+          "commits": 0,
+          "date": "2023-08-08",
+          "tag": "v7.0.10"
+        },
+        {
+          "commits": 0,
+          "date": "2023-09-12",
+          "tag": "v7.0.11"
+        },
+        {
+          "commits": 0,
+          "date": "2023-10-10",
+          "tag": "v7.0.12"
+        },
+        {
+          "commits": 0,
+          "date": "2023-10-24",
+          "tag": "v7.0.13"
+        }
+      ],
+      "patches_in_window": 12,
+      "patches_touching_paths": 0,
+      "window_complete": true,
+      "window_end": "2023-11-08"
+    },
+    {
+      "commits_in_window": 0,
+      "days_observed": 352,
+      "ga_date": "2025-11-11",
+      "library": "Caching",
+      "major": 10,
+      "patches": [
+        {
+          "commits": 0,
+          "date": "2025-12-09",
+          "tag": "v10.0.1"
+        },
+        {
+          "commits": 0,
+          "date": "2026-01-13",
+          "tag": "v10.0.2"
+        },
+        {
+          "commits": 0,
+          "date": "2026-02-10",
+          "tag": "v10.0.3"
+        },
+        {
+          "commits": 0,
+          "date": "2026-03-10",
+          "tag": "v10.0.4"
+        },
+        {
+          "commits": 0,
+          "date": "2026-03-12",
+          "tag": "v10.0.5"
+        },
+        {
+          "commits": 0,
+          "date": "2026-04-14",
+          "tag": "v10.0.6"
+        },
+        {
+          "commits": 0,
+          "date": "2026-04-21",
+          "tag": "v10.0.7"
+        },
+        {
+          "commits": 0,
+          "date": "2026-05-12",
+          "tag": "v10.0.8"
+        },
+        {
+          "commits": 0,
+          "date": "2026-06-09",
+          "tag": "v10.0.9"
+        },
+        {
+          "commits": 0,
+          "date": "2026-07-14",
+          "tag": "v10.0.10"
+        },
+        {
+          "commits": 0,
+          "date": "2026-08-11",
+          "tag": "v10.0.11"
+        },
+        {
+          "commits": 0,
+          "date": "2026-09-08",
+          "tag": "v10.0.12"
+        },
+        {
+          "commits": 0,
+          "date": "2026-10-13",
+          "tag": "v10.0.13"
+        },
+        {
+          "commits": 0,
+          "date": "2026-10-25",
+          "tag": "v10.0.14"
+        }
+      ],
+      "patches_in_window": 14,
+      "patches_touching_paths": 0,
+      "window_complete": false,
+      "window_end": "2026-11-11"
+    }
+  ]
+}

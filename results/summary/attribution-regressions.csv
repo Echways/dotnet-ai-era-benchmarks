@@ -1,0 +1,5 @@
+library,major,ga_date,window_end,window_complete,days_observed,patches_in_window,patches_touching_paths,commits_in_window
+DependencyInjection,7,2022-11-08,2023-11-08,True,365,12,0,0
+DependencyInjection,10,2025-11-11,2026-11-11,False,352,14,0,0
+Caching,7,2022-11-08,2023-11-08,True,365,12,0,0
+Caching,10,2025-11-11,2026-11-11,False,352,14,0,0

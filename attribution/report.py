@@ -61,6 +61,17 @@ def main() -> int:
                     f"{sum(number(r['deletions']) for r in members)} | {sum(r['cca_coauthored'] == 'True' for r in members)} | "
                     f"{sum(r['copilot_review_coauthored'] == 'True' for r in members)} |"
                 )
+        disagree = Counter(
+            row["class"] for row in rows if row["class"] in ("msft-human", "community") and (row["class"] == "msft-human") != (row["microsoft_email"] == "True")
+        )
+        lines += [
+            "",
+            (
+                "`author_association` is a weak proxy for Microsoft employment: private organisation membership is reported as CONTRIBUTOR, "
+                "and non-employees can be MEMBER of the dotnet organisation. The `microsoft_email` column (commit author e-mail ends with "
+                f"`@microsoft.com`) disagrees with the class for {dict(disagree)} commits; treat `msft-human` vs `community` as indicative."
+            ),
+        ]
         sources = Counter(row["stats_source"] for row in rows)
         lines += ["", f"Line statistics source: {dict(sources)}.", ""]
     if methods:
