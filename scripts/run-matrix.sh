@@ -12,6 +12,8 @@ CPUS="2-5"
 NO_TIERING=0
 INCLUDE_NEW=0
 SKIP_ANALYSIS=0
+RAW_OVERRIDE=""
+SUMMARY_OVERRIDE=""
 TRACK_A_SCENARIOS=(di config options logging cache ef)
 TRACK_B_SCENARIOS=(stj channels immutable aspnetcore ef)
 
@@ -19,6 +21,7 @@ usage() {
   cat <<USAGE
 usage: $0 [--quick] [--runs N] [--points e0-7,e2-10] [--iterations N] [--warmup N]
           [--track a|b|all] [--cpus 2-5] [--no-tiering] [--include-new] [--skip-analysis]
+          [--raw DIR] [--summary DIR]
 USAGE
 }
 
@@ -34,6 +37,8 @@ while [[ $# -gt 0 ]]; do
     --no-tiering) NO_TIERING=1; shift ;;
     --include-new) INCLUDE_NEW=1; shift ;;
     --skip-analysis) SKIP_ANALYSIS=1; shift ;;
+    --raw) RAW_OVERRIDE="$2"; shift 2 ;;
+    --summary) SUMMARY_OVERRIDE="$2"; shift 2 ;;
     -h | --help) usage; exit 0 ;;
     *) echo "unknown option: $1" >&2; usage >&2; exit 2 ;;
   esac
@@ -46,6 +51,8 @@ if [[ "$NO_TIERING" == 1 ]]; then
   RAW="results/raw-notier"
   SUMMARY="results/summary/notier"
 fi
+RAW="${RAW_OVERRIDE:-$RAW}"
+SUMMARY="${SUMMARY_OVERRIDE:-$SUMMARY}"
 mkdir -p "$RAW" "$SUMMARY"
 
 PIN=()
@@ -70,9 +77,10 @@ labels = [p["label"] for p in document["points"]]
 unknown = [w for w in wanted if w not in labels]
 if unknown:
     sys.exit(f"unknown points: {', '.join(unknown)}; known: {', '.join(labels)}")
-for point in document["points"]:
-    if not wanted or point["label"] in wanted:
-        print(f"{point['label']} {point['major']} {point['ef_package_version']} {point['ef_track']}")
+by_label = {p["label"]: p for p in document["points"]}
+for label in wanted or labels:
+    point = by_label[label]
+    print(f"{point['label']} {point['major']} {point['ef_package_version']} {point['ef_track']}")
 PY
 )
 

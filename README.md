@@ -43,7 +43,21 @@ Requirements: Linux, the .NET 10 SDK on `PATH`, Python 3.12, git. The scripts in
 ./static-metrics/run.sh                  # static metrics for the latest tag of every major
 ```
 
-Useful options of `run-matrix.sh`: `--points e0-7,e2-10`, `--iterations`, `--warmup`, `--track a|b|all`, `--cpus 2-5`, `--include-new` (keyed services and the source-generated binder; not comparable with E0).
+Useful options of `run-matrix.sh`: `--points e0-7,e2-10`, `--iterations`, `--warmup`, `--track a|b|all`, `--cpus 2-5`, `--include-new` (keyed services and the source-generated binder; not comparable with E0), `--raw DIR`, `--summary DIR`.
+
+### Accumulating rounds in Docker
+
+`scripts/run-rounds.sh` repeats the matrix until stopped. Each round goes to its own `rounds/<UTC timestamp>/` directory (`raw/`, `env.json`, a per-round `summary/`); a round that did not finish stays in `incomplete/` and is ignored. The Track A point order is shuffled every round and saved in `track-a-order.txt`, so drift during a long session does not line up with versions. After every round, `summary/` is rebuilt from all finished rounds. The image contains the .NET 10 and 11 SDKs, Python 3.12 and the git checkout, so every trace still records the commit.
+
+```bash
+docker compose up -d --build                    # rounds of --runs 5 forever, data in the bench-data volume
+docker compose logs -f                          # progress
+docker compose cp bench:/data/summary ./vps-summary    # accumulated summary
+docker compose cp bench:/data/rounds ./vps-rounds      # every round, raw traces included
+docker compose down                             # stop; the volume and its data stay
+```
+
+Arguments after the image name go to `run-rounds.sh` (`--rounds N`, `--pause SECONDS`) and then to `run-matrix.sh`; change `command:` in `compose.yaml`, for example `["--runs", "3", "--pause", "600", "--track", "a"]`. The container cannot apply `docs/stand.md` and a VPS shares its CPUs with other tenants, so check `env.json` and the spread between per-round summaries before mixing these numbers with bench-machine data.
 
 ## Where results go
 

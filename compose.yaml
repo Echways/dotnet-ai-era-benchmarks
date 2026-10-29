@@ -1,0 +1,18 @@
+services:
+  bench:
+    build: .
+    image: ms-ai-hotpaths-bench
+    restart: unless-stopped
+    command: ["--runs", "5"]
+    cpuset: ${BENCH_CPUSET:-0}
+    mem_limit: ${BENCH_MEMORY:-1500m}
+    memswap_limit: ${BENCH_MEMORY:-1500m}
+    volumes:
+      - bench-data:/data
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
+
+volumes:
+  bench-data:

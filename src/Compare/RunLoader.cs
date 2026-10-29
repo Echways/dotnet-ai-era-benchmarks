@@ -37,7 +37,7 @@ public static class RunLoader
             return runs;
         }
 
-        foreach (var directory in raw.EnumerateDirectories().OrderBy(d => d.Name, StringComparer.Ordinal))
+        foreach (var directory in raw.EnumerateDirectories("*", SearchOption.AllDirectories).OrderBy(d => d.FullName, StringComparer.Ordinal))
         {
             var point = points.Resolve(directory.Name);
             foreach (var file in directory.EnumerateFiles("*.ember").OrderBy(f => f.Name, StringComparer.Ordinal))
