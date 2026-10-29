@@ -1,0 +1,8 @@
+stj.jsondocument-parse-1mb.x10 477204
+stj.deserialize-reflection.x10k 416314
+stj.deserialize-sourcegen.x10k 411638
+stj.jsonnode-parse-read.x10k 385318
+stj.utf8jsonreader-1mb.x10 296616
+stj.serialize-reflection.x10k 267719
+stj.serialize-sourcegen.x10k 169285
+stj.cold.first-serialize-reflection 14500

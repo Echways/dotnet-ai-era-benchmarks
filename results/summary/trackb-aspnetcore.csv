@@ -1,0 +1,17 @@
+label,epoch,scope,median_ms,p95_ms,alloc_bytes,n_runs
+b-net10,E2,aspnetcore.cold.start-kestrel,104.45212749999999,104.45212749999999,5888936,2
+b-net10,E2,aspnetcore.cold.first-request,845.1599065,845.1599065,5304,2
+b-net10,E2,aspnetcore.hello.batch400,100.663295,101.3983725,1634404,2
+b-net10,E2,aspnetcore.json.batch400,100.663295,101.102273,1727328,2
+b-net10,E2,aspnetcore.routes500.batch400,100.663295,101.572514,1765224,2
+b-net10,E2,aspnetcore.hello.request,0.07475100000000001,0.151551,,2
+b-net10,E2,aspnetcore.json.request,0.077823,0.159743,,2
+b-net10,E2,aspnetcore.routes500.request,0.078847,0.155647,,2
+b-net11,E2,aspnetcore.cold.start-kestrel,59.395678499999995,59.395678499999995,2121152,2
+b-net11,E2,aspnetcore.cold.first-request,897.906056,897.906056,4880,2
+b-net11,E2,aspnetcore.hello.batch400,101.711871,102.0741895,1670388,2
+b-net11,E2,aspnetcore.json.batch400,100.663295,101.20788350000001,1763916,2
+b-net11,E2,aspnetcore.routes500.batch400,100.663295,101.34463149999999,1802612,2
+b-net11,E2,aspnetcore.hello.request,0.135167,0.23551899999999998,,2
+b-net11,E2,aspnetcore.json.request,0.139263,0.26828700000000005,,2
+b-net11,E2,aspnetcore.routes500.request,0.145407,0.282623,,2

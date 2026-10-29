@@ -1,0 +1,11 @@
+label,epoch,scope,median_ms,p95_ms,alloc_bytes,n_runs
+e0-7,E0,options.cold.first-value,15.044331,15.044331,382264,2
+e0-7,E0,options.ioptions-value.x10k,0.059391,0.065023,0,2
+e0-7,E0,options.monitor-current-value.x10k,0.13209500000000002,0.6389750000000001,0,2
+e0-7,E0,options.snapshot-new-scope.x1k,25.427967000000002,55.574527,20300000,2
+e0-7,E0,options.validate-data-annotations.x1k,19.922943,41.156607,20844000,2
+e2-10,E2,options.cold.first-value,17.4923675,17.4923675,368688,2
+e2-10,E2,options.ioptions-value.x10k,0.057343000000000005,0.062463000000000005,0,2
+e2-10,E2,options.monitor-current-value.x10k,0.109567,0.6389750000000001,0,2
+e2-10,E2,options.snapshot-new-scope.x1k,24.379391,57.671679,19464000,2
+e2-10,E2,options.validate-data-annotations.x1k,20.447231000000002,54.001663,21233536,2

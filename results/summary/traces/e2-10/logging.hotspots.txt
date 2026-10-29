@@ -1,0 +1,41 @@
+Summary
+Started: 2026-10-28T22:51:37.7962152+00:00
+Duration: 410.454 ms
+Events: 309
+ScopeEvents: 204
+Threads: 1
+DroppedEvents: 0
+DroppedChunks: 0
+SampledOut: 0
+UnmatchedBegin: 0
+UnmatchedEnd: 0
+MismatchedEnd: 0
+
+Hotspots (by inclusive)
+Id    Name                                        Category  Count  Incl ms  Excl ms  Excl%
+--    ----                                        --------  -----  -------  -------  -----
+1310  logging.factory-create.x100                 logging   20     105.831  105.831  25.78
+1311  logging.log-information-3args-enabled.x10k  logging   20     88.056   88.056   21.45
+1313  logging.logger-message-define.x10k          logging   20     55.606   55.606   13.55
+1314  logging.begin-scope.x10k                    logging   20     31.199   31.199   7.60 
+1300  logging.cold.factory-create                 logging   1      26.028   26.028   6.34 
+1312  logging.log-debug-3args-disabled.x10k       logging   20     11.738   11.738   2.86 
+1301  logging.cold.first-log                      logging   1      5.138    5.138    1.25 
+
+Categories (by inclusive)
+Category  Count  Incl ms  Excl ms  Excl%
+--------  -----  -------  -------  -----
+logging   102    323.596  323.596  78.84
+
+Call trees
+
+Thread 1
+Id    Name                                        Category  Count  Incl ms  Excl ms
+--    ----                                        --------  -----  -------  -------
+1310  logging.factory-create.x100                 logging   20     105.831  105.831
+1311  logging.log-information-3args-enabled.x10k  logging   20     88.056   88.056 
+1313  logging.logger-message-define.x10k          logging   20     55.606   55.606 
+1314  logging.begin-scope.x10k                    logging   20     31.199   31.199 
+1300  logging.cold.factory-create                 logging   1      26.028   26.028 
+1312  logging.log-debug-3args-disabled.x10k       logging   20     11.738   11.738 
+1301  logging.cold.first-log                      logging   1      5.138    5.138  

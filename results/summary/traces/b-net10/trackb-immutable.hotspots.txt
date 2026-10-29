@@ -1,0 +1,35 @@
+Summary
+Started: 2026-10-28T22:52:18.2999482+00:00
+Duration: 1406.494 ms
+Events: 472
+ScopeEvents: 122
+Threads: 1
+DroppedEvents: 0
+DroppedChunks: 0
+SampledOut: 0
+UnmatchedBegin: 0
+UnmatchedEnd: 0
+MismatchedEnd: 0
+
+Hotspots (by inclusive)
+Id    Name                                Category   Count  Incl ms  Excl ms  Excl%
+--    ----                                --------   -----  -------  -------  -----
+2210  immutable.dictionary-build-10k.x10  immutable  20     463.933  463.933  32.99
+2211  immutable.builder-add-10k.x10       immutable  20     460.492  460.492  32.74
+2212  immutable.dictionary-lookup.x10k    immutable  20     19.480   19.480   1.39 
+2200  immutable.cold.first-build-10k      immutable  1      6.752    6.752    0.48 
+
+Categories (by inclusive)
+Category   Count  Incl ms  Excl ms  Excl%
+--------   -----  -------  -------  -----
+immutable  61     950.658  950.658  67.59
+
+Call trees
+
+Thread 1
+Id    Name                                Category   Count  Incl ms  Excl ms
+--    ----                                --------   -----  -------  -------
+2210  immutable.dictionary-build-10k.x10  immutable  20     463.933  463.933
+2211  immutable.builder-add-10k.x10       immutable  20     460.492  460.492
+2212  immutable.dictionary-lookup.x10k    immutable  20     19.480   19.480 
+2200  immutable.cold.first-build-10k      immutable  1      6.752    6.752  

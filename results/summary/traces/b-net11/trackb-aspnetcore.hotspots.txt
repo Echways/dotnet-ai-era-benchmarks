@@ -1,0 +1,92 @@
+Summary
+Started: 2026-10-28T22:52:44.9698641+00:00
+Duration: 8497.083 ms
+Events: 50239
+ScopeEvents: 48124
+Threads: 8
+DroppedEvents: 0
+DroppedChunks: 0
+SampledOut: 0
+UnmatchedBegin: 0
+UnmatchedEnd: 0
+MismatchedEnd: 0
+
+Hotspots (by inclusive)
+Id    Name                           Category    Count  Incl ms   Excl ms   Excl%
+--    ----                           --------    -----  -------   -------   -----
+2312  aspnetcore.routes500.batch400  aspnetcore  20     2012.093  2010.271  23.66
+2311  aspnetcore.json.batch400       aspnetcore  20     2011.055  2009.069  23.64
+2310  aspnetcore.hello.batch400      aspnetcore  20     2009.288  2006.976  23.62
+2322  aspnetcore.routes500.request   aspnetcore  8000   1260.607  1260.607  14.84
+2321  aspnetcore.json.request        aspnetcore  8000   1164.096  1164.096  13.70
+2320  aspnetcore.hello.request       aspnetcore  8000   1113.043  1113.043  13.10
+2301  aspnetcore.cold.first-request  aspnetcore  1      880.919   880.919   10.37
+2300  aspnetcore.cold.start-kestrel  aspnetcore  1      65.789    65.789    0.77 
+
+Categories (by inclusive)
+Category    Count  Incl ms    Excl ms    Excl% 
+--------    -----  -------    -------    ----- 
+aspnetcore  24062  10516.890  10510.770  123.70
+
+Call trees
+
+Thread 1
+Id      Name                           Category    Count  Incl ms   Excl ms 
+--      ----                           --------    -----  -------   ------- 
+2312    aspnetcore.routes500.batch400  aspnetcore  20     2012.093  2010.271
+  2322  aspnetcore.routes500.request   aspnetcore  20     1.822     1.822   
+2311    aspnetcore.json.batch400       aspnetcore  20     2011.055  2009.069
+  2321  aspnetcore.json.request        aspnetcore  20     1.987     1.987   
+2310    aspnetcore.hello.batch400      aspnetcore  20     2009.288  2006.976
+  2320  aspnetcore.hello.request       aspnetcore  20     2.312     2.312   
+2301    aspnetcore.cold.first-request  aspnetcore  1      880.919   880.919 
+2300    aspnetcore.cold.start-kestrel  aspnetcore  1      65.789    65.789  
+
+Thread 15 (.NET TP Worker)
+Id    Name                          Category    Count  Incl ms  Excl ms
+--    ----                          --------    -----  -------  -------
+2322  aspnetcore.routes500.request  aspnetcore  652    111.971  111.971
+2321  aspnetcore.json.request       aspnetcore  708    99.373   99.373 
+2320  aspnetcore.hello.request      aspnetcore  617    95.740   95.740 
+
+Thread 13 (.NET TP Worker)
+Id    Name                          Category    Count  Incl ms  Excl ms
+--    ----                          --------    -----  -------  -------
+2322  aspnetcore.routes500.request  aspnetcore  1429   230.710  230.710
+2321  aspnetcore.json.request       aspnetcore  1520   215.856  215.856
+2320  aspnetcore.hello.request      aspnetcore  1350   189.418  189.418
+
+Thread 12 (.NET TP Worker)
+Id    Name                          Category    Count  Incl ms  Excl ms
+--    ----                          --------    -----  -------  -------
+2322  aspnetcore.routes500.request  aspnetcore  1709   264.704  264.704
+2320  aspnetcore.hello.request      aspnetcore  1671   237.591  237.591
+2321  aspnetcore.json.request       aspnetcore  1572   225.949  225.949
+
+Thread 7 (.NET TP Worker)
+Id    Name                          Category    Count  Incl ms  Excl ms
+--    ----                          --------    -----  -------  -------
+2320  aspnetcore.hello.request      aspnetcore  959    132.394  132.394
+2321  aspnetcore.json.request       aspnetcore  875    124.409  124.409
+2322  aspnetcore.routes500.request  aspnetcore  822    123.697  123.697
+
+Thread 14 (.NET TP Worker)
+Id    Name                          Category    Count  Incl ms  Excl ms
+--    ----                          --------    -----  -------  -------
+2320  aspnetcore.hello.request      aspnetcore  1259   171.034  171.034
+2321  aspnetcore.json.request       aspnetcore  1156   169.968  169.968
+2322  aspnetcore.routes500.request  aspnetcore  971    153.010  153.010
+
+Thread 9 (.NET TP Worker)
+Id    Name                          Category    Count  Incl ms  Excl ms
+--    ----                          --------    -----  -------  -------
+2322  aspnetcore.routes500.request  aspnetcore  1398   202.856  202.856
+2321  aspnetcore.json.request       aspnetcore  1337   201.452  201.452
+2320  aspnetcore.hello.request      aspnetcore  1250   159.580  159.580
+
+Thread 16 (.NET TP Worker)
+Id    Name                          Category    Count  Incl ms  Excl ms
+--    ----                          --------    -----  -------  -------
+2322  aspnetcore.routes500.request  aspnetcore  999    171.837  171.837
+2321  aspnetcore.json.request       aspnetcore  812    125.103  125.103
+2320  aspnetcore.hello.request      aspnetcore  874    124.974  124.974

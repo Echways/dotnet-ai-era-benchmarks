@@ -1,0 +1,31 @@
+Summary
+Started: 2026-10-28T22:53:05.8069744+00:00
+Duration: 761.782 ms
+Events: 232
+ScopeEvents: 42
+Threads: 1
+DroppedEvents: 0
+DroppedChunks: 0
+SampledOut: 0
+UnmatchedBegin: 0
+UnmatchedEnd: 0
+MismatchedEnd: 0
+
+Hotspots (by inclusive)
+Id    Name                                   Category  Count  Incl ms  Excl ms  Excl%
+--    ----                                   --------  -----  -------  -------  -----
+2110  channels.bounded1024-1p4c.x100k-items  channels  20     602.606  602.606  79.10
+2100  channels.cold.first-pipeline           channels  1      7.047    7.047    0.93 
+
+Categories (by inclusive)
+Category  Count  Incl ms  Excl ms  Excl%
+--------  -----  -------  -------  -----
+channels  21     609.653  609.653  80.03
+
+Call trees
+
+Thread 1
+Id    Name                                   Category  Count  Incl ms  Excl ms
+--    ----                                   --------  -----  -------  -------
+2110  channels.bounded1024-1p4c.x100k-items  channels  20     602.606  602.606
+2100  channels.cold.first-pipeline           channels  1      7.047    7.047  

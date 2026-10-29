@@ -1,0 +1,43 @@
+Summary
+Started: 2026-10-28T22:52:53.5711977+00:00
+Duration: 7223.729 ms
+Events: 2039
+ScopeEvents: 244
+Threads: 1
+DroppedEvents: 0
+DroppedChunks: 0
+SampledOut: 0
+UnmatchedBegin: 0
+UnmatchedEnd: 0
+MismatchedEnd: 0
+
+Hotspots (by inclusive)
+Id    Name                                   Category  Count  Incl ms   Excl ms   Excl%
+--    ----                                   --------  -----  -------   -------   -----
+1512  ef.query-where-orderby-take.x1k        ef        20     2123.432  2123.432  29.40
+1510  ef.new-context.x1k                     ef        20     507.710   507.710   7.03 
+1514  ef.detect-changes-10k-tracked.x10      ef        20     492.737   492.737   6.82 
+1501  ef.cold.first-query                    ef        1      458.615   458.615   6.35 
+1513  ef.save-changes-1000-entities.x1       ef        20     391.856   391.856   5.42 
+1515  ef.to-query-string.x1k                 ef        20     144.932   144.932   2.01 
+1500  ef.cold.open-connection-create-schema  ef        1      25.344    25.344    0.35 
+1511  ef.pooled-context.x1k                  ef        20     7.510     7.510     0.10 
+
+Categories (by inclusive)
+Category  Count  Incl ms   Excl ms   Excl%
+--------  -----  -------   -------   -----
+ef        122    4152.136  4152.136  57.48
+
+Call trees
+
+Thread 1
+Id    Name                                   Category  Count  Incl ms   Excl ms 
+--    ----                                   --------  -----  -------   ------- 
+1512  ef.query-where-orderby-take.x1k        ef        20     2123.432  2123.432
+1510  ef.new-context.x1k                     ef        20     507.710   507.710 
+1514  ef.detect-changes-10k-tracked.x10      ef        20     492.737   492.737 
+1501  ef.cold.first-query                    ef        1      458.615   458.615 
+1513  ef.save-changes-1000-entities.x1       ef        20     391.856   391.856 
+1515  ef.to-query-string.x1k                 ef        20     144.932   144.932 
+1500  ef.cold.open-connection-create-schema  ef        1      25.344    25.344  
+1511  ef.pooled-context.x1k                  ef        20     7.510     7.510   

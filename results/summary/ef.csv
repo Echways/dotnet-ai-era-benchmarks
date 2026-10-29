@@ -1,0 +1,17 @@
+label,epoch,scope,median_ms,p95_ms,alloc_bytes,n_runs
+e0-7,E0,ef.cold.open-connection-create-schema,29.5198435,29.5198435,820360,2
+e0-7,E0,ef.cold.first-query,465.00692300000003,465.00692300000003,2363108,2
+e0-7,E0,ef.new-context.x1k,18.087935,38.694572,33114872,2
+e0-7,E0,ef.pooled-context.x1k,0.11161499999999999,0.704511,0,2
+e0-7,E0,ef.query-where-orderby-take.x1k,103.809023,110.100479,12709256,2
+e0-7,E0,ef.save-changes-1000-entities.x1,13.631487,36.175871,8438384,2
+e0-7,E0,ef.detect-changes-10k-tracked.x10,30.932990999999998,35.949063,56802160,2
+e0-7,E0,ef.to-query-string.x1k,5.701631,7.208959,4968832,2
+e2-10,E2,ef.cold.open-connection-create-schema,29.783579500000002,29.783579500000002,787304,2
+e2-10,E2,ef.cold.first-query,529.5235935000001,529.5235935000001,2781824,2
+e2-10,E2,ef.new-context.x1k,24.903679,29.097983,37500216,2
+e2-10,E2,ef.pooled-context.x1k,0.110591,0.40447900000000003,0,2
+e2-10,E2,ef.query-where-orderby-take.x1k,108.003327,112.197631,15500944,2
+e2-10,E2,ef.save-changes-1000-entities.x1,13.762559,33.816575,7862176,2
+e2-10,E2,ef.detect-changes-10k-tracked.x10,22.806527,25.952255,32802160,2
+e2-10,E2,ef.to-query-string.x1k,7.471103,8.191999,7512720,2

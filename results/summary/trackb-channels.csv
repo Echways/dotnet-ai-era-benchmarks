@@ -1,0 +1,5 @@
+label,epoch,scope,median_ms,p95_ms,alloc_bytes,n_runs
+b-net10,E2,channels.cold.first-pipeline,7.545882499999999,7.545882499999999,139672,2
+b-net10,E2,channels.bounded1024-1p4c.x100k-items,22.282239,26.738687,435228,2
+b-net11,E2,channels.cold.first-pipeline,7.070924,7.070924,139440,2
+b-net11,E2,channels.bounded1024-1p4c.x100k-items,32.767999,39.321599,302948,2

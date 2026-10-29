@@ -1,0 +1,15 @@
+label,epoch,scope,median_ms,p95_ms,alloc_bytes,n_runs
+e0-7,E0,cache.cold.create-and-first-set,2.664973,2.664973,134200,2
+e0-7,E0,cache.set.x10k,2.3592950000000004,11.141119,2882360,2
+e0-7,E0,cache.try-get-hit.x10k,0.552959,0.8683510000000001,0,2
+e0-7,E0,cache.try-get-miss.x10k,0.434175,0.503807,0,2
+e0-7,E0,cache.get-or-create.x10k,2.818047,10.747903,2882360,2
+e0-7,E0,cache.size-limit-compact-half.x1,2.4084470000000002,7.012351000000001,918168,2
+e0-7,E0,cache.parallel8-hit-miss.per-thread-x10k,0.753663,1.056767,0,2
+e2-10,E2,cache.cold.create-and-first-set,2.8717275,2.8717275,134448,2
+e2-10,E2,cache.set.x10k,2.015231,7.864319,2844992,2
+e2-10,E2,cache.try-get-hit.x10k,0.507903,0.737279,0,2
+e2-10,E2,cache.try-get-miss.x10k,0.380927,0.511999,0,2
+e2-10,E2,cache.get-or-create.x10k,2.3920630000000003,10.354687,2844992,2
+e2-10,E2,cache.size-limit-compact-half.x1,4.128767,7.012351,656176,2
+e2-10,E2,cache.parallel8-hit-miss.per-thread-x10k,0.7946230000000001,1.572863,0,2

@@ -1,0 +1,15 @@
+label,epoch,scope,median_ms,p95_ms,alloc_bytes,n_runs
+e0-7,E0,logging.cold.factory-create,22.895384,22.895384,173816,2
+e0-7,E0,logging.cold.first-log,3.9052185,3.9052185,4312,2
+e0-7,E0,logging.factory-create.x100,3.276799,5.554269,1799272,2
+e0-7,E0,logging.log-information-3args-enabled.x10k,3.2112629999999998,5.5050229999999996,1951120,2
+e0-7,E0,logging.log-debug-3args-disabled.x10k,0.5570550000000001,0.849939,960000,2
+e0-7,E0,logging.logger-message-define.x10k,3.440639,6.291455,1471120,2
+e0-7,E0,logging.begin-scope.x10k,0.663551,0.917503,960000,2
+e2-10,E2,logging.cold.factory-create,26.236355,26.236355,176576,2
+e2-10,E2,logging.cold.first-log,4.96139,4.96139,5112,2
+e2-10,E2,logging.factory-create.x100,5.046271,6.815742999999999,2031464,2
+e2-10,E2,logging.log-information-3args-enabled.x10k,4.292607,5.898239,1951120,2
+e2-10,E2,logging.log-debug-3args-disabled.x10k,0.581631,0.679935,960000,2
+e2-10,E2,logging.logger-message-define.x10k,2.850815,3.2112629999999998,991120,2
+e2-10,E2,logging.begin-scope.x10k,1.638399,1.7858550000000002,1040000,2

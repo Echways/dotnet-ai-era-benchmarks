@@ -1,0 +1,9 @@
+label,epoch,track,scope,scope_id,pid,median_ms,p95_ms,total_ms,count,alloc_bytes
+b-net10,E2,B,channels.cold.first-pipeline,2100,456321,8.022829,8.022829,8.022829,1,139672
+b-net10,E2,B,channels.bounded1024-1p4c.x100k-items,2110,456321,25.165823,31.981567,501.493944,20,508456
+b-net10,E2,B,channels.cold.first-pipeline,2100,456567,7.068936,7.068936,7.068936,1,139672
+b-net10,E2,B,channels.bounded1024-1p4c.x100k-items,2110,456567,19.398655,21.495807,364.459412,20,362000
+b-net11,E2,B,channels.cold.first-pipeline,2100,456895,7.095298,7.095298,7.095298,1,139440
+b-net11,E2,B,channels.bounded1024-1p4c.x100k-items,2110,456895,33.554431,38.797311,674.444758,20,262336
+b-net11,E2,B,channels.cold.first-pipeline,2100,457268,7.04655,7.04655,7.04655,1,139440
+b-net11,E2,B,channels.bounded1024-1p4c.x100k-items,2110,457268,31.981567,39.845887,602.606324,20,343560

@@ -1,0 +1,11 @@
+aspnetcore.routes500.batch400 2012988
+aspnetcore.routes500.batch400;aspnetcore.routes500.request 1349
+aspnetcore.hello.batch400 2008193
+aspnetcore.hello.batch400;aspnetcore.hello.request 2118
+aspnetcore.json.batch400 2007345
+aspnetcore.json.batch400;aspnetcore.json.request 1997
+aspnetcore.cold.first-request 840460
+aspnetcore.routes500.request 745169
+aspnetcore.json.request 722192
+aspnetcore.hello.request 660638
+aspnetcore.cold.start-kestrel 99792

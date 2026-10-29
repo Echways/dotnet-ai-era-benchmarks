@@ -1,0 +1,17 @@
+label,epoch,scope,median_ms,p95_ms,alloc_bytes,n_runs
+b-net10,E2,stj.cold.first-serialize-reflection,15.5721615,15.5721615,346884,2
+b-net10,E2,stj.serialize-reflection.x10k,14.680063,24.903679,8560000,2
+b-net10,E2,stj.deserialize-reflection.x10k,23.068671000000002,24.641534999999998,18000000,2
+b-net10,E2,stj.serialize-sourcegen.x10k,9.437183000000001,9.961471,5440000,2
+b-net10,E2,stj.deserialize-sourcegen.x10k,22.544383,23.847985,18000000,2
+b-net10,E2,stj.utf8jsonreader-1mb.x10,15.466495,18.087935,0,2
+b-net10,E2,stj.jsondocument-parse-1mb.x10,24.903679,26.176198499999998,720,2
+b-net10,E2,stj.jsonnode-parse-read.x10k,21.233663,23.330815,42560000,2
+b-net11,E2,stj.cold.first-serialize-reflection,13.876684000000001,13.876684000000001,330584,2
+b-net11,E2,stj.serialize-reflection.x10k,14.148436499999999,14.4105805,8560000,2
+b-net11,E2,stj.deserialize-reflection.x10k,22.020094999999998,22.544383,18000000,2
+b-net11,E2,stj.serialize-sourcegen.x10k,9.043966999999999,9.108853,5440000,2
+b-net11,E2,stj.deserialize-sourcegen.x10k,21.923415,22.709847,18000000,2
+b-net11,E2,stj.utf8jsonreader-1mb.x10,15.728639,15.913092500000001,0,2
+b-net11,E2,stj.jsondocument-parse-1mb.x10,25.165823,25.3868795,720,2
+b-net11,E2,stj.jsonnode-parse-read.x10k,20.447231000000002,20.971519,42560000,2

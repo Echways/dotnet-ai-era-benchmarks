@@ -1,0 +1,51 @@
+Summary
+Started: 2026-10-28T22:50:52.1013298+00:00
+Duration: 435.499 ms
+Events: 514
+ScopeEvents: 404
+Threads: 1
+DroppedEvents: 0
+DroppedChunks: 0
+SampledOut: 0
+UnmatchedBegin: 0
+UnmatchedEnd: 0
+MismatchedEnd: 0
+
+Hotspots (by inclusive)
+Id    Name                          Category  Count  Incl ms  Excl ms  Excl%
+--    ----                          --------  -----  -------  -------  -----
+1012  di.validate-on-build100.x100  di        20     119.671  119.671  27.48
+1024  di.enumerable20.x10k          di        20     43.952   43.952   10.09
+1010  di.build100.x100              di        20     30.026   30.026   6.89 
+1011  di.build1000.x10              di        20     28.170   28.170   6.47 
+1021  di.scoped.x10k                di        20     19.916   19.916   4.57 
+1025  di.create-scope-dispose.x10k  di        20     15.560   15.560   3.57 
+1013  di.first-resolve-depth5.x100  di        20     11.957   11.957   2.75 
+1020  di.transient.x10k             di        20     5.019    5.019    1.15 
+1023  di.open-generic.x10k          di        20     4.666    4.666    1.07 
+1001  di.cold.first-resolve-depth5  di        1      3.849    3.849    0.88 
+1022  di.singleton.x10k             di        20     3.372    3.372    0.77 
+1000  di.cold.build100              di        1      0.282    0.282    0.06 
+
+Categories (by inclusive)
+Category  Count  Incl ms  Excl ms  Excl%
+--------  -----  -------  -------  -----
+di        202    286.441  286.441  65.77
+
+Call trees
+
+Thread 1
+Id    Name                          Category  Count  Incl ms  Excl ms
+--    ----                          --------  -----  -------  -------
+1012  di.validate-on-build100.x100  di        20     119.671  119.671
+1024  di.enumerable20.x10k          di        20     43.952   43.952 
+1010  di.build100.x100              di        20     30.026   30.026 
+1011  di.build1000.x10              di        20     28.170   28.170 
+1021  di.scoped.x10k                di        20     19.916   19.916 
+1025  di.create-scope-dispose.x10k  di        20     15.560   15.560 
+1013  di.first-resolve-depth5.x100  di        20     11.957   11.957 
+1020  di.transient.x10k             di        20     5.019    5.019  
+1023  di.open-generic.x10k          di        20     4.666    4.666  
+1001  di.cold.first-resolve-depth5  di        1      3.849    3.849  
+1022  di.singleton.x10k             di        20     3.372    3.372  
+1000  di.cold.build100              di        1      0.282    0.282  
