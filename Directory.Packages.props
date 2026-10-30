@@ -16,6 +16,7 @@
     <PackageVersion Include="EmberTrace.Testing" Version="$(EmberTrace)" />
     <PackageVersion Include="BenchmarkDotNet" Version="0.15.8" />
     <PackageVersion Include="System.CommandLine" Version="2.0.14" />
+    <PackageVersion Include="xunit.v3" Version="4.0.2" />
   </ItemGroup>
   <ItemGroup Condition="'$(BdnInBoxOnly)' == 'true'">
     <PackageVersion Include="System.Text.Json" Version="8.0.5" />

@@ -6,11 +6,13 @@ using EmberTrace.Sessions;
 
 namespace Compare;
 
-public sealed record ScopeRun(int Id, string Name, long Count, double P50Ms, double P95Ms, double TotalMs, long? AllocBytes);
+public sealed record ScopeRun(int Id, string Name, BatchTimes Times, long? AllocBytes);
 
 public sealed class TraceRun
 {
     public required PointInfo Point { get; init; }
+
+    public required string Round { get; init; }
 
     public required string Scenario { get; init; }
 
@@ -51,6 +53,7 @@ public static class RunLoader
 
                 var session = TraceFormat.Read(file.FullName);
                 var stats = session.Analyze();
+                var batchTimes = BatchTimes.Read(session);
                 var allocations = ReadAllocations(Path.Combine(directory.FullName, stem + ".run-meta.json"));
                 var scopes = new Dictionary<int, ScopeRun>();
                 foreach (var row in stats.ByTotalTimeDesc)
@@ -61,12 +64,13 @@ public static class RunLoader
                     }
 
                     var name = session.Metadata.TryGet(row.Id, out var meta) ? meta.Name : row.Id.ToString(System.Globalization.CultureInfo.InvariantCulture);
-                    scopes[row.Id] = new ScopeRun(row.Id, name, row.Count, row.P50Ms, row.P95Ms, row.TotalMs, allocations.TryGetValue(row.Id, out var bytes) ? bytes : null);
+                    scopes[row.Id] = new ScopeRun(row.Id, name, batchTimes[row.Id], allocations.TryGetValue(row.Id, out var bytes) ? bytes : null);
                 }
 
                 runs.Add(new TraceRun
                 {
                     Point = point,
+                    Round = RoundOf(raw, directory),
                     Scenario = stem[..dash],
                     TracePath = file.FullName,
                     Pid = pid,
@@ -78,6 +82,12 @@ public static class RunLoader
         }
 
         return runs;
+    }
+
+    public static string RoundOf(DirectoryInfo raw, DirectoryInfo pointDirectory)
+    {
+        var segments = Path.GetRelativePath(raw.FullName, pointDirectory.FullName).Split(Path.DirectorySeparatorChar);
+        return segments.Length > 1 ? segments[0] : "";
     }
 
     private static Dictionary<int, long> ReadAllocations(string path)

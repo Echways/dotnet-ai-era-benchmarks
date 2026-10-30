@@ -6,6 +6,9 @@
     <Project Path="src/Harness.TrackB/Harness.TrackB.csproj" />
     <Project Path="src/Compare/Compare.csproj" />
   </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Compare.Tests/Compare.Tests.csproj" />
+  </Folder>
   <Folder Name="/bench/">
     <Project Path="bench/Bdn/Bdn.TrackA/Bdn.TrackA.csproj" />
     <Project Path="bench/Bdn/Bdn.TrackB/Bdn.TrackB.csproj" />
