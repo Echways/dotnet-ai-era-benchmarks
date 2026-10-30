@@ -49,8 +49,9 @@ public sealed class SummaryWriter(DirectoryInfo summary, MatrixPoints points, do
                     point,
                     id,
                     samples[0].Name,
-                    Median(samples.Select(s => s.P50Ms)),
-                    Median(samples.Select(s => s.P95Ms)),
+                    Median(samples.Select(s => s.Times.P50Ms)),
+                    Median(samples.Select(s => s.Times.MeanMs)),
+                    Median(samples.Select(s => s.Times.P95Ms)),
                     allocations.Count == 0 ? null : Median(allocations),
                     samples.Count));
             }
@@ -61,10 +62,10 @@ public sealed class SummaryWriter(DirectoryInfo summary, MatrixPoints points, do
 
     private static void WriteCsv(string path, IEnumerable<AggregateRow> rows)
     {
-        var text = new StringBuilder("label,epoch,scope,median_ms,p95_ms,alloc_bytes,n_runs\n");
+        var text = new StringBuilder("label,epoch,scope,median_ms,mean_ms,p95_ms,alloc_bytes,n_runs\n");
         foreach (var row in rows)
         {
-            text.Append(CultureInfo.InvariantCulture, $"{row.Point.Label},{row.Point.Epoch},{row.Scope},{Format(row.MedianMs)},{Format(row.P95Ms)},{(row.AllocBytes is { } a ? Format(a) : "")},{row.Runs}\n");
+            text.Append(CultureInfo.InvariantCulture, $"{row.Point.Label},{row.Point.Epoch},{row.Scope},{Format(row.MedianMs)},{Format(row.MeanMs)},{Format(row.P95Ms)},{(row.AllocBytes is { } a ? Format(a) : "")},{row.Runs}\n");
         }
 
         File.WriteAllText(path, text.ToString());
@@ -72,14 +73,14 @@ public sealed class SummaryWriter(DirectoryInfo summary, MatrixPoints points, do
 
     private static void WriteRunsCsv(string path, Dictionary<PointInfo, List<TraceRun>> byLabel)
     {
-        var text = new StringBuilder("label,epoch,track,scope,scope_id,pid,median_ms,p95_ms,total_ms,count,alloc_bytes\n");
+        var text = new StringBuilder("label,epoch,track,round,scope,scope_id,pid,median_ms,mean_ms,p25_ms,p75_ms,p95_ms,total_ms,count,alloc_bytes\n");
         foreach (var (point, pointRuns) in byLabel)
         {
             foreach (var run in pointRuns)
             {
                 foreach (var scope in run.Scopes.Values.OrderBy(s => s.Id))
                 {
-                    text.Append(CultureInfo.InvariantCulture, $"{point.Label},{point.Epoch},{point.Track},{scope.Name},{scope.Id},{run.Pid},{Format(scope.P50Ms)},{Format(scope.P95Ms)},{Format(scope.TotalMs)},{scope.Count},{scope.AllocBytes?.ToString(Invariant) ?? ""}\n");
+                    text.Append(CultureInfo.InvariantCulture, $"{point.Label},{point.Epoch},{point.Track},{run.Round},{scope.Name},{scope.Id},{run.Pid},{Format(scope.Times.P50Ms)},{Format(scope.Times.MeanMs)},{Format(scope.Times.P25Ms)},{Format(scope.Times.P75Ms)},{Format(scope.Times.P95Ms)},{Format(scope.Times.TotalMs)},{scope.Times.Count},{scope.AllocBytes?.ToString(Invariant) ?? ""}\n");
                 }
             }
         }
@@ -184,7 +185,7 @@ public sealed class SummaryWriter(DirectoryInfo summary, MatrixPoints points, do
 
     private static TraceRun Representative(List<TraceRun> runs)
     {
-        var ordered = runs.OrderBy(r => r.Scopes.Values.Sum(s => s.P50Ms)).ToList();
+        var ordered = runs.OrderBy(r => r.Scopes.Values.Sum(s => s.Times.P50Ms)).ToList();
         return ordered[(ordered.Count - 1) / 2];
     }
 
@@ -202,5 +203,5 @@ public sealed class SummaryWriter(DirectoryInfo summary, MatrixPoints points, do
 
     private static string Format(double value) => value.ToString("R", Invariant);
 
-    private sealed record AggregateRow(PointInfo Point, int ScopeId, string Scope, double MedianMs, double P95Ms, double? AllocBytes, int Runs);
+    private sealed record AggregateRow(PointInfo Point, int ScopeId, string Scope, double MedianMs, double MeanMs, double P95Ms, double? AllocBytes, int Runs);
 }

@@ -40,6 +40,12 @@ jobs:
       - run: ruff format --check .
       - name: Build the solution with warnings as errors
         run: dotnet build ms-ai-hotpaths.slnx -c Release
+      - name: Test Compare
+        run: dotnet run --project tests/Compare.Tests/Compare.Tests.csproj -c Release
+      - name: Test statistics
+        run: |
+          pip install -r analysis/requirements-dev.txt
+          pytest analysis
 
   smoke:
     needs: points
