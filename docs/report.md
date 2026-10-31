@@ -218,10 +218,9 @@ Exact packages: `Microsoft.Extensions.*` 6.0.x to 10.0.14 and 11.0.0-rc.3.26522.
 | what | where | status |
 |---|---|---|
 | Raw traces, 30 rounds | `results/rounds/rounds/<UTC>/raw/<point>/<scenario>-<pid>.ember` + `.run-meta.json`, per-round `env.json`, `track-a-order.txt` | 5.6 GB, not committed |
-| Accumulated summary (authoritative) | `results/rounds/summary/` (`stats.csv`, `stats.md`, `<scenario>.csv`, `<scenario>-runs.csv`, `plots/`, `diff/`, `traces/`) | not committed; rebuilt after every round |
+| Accumulated summary (authoritative) | `results/summary/` (`stats.csv`, `stats.md`, `<scenario>.csv`, `<scenario>-runs.csv`, `plots/`, `diff/`, `traces/`) | committed; pools both machine states |
 | Stopped rounds | `results/rounds/incomplete/20261031T180544Z`, `20261030T143818Z` | ignored by the summary |
 | Run log | `results/rounds/run-rounds.log` | |
-| Smoke data, 2 processes per point, e0-7 vs e2-10 only | `results/summary/` | **committed but stale and not data**: laptop in `powersave`, turbo on; do not cite |
 | Attribution, DI + Caching only | `results/summary/attribution*.csv`, `attribution.md`, `attribution-regressions.json` | committed |
 | Static metrics, 4 libraries, v6 to v11 | `results/summary/static-*.csv` | committed |
 | Glass box traces and hotspots | `results/glassbox/v7.0.20/`, `results/glassbox/v10.0.14/` (`di`, `cache`) | not committed |
@@ -327,7 +326,7 @@ Scopes judged by the mean because p75/p25 >= 1.5 at the point or the baseline:
 
 ### 4.2 Change vs `e0-7` per scope (primary metric: median, or mean for †)
 
-Cells show the change of the primary metric and the verdict. Baseline cells show absolute median time. Full CIs, p-values and `rounds_agree` are in `results/rounds/summary/stats.md` and `stats.csv`.
+Cells show the change of the primary metric and the verdict. Baseline cells show absolute median time. Full CIs, p-values and `rounds_agree` are in `results/summary/stats.md` and `stats.csv`.
 
 | scenario | scope | e0-6 | e0-7 | e1-8 | e1-9 | e2-10 | e2-11 | multimodal |
 |---|---|---|---|---|---|---|---|---|
@@ -859,7 +858,7 @@ Notes: lines counted from Roslyn trivia (`loc_tool = roslyn`, `cloc` absent). Wa
 ## 9. Gaps, risks and open items
 
 1. **Two scenarios, unequal and not interleaved.** Full resources has 78 processes per point, limited has 33 and ran as one contiguous block, bracketed by full-resource rounds on both sides (sections 5.0 and 5.4). The scenario effect is larger than the drift between the full-resource groups, but the design stays unbalanced and "limited" is a CPU power policy, not a quota. No further runs are planned, so state this limit in the report.
-2. **No BenchmarkDotNet results** and no `--no-tiering` full control run, so the planned tracer-distortion cross-check and the JIT-tiering control do not exist.
+2. **BenchmarkDotNet covers two operations only** and there is no full `--no-tiering` control run, so the tracer-distortion check is partial and the JIT-tiering control does not exist.
 3. **Not a prepared bench.** Laptop, hybrid CPU, load average above idle, no core isolation, no ASLR change. `docs/stand.md` says such numbers are smoke-test output; the report must either say so or repeat the measurement on a prepared machine.
 4. **Most pooled verdicts are `inconclusive`** (37 of 46 at `e2-10`; fewer when the scenarios are analysed separately, section 5.1). The CI is wide because round-to-round spread is large; more rounds help only if the session-state drift is controlled.
 5. **Multimodal scopes** (list in section 4.1) are judged by the mean with a p75/p25 threshold of 1.5 chosen after seeing data; `methodology.md` notes that `di.build100.x100`, `di.build1000.x10` and `di.create-scope-dispose.x10k` change verdict at other thresholds; the cause of the two modes is not established (not tiering; GC plausible, unmeasured).
@@ -867,13 +866,13 @@ Notes: lines counted from Roslyn trivia (`loc_tool = roslyn`, `cloc` absent). Wa
 7. **Track A with old packages on a new runtime**: 6.x packages run their `net6.0`/`netstandard` assets on .NET 10 and may miss runtime-specific fast paths; in-box dependencies are always the .NET 10 copies. `e2-11` in Track A runs the `net10.0` build of the 11.0 RC sources.
 8. **Scenario validity.** Synthetic batches of APIs present in every version; the newest fast paths (keyed services, source-generated binder) are excluded from comparisons.
 9. **Attribution is weak by construction.** Only two libraries; zero agent PRs in the hot paths; `cca` means "opened by the agent", not "written without human input"; AI use that leaves no trace is invisible.
-10. **Smoke summary in git is stale.** `results/summary/` (2 processes) is committed alongside the real data; do not cite it. The accumulated summary and rounds are untracked.
+10. **The committed summary pools two machine states.** `results/summary/` covers all 30 rounds; the per-scenario tables are in section 5 of this appendix. Raw traces are untracked.
 11. **11.0 is a release candidate**, and the servicing window for 10.0 ends 2026-11-11.
 12. **bombardier** was never run; Track B ASP.NET Core uses the built-in fixed-rate `HttpClient` generator (service time, not corrected for coordinated omission).
 13. **Aggregation difference.** `<scenario>.csv` medians are pooled over processes (longer rounds weigh more); `stats.csv` weighs rounds equally. Use `stats.csv` for claims.
 
 ## 10. Where to look next
 
-- `results/rounds/summary/stats.md` for CIs, p-values and rounds agreeing, per scope and point.
-- `results/rounds/summary/plots/*.svg` for epoch plots; `diff/` for TraceDiff texts.
+- `results/summary/stats.md` for CIs, p-values and rounds agreeing, per scope and point.
+- `results/summary/plots/*.svg` for epoch plots; `diff/` for TraceDiff texts.
 - `docs/methodology.md` for the 23 deviations, `docs/verified-facts.md` for sources of every external fact.

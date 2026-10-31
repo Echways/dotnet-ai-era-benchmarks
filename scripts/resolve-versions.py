@@ -43,7 +43,7 @@ SQLITE_BUNDLE = "SQLitePCLRaw.bundle_e_sqlite3"
 
 
 def fetch(url: str, attempts: int = 10) -> bytes:
-    request = urllib.request.Request(url, headers={"User-Agent": "ms-ai-hotpaths-resolver"})
+    request = urllib.request.Request(url, headers={"User-Agent": "dotnet-ai-era-benchmarks-resolver"})
     for attempt in range(1, attempts + 1):
         try:
             with urllib.request.urlopen(request, timeout=60) as response:

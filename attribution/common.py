@@ -136,7 +136,7 @@ class GitHub:
         raise RuntimeError(f"gh api {endpoint}: rate limited")
 
     def _https(self, endpoint: str):
-        headers = {"Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28", "User-Agent": "ms-ai-hotpaths-attribution"}
+        headers = {"Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28", "User-Agent": "dotnet-ai-era-benchmarks-attribution"}
         if self.token:
             headers["Authorization"] = f"Bearer {self.token}"
         for attempt in range(8):

@@ -5,6 +5,7 @@ obj/
 .venv/
 __pycache__/
 .ruff_cache/
+.pytest_cache/
 BenchmarkDotNet.Artifacts/
 results/*
 !results/summary/
