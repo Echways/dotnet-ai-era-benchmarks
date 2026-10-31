@@ -1,8 +1,8 @@
 Summary
-Started: 2026-10-28T22:51:20.0744364+00:00
-Duration: 1852.470 ms
-Events: 664
-ScopeEvents: 204
+Started: 2026-10-31T02:59:49.4466127+00:00
+Duration: 18329.258 ms
+Events: 6489
+ScopeEvents: 2004
 Threads: 1
 DroppedEvents: 0
 DroppedChunks: 0
@@ -12,30 +12,30 @@ UnmatchedEnd: 0
 MismatchedEnd: 0
 
 Hotspots (by inclusive)
-Id    Name                          Category  Count  Incl ms  Excl ms  Excl%
---    ----                          --------  -----  -------  -------  -----
-1113  config.bind-poco50.x1k        config    20     662.671  662.671  35.77
-1110  config.build-json2000.x10     config    20     217.276  217.276  11.73
-1114  config.reload-json2000.x10    config    20     200.601  200.601  10.83
-1112  config.get-section-deep.x10k  config    20     53.030   53.030   2.86 
-1101  config.cold.bind-poco50       config    1      10.915   10.915   0.59 
-1100  config.cold.build-json2000    config    1      7.467    7.467    0.40 
-1111  config.indexer.x10k           config    20     6.431    6.431    0.35 
+Id    Name                          Category  Count  Incl ms    Excl ms    Excl%
+--    ----                          --------  -----  -------    -------    -----
+1113  config.bind-poco50.x1k        config    200    11671.854  11671.854  63.68
+1110  config.build-json2000.x10     config    200    2006.145   2006.145   10.95
+1114  config.reload-json2000.x10    config    200    1492.559   1492.559   8.14 
+1112  config.get-section-deep.x10k  config    200    132.000    132.000    0.72 
+1111  config.indexer.x10k           config    200    125.499    125.499    0.68 
+1101  config.cold.bind-poco50       config    1      21.892     21.892     0.12 
+1100  config.cold.build-json2000    config    1      14.846     14.846     0.08 
 
 Categories (by inclusive)
-Category  Count  Incl ms   Excl ms   Excl%
---------  -----  -------   -------   -----
-config    102    1158.391  1158.391  62.53
+Category  Count  Incl ms    Excl ms    Excl%
+--------  -----  -------    -------    -----
+config    1002   15464.795  15464.795  84.37
 
 Call trees
 
 Thread 1
-Id    Name                          Category  Count  Incl ms  Excl ms
---    ----                          --------  -----  -------  -------
-1113  config.bind-poco50.x1k        config    20     662.671  662.671
-1110  config.build-json2000.x10     config    20     217.276  217.276
-1114  config.reload-json2000.x10    config    20     200.601  200.601
-1112  config.get-section-deep.x10k  config    20     53.030   53.030 
-1101  config.cold.bind-poco50       config    1      10.915   10.915 
-1100  config.cold.build-json2000    config    1      7.467    7.467  
-1111  config.indexer.x10k           config    20     6.431    6.431  
+Id    Name                          Category  Count  Incl ms    Excl ms  
+--    ----                          --------  -----  -------    -------  
+1113  config.bind-poco50.x1k        config    200    11671.854  11671.854
+1110  config.build-json2000.x10     config    200    2006.145   2006.145 
+1114  config.reload-json2000.x10    config    200    1492.559   1492.559 
+1112  config.get-section-deep.x10k  config    200    132.000    132.000  
+1111  config.indexer.x10k           config    200    125.499    125.499  
+1101  config.cold.bind-poco50       config    1      21.892     21.892   
+1100  config.cold.build-json2000    config    1      14.846     14.846   

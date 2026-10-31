@@ -1,8 +1,8 @@
 Summary
-Started: 2026-10-28T22:52:43.5017971+00:00
-Duration: 1382.454 ms
-Events: 467
-ScopeEvents: 122
+Started: 2026-10-30T00:42:37.5786500+00:00
+Duration: 21817.159 ms
+Events: 6622
+ScopeEvents: 1202
 Threads: 1
 DroppedEvents: 0
 DroppedChunks: 0
@@ -12,24 +12,24 @@ UnmatchedEnd: 0
 MismatchedEnd: 0
 
 Hotspots (by inclusive)
-Id    Name                                Category   Count  Incl ms  Excl ms  Excl%
---    ----                                --------   -----  -------  -------  -----
-2210  immutable.dictionary-build-10k.x10  immutable  20     462.009  462.009  33.42
-2211  immutable.builder-add-10k.x10       immutable  20     438.509  438.509  31.72
-2212  immutable.dictionary-lookup.x10k    immutable  20     21.122   21.122   1.53 
-2200  immutable.cold.first-build-10k      immutable  1      6.682    6.682    0.48 
+Id    Name                                Category   Count  Incl ms   Excl ms   Excl%
+--    ----                                --------   -----  -------   -------   -----
+2210  immutable.dictionary-build-10k.x10  immutable  200    9607.833  9607.833  44.04
+2211  immutable.builder-add-10k.x10       immutable  200    9527.641  9527.641  43.67
+2212  immutable.dictionary-lookup.x10k    immutable  200    382.034   382.034   1.75 
+2200  immutable.cold.first-build-10k      immutable  1      14.443    14.443    0.07 
 
 Categories (by inclusive)
-Category   Count  Incl ms  Excl ms  Excl%
---------   -----  -------  -------  -----
-immutable  61     928.321  928.321  67.15
+Category   Count  Incl ms    Excl ms    Excl%
+--------   -----  -------    -------    -----
+immutable  601    19531.950  19531.950  89.53
 
 Call trees
 
 Thread 1
-Id    Name                                Category   Count  Incl ms  Excl ms
---    ----                                --------   -----  -------  -------
-2210  immutable.dictionary-build-10k.x10  immutable  20     462.009  462.009
-2211  immutable.builder-add-10k.x10       immutable  20     438.509  438.509
-2212  immutable.dictionary-lookup.x10k    immutable  20     21.122   21.122 
-2200  immutable.cold.first-build-10k      immutable  1      6.682    6.682  
+Id    Name                                Category   Count  Incl ms   Excl ms 
+--    ----                                --------   -----  -------   ------- 
+2210  immutable.dictionary-build-10k.x10  immutable  200    9607.833  9607.833
+2211  immutable.builder-add-10k.x10       immutable  200    9527.641  9527.641
+2212  immutable.dictionary-lookup.x10k    immutable  200    382.034   382.034 
+2200  immutable.cold.first-build-10k      immutable  1      14.443    14.443  

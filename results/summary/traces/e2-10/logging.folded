@@ -1,7 +1,7 @@
-logging.factory-create.x100 105831
-logging.log-information-3args-enabled.x10k 88056
-logging.logger-message-define.x10k 55606
-logging.begin-scope.x10k 31199
-logging.cold.factory-create 26028
-logging.log-debug-3args-disabled.x10k 11738
-logging.cold.first-log 5138
+logging.log-information-3args-enabled.x10k 932264
+logging.factory-create.x100 758756
+logging.logger-message-define.x10k 691768
+logging.begin-scope.x10k 246540
+logging.log-debug-3args-disabled.x10k 136987
+logging.cold.factory-create 57663
+logging.cold.first-log 10407

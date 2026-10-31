@@ -1,0 +1,41 @@
+Summary
+Started: 2026-10-29T21:21:17.8368489+00:00
+Duration: 3651.436 ms
+Events: 2914
+ScopeEvents: 2004
+Threads: 1
+DroppedEvents: 0
+DroppedChunks: 0
+SampledOut: 0
+UnmatchedBegin: 0
+UnmatchedEnd: 0
+MismatchedEnd: 0
+
+Hotspots (by inclusive)
+Id    Name                                        Category  Count  Incl ms   Excl ms   Excl%
+--    ----                                        --------  -----  -------   -------   -----
+1311  logging.log-information-3args-enabled.x10k  logging   200    1017.304  1017.304  27.86
+1310  logging.factory-create.x100                 logging   200    837.822   837.822   22.94
+1313  logging.logger-message-define.x10k          logging   200    759.868   759.868   20.81
+1314  logging.begin-scope.x10k                    logging   200    189.969   189.969   5.20 
+1312  logging.log-debug-3args-disabled.x10k       logging   200    143.176   143.176   3.92 
+1300  logging.cold.factory-create                 logging   1      56.033    56.033    1.53 
+1301  logging.cold.first-log                      logging   1      9.023     9.023     0.25 
+
+Categories (by inclusive)
+Category  Count  Incl ms   Excl ms   Excl%
+--------  -----  -------   -------   -----
+logging   1002   3013.194  3013.194  82.52
+
+Call trees
+
+Thread 1
+Id    Name                                        Category  Count  Incl ms   Excl ms 
+--    ----                                        --------  -----  -------   ------- 
+1311  logging.log-information-3args-enabled.x10k  logging   200    1017.304  1017.304
+1310  logging.factory-create.x100                 logging   200    837.822   837.822 
+1313  logging.logger-message-define.x10k          logging   200    759.868   759.868 
+1314  logging.begin-scope.x10k                    logging   200    189.969   189.969 
+1312  logging.log-debug-3args-disabled.x10k       logging   200    143.176   143.176 
+1300  logging.cold.factory-create                 logging   1      56.033    56.033  
+1301  logging.cold.first-log                      logging   1      9.023     9.023   

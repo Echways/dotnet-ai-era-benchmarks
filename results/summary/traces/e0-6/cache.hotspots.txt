@@ -1,0 +1,71 @@
+Summary
+Started: 2026-10-31T08:40:55.5809453+00:00
+Duration: 10008.664 ms
+Events: 7217
+ScopeEvents: 5202
+Threads: 7
+DroppedEvents: 0
+DroppedChunks: 0
+SampledOut: 0
+UnmatchedBegin: 0
+UnmatchedEnd: 0
+MismatchedEnd: 0
+
+Hotspots (by inclusive)
+Id    Name                                      Category  Count  Incl ms   Excl ms   Excl%
+--    ----                                      --------  -----  -------   -------   -----
+1415  cache.parallel8-hit-miss.per-thread-x10k  cache     1600   2611.057  2611.057  26.09
+1410  cache.set.x10k                            cache     200    1981.833  1981.833  19.80
+1413  cache.get-or-create.x10k                  cache     200    1948.265  1948.265  19.47
+1414  cache.size-limit-compact-half.x1          cache     200    879.759   879.759   8.79 
+1411  cache.try-get-hit.x10k                    cache     200    246.672   246.672   2.46 
+1412  cache.try-get-miss.x10k                   cache     200    194.560   194.560   1.94 
+1400  cache.cold.create-and-first-set           cache     1      13.783    13.783    0.14 
+
+Categories (by inclusive)
+Category  Count  Incl ms   Excl ms   Excl%
+--------  -----  -------   -------   -----
+cache     2601   7875.929  7875.929  78.69
+
+Call trees
+
+Thread 1
+Id    Name                                      Category  Count  Incl ms   Excl ms 
+--    ----                                      --------  -----  -------   ------- 
+1410  cache.set.x10k                            cache     200    1981.833  1981.833
+1413  cache.get-or-create.x10k                  cache     200    1948.265  1948.265
+1414  cache.size-limit-compact-half.x1          cache     200    879.759   879.759 
+1415  cache.parallel8-hit-miss.per-thread-x10k  cache     440    703.711   703.711 
+1411  cache.try-get-hit.x10k                    cache     200    246.672   246.672 
+1412  cache.try-get-miss.x10k                   cache     200    194.560   194.560 
+1400  cache.cold.create-and-first-set           cache     1      13.783    13.783  
+
+Thread 9 (.NET TP Worker)
+Id    Name                                      Category  Count  Incl ms  Excl ms
+--    ----                                      --------  -----  -------  -------
+1415  cache.parallel8-hit-miss.per-thread-x10k  cache     227    378.115  378.115
+
+Thread 5 (.NET TP Worker)
+Id    Name                                      Category  Count  Incl ms  Excl ms
+--    ----                                      --------  -----  -------  -------
+1415  cache.parallel8-hit-miss.per-thread-x10k  cache     225    370.611  370.611
+
+Thread 8 (.NET TP Worker)
+Id    Name                                      Category  Count  Incl ms  Excl ms
+--    ----                                      --------  -----  -------  -------
+1415  cache.parallel8-hit-miss.per-thread-x10k  cache     200    331.628  331.628
+
+Thread 11 (.NET TP Worker)
+Id    Name                                      Category  Count  Incl ms  Excl ms
+--    ----                                      --------  -----  -------  -------
+1415  cache.parallel8-hit-miss.per-thread-x10k  cache     237    394.095  394.095
+
+Thread 7 (.NET TP Worker)
+Id    Name                                      Category  Count  Incl ms  Excl ms
+--    ----                                      --------  -----  -------  -------
+1415  cache.parallel8-hit-miss.per-thread-x10k  cache     213    340.952  340.952
+
+Thread 12 (.NET TP Worker)
+Id    Name                                      Category  Count  Incl ms  Excl ms
+--    ----                                      --------  -----  -------  -------
+1415  cache.parallel8-hit-miss.per-thread-x10k  cache     58     91.944   91.944 

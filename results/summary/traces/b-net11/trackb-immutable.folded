@@ -1,4 +1,4 @@
-immutable.dictionary-build-10k.x10 462009
-immutable.builder-add-10k.x10 438509
-immutable.dictionary-lookup.x10k 21122
-immutable.cold.first-build-10k 6682
+immutable.dictionary-build-10k.x10 9607833
+immutable.builder-add-10k.x10 9527641
+immutable.dictionary-lookup.x10k 382034
+immutable.cold.first-build-10k 14443

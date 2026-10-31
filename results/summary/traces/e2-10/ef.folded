@@ -1,8 +1,8 @@
-ef.query-where-orderby-take.x1k 2152781
-ef.cold.first-query 525238
-ef.new-context.x1k 500303
-ef.detect-changes-10k-tracked.x10 455335
-ef.save-changes-1000-entities.x1 384871
-ef.to-query-string.x1k 152170
-ef.cold.open-connection-create-schema 30002
-ef.pooled-context.x1k 6997
+ef.query-where-orderby-take.x1k 44526074
+ef.new-context.x1k 10228549
+ef.detect-changes-10k-tracked.x10 8451340
+ef.save-changes-1000-entities.x1 5614866
+ef.to-query-string.x1k 2871695
+ef.cold.first-query 1140272
+ef.cold.open-connection-create-schema 62644
+ef.pooled-context.x1k 38874

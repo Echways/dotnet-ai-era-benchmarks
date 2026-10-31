@@ -1,5 +1,5 @@
-options.snapshot-new-scope.x1k 651587
-options.validate-data-annotations.x1k 470836
-options.cold.first-value 14778
-options.monitor-current-value.x10k 4640
-options.ioptions-value.x10k 1145
+options.snapshot-new-scope.x1k 10378683
+options.validate-data-annotations.x1k 7789419
+options.monitor-current-value.x10k 38256
+options.cold.first-value 31269
+options.ioptions-value.x10k 19477

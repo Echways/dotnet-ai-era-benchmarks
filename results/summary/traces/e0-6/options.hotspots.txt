@@ -1,0 +1,37 @@
+Summary
+Started: 2026-10-31T00:43:58.0136396+00:00
+Duration: 24206.649 ms
+Events: 7617
+ScopeEvents: 1602
+Threads: 1
+DroppedEvents: 0
+DroppedChunks: 0
+SampledOut: 0
+UnmatchedBegin: 0
+UnmatchedEnd: 0
+MismatchedEnd: 0
+
+Hotspots (by inclusive)
+Id    Name                                   Category  Count  Incl ms    Excl ms    Excl%
+--    ----                                   --------  -----  -------    -------    -----
+1212  options.snapshot-new-scope.x1k         options   200    11180.130  11180.130  46.19
+1213  options.validate-data-annotations.x1k  options   200    9388.839   9388.839   38.79
+1211  options.monitor-current-value.x10k     options   200    89.825     89.825     0.37 
+1200  options.cold.first-value               options   1      37.494     37.494     0.15 
+1210  options.ioptions-value.x10k            options   200    18.375     18.375     0.08 
+
+Categories (by inclusive)
+Category  Count  Incl ms    Excl ms    Excl%
+--------  -----  -------    -------    -----
+options   801    20714.662  20714.662  85.57
+
+Call trees
+
+Thread 1
+Id    Name                                   Category  Count  Incl ms    Excl ms  
+--    ----                                   --------  -----  -------    -------  
+1212  options.snapshot-new-scope.x1k         options   200    11180.130  11180.130
+1213  options.validate-data-annotations.x1k  options   200    9388.839   9388.839 
+1211  options.monitor-current-value.x10k     options   200    89.825     89.825   
+1200  options.cold.first-value               options   1      37.494     37.494   
+1210  options.ioptions-value.x10k            options   200    18.375     18.375   

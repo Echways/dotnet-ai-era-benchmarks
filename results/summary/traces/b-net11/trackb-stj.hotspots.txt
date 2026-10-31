@@ -1,8 +1,8 @@
 Summary
-Started: 2026-10-28T22:52:38.0285221+00:00
-Duration: 4454.675 ms
-Events: 1392
-ScopeEvents: 282
+Started: 2026-10-30T00:45:35.6104255+00:00
+Duration: 59747.828 ms
+Events: 17677
+ScopeEvents: 2802
 Threads: 1
 DroppedEvents: 0
 DroppedChunks: 0
@@ -12,32 +12,32 @@ UnmatchedEnd: 0
 MismatchedEnd: 0
 
 Hotspots (by inclusive)
-Id    Name                                 Category  Count  Incl ms  Excl ms  Excl%
---    ----                                 --------  -----  -------  -------  -----
-2015  stj.jsondocument-parse-1mb.x10       stj       20     477.204  477.204  10.71
-2011  stj.deserialize-reflection.x10k      stj       20     416.314  416.314  9.35 
-2013  stj.deserialize-sourcegen.x10k       stj       20     411.638  411.638  9.24 
-2016  stj.jsonnode-parse-read.x10k         stj       20     385.318  385.318  8.65 
-2014  stj.utf8jsonreader-1mb.x10           stj       20     296.616  296.616  6.66 
-2010  stj.serialize-reflection.x10k        stj       20     267.719  267.719  6.01 
-2012  stj.serialize-sourcegen.x10k         stj       20     169.285  169.285  3.80 
-2000  stj.cold.first-serialize-reflection  stj       1      14.500   14.500   0.33 
+Id    Name                                 Category  Count  Incl ms    Excl ms    Excl%
+--    ----                                 --------  -----  -------    -------    -----
+2015  stj.jsondocument-parse-1mb.x10       stj       200    10385.741  10385.741  17.38
+2011  stj.deserialize-reflection.x10k      stj       200    8845.636   8845.636   14.80
+2013  stj.deserialize-sourcegen.x10k       stj       200    8641.774   8641.774   14.46
+2016  stj.jsonnode-parse-read.x10k         stj       200    8292.719   8292.719   13.88
+2014  stj.utf8jsonreader-1mb.x10           stj       200    6561.641   6561.641   10.98
+2010  stj.serialize-reflection.x10k        stj       200    5864.120   5864.120   9.81 
+2012  stj.serialize-sourcegen.x10k         stj       200    3870.111   3870.111   6.48 
+2000  stj.cold.first-serialize-reflection  stj       1      27.991     27.991     0.05 
 
 Categories (by inclusive)
-Category  Count  Incl ms   Excl ms   Excl%
---------  -----  -------   -------   -----
-stj       141    2438.595  2438.595  54.74
+Category  Count  Incl ms    Excl ms    Excl%
+--------  -----  -------    -------    -----
+stj       1401   52489.733  52489.733  87.85
 
 Call trees
 
 Thread 1
-Id    Name                                 Category  Count  Incl ms  Excl ms
---    ----                                 --------  -----  -------  -------
-2015  stj.jsondocument-parse-1mb.x10       stj       20     477.204  477.204
-2011  stj.deserialize-reflection.x10k      stj       20     416.314  416.314
-2013  stj.deserialize-sourcegen.x10k       stj       20     411.638  411.638
-2016  stj.jsonnode-parse-read.x10k         stj       20     385.318  385.318
-2014  stj.utf8jsonreader-1mb.x10           stj       20     296.616  296.616
-2010  stj.serialize-reflection.x10k        stj       20     267.719  267.719
-2012  stj.serialize-sourcegen.x10k         stj       20     169.285  169.285
-2000  stj.cold.first-serialize-reflection  stj       1      14.500   14.500 
+Id    Name                                 Category  Count  Incl ms    Excl ms  
+--    ----                                 --------  -----  -------    -------  
+2015  stj.jsondocument-parse-1mb.x10       stj       200    10385.741  10385.741
+2011  stj.deserialize-reflection.x10k      stj       200    8845.636   8845.636 
+2013  stj.deserialize-sourcegen.x10k       stj       200    8641.774   8641.774 
+2016  stj.jsonnode-parse-read.x10k         stj       200    8292.719   8292.719 
+2014  stj.utf8jsonreader-1mb.x10           stj       200    6561.641   6561.641 
+2010  stj.serialize-reflection.x10k        stj       200    5864.120   5864.120 
+2012  stj.serialize-sourcegen.x10k         stj       200    3870.111   3870.111 
+2000  stj.cold.first-serialize-reflection  stj       1      27.991     27.991   

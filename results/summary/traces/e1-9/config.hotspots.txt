@@ -1,0 +1,41 @@
+Summary
+Started: 2026-10-31T09:23:49.7711959+00:00
+Duration: 18234.063 ms
+Events: 6469
+ScopeEvents: 2004
+Threads: 1
+DroppedEvents: 0
+DroppedChunks: 0
+SampledOut: 0
+UnmatchedBegin: 0
+UnmatchedEnd: 0
+MismatchedEnd: 0
+
+Hotspots (by inclusive)
+Id    Name                          Category  Count  Incl ms    Excl ms    Excl%
+--    ----                          --------  -----  -------    -------    -----
+1113  config.bind-poco50.x1k        config    200    11608.510  11608.510  63.66
+1110  config.build-json2000.x10     config    200    1962.605   1962.605   10.76
+1114  config.reload-json2000.x10    config    200    1464.291   1464.291   8.03 
+1112  config.get-section-deep.x10k  config    200    156.877    156.877    0.86 
+1111  config.indexer.x10k           config    200    119.256    119.256    0.65 
+1101  config.cold.bind-poco50       config    1      21.702     21.702     0.12 
+1100  config.cold.build-json2000    config    1      15.015     15.015     0.08 
+
+Categories (by inclusive)
+Category  Count  Incl ms    Excl ms    Excl%
+--------  -----  -------    -------    -----
+config    1002   15348.255  15348.255  84.17
+
+Call trees
+
+Thread 1
+Id    Name                          Category  Count  Incl ms    Excl ms  
+--    ----                          --------  -----  -------    -------  
+1113  config.bind-poco50.x1k        config    200    11608.510  11608.510
+1110  config.build-json2000.x10     config    200    1962.605   1962.605 
+1114  config.reload-json2000.x10    config    200    1464.291   1464.291 
+1112  config.get-section-deep.x10k  config    200    156.877    156.877  
+1111  config.indexer.x10k           config    200    119.256    119.256  
+1101  config.cold.bind-poco50       config    1      21.702     21.702   
+1100  config.cold.build-json2000    config    1      15.015     15.015   

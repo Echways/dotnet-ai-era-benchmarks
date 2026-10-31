@@ -1,0 +1,43 @@
+Summary
+Started: 2026-10-30T03:01:47.6728890+00:00
+Duration: 81374.046 ms
+Events: 22564
+ScopeEvents: 2404
+Threads: 1
+DroppedEvents: 0
+DroppedChunks: 0
+SampledOut: 0
+UnmatchedBegin: 0
+UnmatchedEnd: 0
+MismatchedEnd: 0
+
+Hotspots (by inclusive)
+Id    Name                                   Category  Count  Incl ms    Excl ms    Excl%
+--    ----                                   --------  -----  -------    -------    -----
+1512  ef.query-where-orderby-take.x1k        ef        200    44310.333  44310.333  54.45
+1510  ef.new-context.x1k                     ef        200    9103.143   9103.143   11.19
+1514  ef.detect-changes-10k-tracked.x10      ef        200    7403.323   7403.323   9.10 
+1513  ef.save-changes-1000-entities.x1       ef        200    5522.516   5522.516   6.79 
+1515  ef.to-query-string.x1k                 ef        200    2878.056   2878.056   3.54 
+1501  ef.cold.first-query                    ef        1      1116.967   1116.967   1.37 
+1500  ef.cold.open-connection-create-schema  ef        1      62.221     62.221     0.08 
+1511  ef.pooled-context.x1k                  ef        200    39.607     39.607     0.05 
+
+Categories (by inclusive)
+Category  Count  Incl ms    Excl ms    Excl%
+--------  -----  -------    -------    -----
+ef        1202   70436.165  70436.165  86.56
+
+Call trees
+
+Thread 1
+Id    Name                                   Category  Count  Incl ms    Excl ms  
+--    ----                                   --------  -----  -------    -------  
+1512  ef.query-where-orderby-take.x1k        ef        200    44310.333  44310.333
+1510  ef.new-context.x1k                     ef        200    9103.143   9103.143 
+1514  ef.detect-changes-10k-tracked.x10      ef        200    7403.323   7403.323 
+1513  ef.save-changes-1000-entities.x1       ef        200    5522.516   5522.516 
+1515  ef.to-query-string.x1k                 ef        200    2878.056   2878.056 
+1501  ef.cold.first-query                    ef        1      1116.967   1116.967 
+1500  ef.cold.open-connection-create-schema  ef        1      62.221     62.221   
+1511  ef.pooled-context.x1k                  ef        200    39.607     39.607   

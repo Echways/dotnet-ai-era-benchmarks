@@ -1,13 +1,13 @@
 # trackb-immutable
 
-Median over processes of the per-process median batch time (ms). Change is relative to `b-net10`; changes under 5% are marked as noise (~). Runs per point: b-net10=2, b-net11=2.
+Median over processes of the per-process median batch time (ms). Change is relative to `b-net10`; changes under 5% are marked as noise (~). Runs per point: b-net10=111, b-net11=111.
 
 | scope | b-net10 (E2) | b-net11 (E2) |
 |---|---:|---:|
-| `immutable.cold.first-build-10k` | 7.3653 | 6.6607 (-9.6%) |
-| `immutable.dictionary-build-10k.x10` | 24.6415 | 22.8065 (-7.4%) |
-| `immutable.builder-add-10k.x10` | 24.6415 | 22.5444 (-8.5%) |
-| `immutable.dictionary-lookup.x10k` | 1.0158 | 1.0240 (~+0.8%) |
+| `immutable.cold.first-build-10k` | 14.6222 | 14.4349 (~-1.3%) |
+| `immutable.dictionary-build-10k.x10` | 48.8919 | 47.9900 (~-1.8%) |
+| `immutable.builder-add-10k.x10` | 49.0652 | 47.5415 (~-3.1%) |
+| `immutable.dictionary-lookup.x10k` | 1.8790 | 1.8998 (~+1.1%) |
 
 Allocated bytes per batch (median over processes of the per-process median):
 
@@ -23,5 +23,4 @@ Allocated bytes per batch (median over processes of the per-process median):
 ```
 Id      Name                 Base ms    Cur ms     Total%     Base p95   Cur p95    p95%
 ------  -------------------  ---------  ---------  ---------  ---------  ---------  ---------
-2212    immutable.dictionar  19.480     21.122     +8.4       1.032      1.343      +30.2
 ```

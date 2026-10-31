@@ -1,8 +1,8 @@
 Summary
-Started: 2026-10-28T22:52:17.7221873+00:00
-Duration: 485.028 ms
-Events: 162
-ScopeEvents: 42
+Started: 2026-10-30T03:17:06.1857336+00:00
+Duration: 9361.024 ms
+Events: 2717
+ScopeEvents: 402
 Threads: 1
 DroppedEvents: 0
 DroppedChunks: 0
@@ -12,20 +12,20 @@ UnmatchedEnd: 0
 MismatchedEnd: 0
 
 Hotspots (by inclusive)
-Id    Name                                   Category  Count  Incl ms  Excl ms  Excl%
---    ----                                   --------  -----  -------  -------  -----
-2110  channels.bounded1024-1p4c.x100k-items  channels  20     364.459  364.459  75.14
-2100  channels.cold.first-pipeline           channels  1      7.069    7.069    1.46 
+Id    Name                                   Category  Count  Incl ms   Excl ms   Excl%
+--    ----                                   --------  -----  -------   -------   -----
+2110  channels.bounded1024-1p4c.x100k-items  channels  200    8301.515  8301.515  88.68
+2100  channels.cold.first-pipeline           channels  1      14.769    14.769    0.16 
 
 Categories (by inclusive)
-Category  Count  Incl ms  Excl ms  Excl%
---------  -----  -------  -------  -----
-channels  21     371.528  371.528  76.60
+Category  Count  Incl ms   Excl ms   Excl%
+--------  -----  -------   -------   -----
+channels  201    8316.284  8316.284  88.84
 
 Call trees
 
 Thread 1
-Id    Name                                   Category  Count  Incl ms  Excl ms
---    ----                                   --------  -----  -------  -------
-2110  channels.bounded1024-1p4c.x100k-items  channels  20     364.459  364.459
-2100  channels.cold.first-pipeline           channels  1      7.069    7.069  
+Id    Name                                   Category  Count  Incl ms   Excl ms 
+--    ----                                   --------  -----  -------   ------- 
+2110  channels.bounded1024-1p4c.x100k-items  channels  200    8301.515  8301.515
+2100  channels.cold.first-pipeline           channels  1      14.769    14.769  
