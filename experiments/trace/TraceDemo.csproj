@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <NuGetAudit>false</NuGetAudit>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="EmberTrace" Version="0.4.0" />
+    <PackageReference Include="EmberTrace.Analysis" Version="0.4.0" />
+    <PackageReference Include="EmberTrace.ReportText" Version="0.4.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="11.0.0-rc.3.26522.148" />
+    <Reference Include="Microsoft.Extensions.Configuration.Binder">
+      <HintPath>$(BinderDll)</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
