@@ -124,7 +124,7 @@ private static bool IsIgnoredProperty(PropertyInfo property) =>
 
 Одна строка объясняет сразу три из шести подтверждённых сдвигов этого шага. Холодную сборку конфигурации (+76%) она не лечит, причина там другая и пока не найдена. Отдельно я проверил это в BenchmarkDotNet, без моего трейсера, на минимальном примере:
 
-![Столбцы времени Get<span class=](figures/binder-variants.png)t: 10.0 — 29 мкс, 11 RC3 — 120 мкс, RC3 с inherit false и биндер из main — 45 мкс, RC3 с заглушкой — 29 мкс, генератор исходников — 12 мкс" />
+![Столбцы времени](figures/binder-variants.png)
 
 Основную цену даёт перегрузка-расширение: у неё по умолчанию `inherit: true`. С `inherit: false` время падает со 120 до 45 мкс, а аллокации возвращаются к уровню 10.0. Именно так написано в `main` после [#135672](https://github.com/dotnet/runtime/pull/135672), но тот PR чинит другую ошибку и в ветку `release/11.0` не попал. Я завёл [issue #136759](https://github.com/dotnet/runtime/issues/136759) с примером и этими цифрами. Бенчмарки dotnet/performance этого, похоже, не ловят: [их тест биндинга](https://github.com/dotnet/performance/blob/main/src/benchmarks/micro/libraries/Microsoft.Extensions.Configuration/ConfigurationBinderBenchmarks.cs) использует класс с одним свойством.
 
