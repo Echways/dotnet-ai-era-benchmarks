@@ -22,7 +22,7 @@ Rule: latest stable patch of each major 6–10; for 11 the latest `11.0.0-rc.*`,
 
 Notes:
 - In 6.x, 7.x and 8.x, `Microsoft.Extensions.*` packages are only re-published when they change, so the latest patch differs per package (DI 7 is still 7.0.0 while Binder 7 is 7.0.4). From 9.x every package ships with every patch.
-- The task brief said 11.0 is at RC2. NuGet already serves `11.0.0-rc.3.26522.148`, and in both `dotnet/runtime` and `dotnet/efcore` the tags `v11.0.0-rc.2.26504.105` and `v11.0.0-rc.3.26522.148` point at the same commit (see F5). The matrix uses rc.3.
+- The original plan assumed 11.0 RC2. NuGet already serves `11.0.0-rc.3.26522.148`, and in both `dotnet/runtime` and `dotnet/efcore` the tags `v11.0.0-rc.2.26504.105` and `v11.0.0-rc.3.26522.148` point at the same commit (see F5). The matrix uses rc.3.
 - Asset TFM chosen by NuGet for a net10.0 consumer (`net10_asset_tfm` in `matrix/versions.json`): 6.x uses a mix of `net6.0`, `netstandard2.1` and `netstandard2.0` assets (e.g. `Microsoft.Extensions.Primitives` 6.0.0 has a `net6.0` asset, `Microsoft.Extensions.FileSystemGlobbing` 6.0.0 only `netstandard2.0`); 7.x uses `net7.0`; 8.x `net8.0`; 9.x `net9.0`; 10.x and 11.0-rc `net10.0`. So the 11.0-rc point in Track A runs the `net10.0` build of the 11 sources, not the `net11.0` build.
 
 Track B package versions (informational; Track B uses the in-box copies of these assemblies):

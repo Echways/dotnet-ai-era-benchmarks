@@ -1,0 +1,7 @@
+config.bind-poco50.x1k 28756201
+config.build-json2000.x10 1982735
+config.reload-json2000.x10 1449230
+config.get-section-deep.x10k 134443
+config.indexer.x10k 124979
+config.cold.build-json2000 25674
+config.cold.bind-poco50 22253

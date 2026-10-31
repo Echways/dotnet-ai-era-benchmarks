@@ -1,8 +1,8 @@
 Summary
-Started: 2026-10-28T22:50:54.7734209+00:00
-Duration: 2137.985 ms
-Events: 697
-ScopeEvents: 162
+Started: 2026-10-30T05:51:29.7078603+00:00
+Duration: 21262.302 ms
+Events: 6872
+ScopeEvents: 1602
 Threads: 1
 DroppedEvents: 0
 DroppedChunks: 0
@@ -12,26 +12,26 @@ UnmatchedEnd: 0
 MismatchedEnd: 0
 
 Hotspots (by inclusive)
-Id    Name                                   Category  Count  Incl ms  Excl ms  Excl%
---    ----                                   --------  -----  -------  -------  -----
-1212  options.snapshot-new-scope.x1k         options   20     651.587  651.587  30.48
-1213  options.validate-data-annotations.x1k  options   20     470.836  470.836  22.02
-1200  options.cold.first-value               options   1      14.778   14.778   0.69 
-1211  options.monitor-current-value.x10k     options   20     4.640    4.640    0.22 
-1210  options.ioptions-value.x10k            options   20     1.145    1.145    0.05 
+Id    Name                                   Category  Count  Incl ms    Excl ms    Excl%
+--    ----                                   --------  -----  -------    -------    -----
+1212  options.snapshot-new-scope.x1k         options   200    10378.683  10378.683  48.81
+1213  options.validate-data-annotations.x1k  options   200    7789.419   7789.419   36.63
+1211  options.monitor-current-value.x10k     options   200    38.256     38.256     0.18 
+1200  options.cold.first-value               options   1      31.269     31.269     0.15 
+1210  options.ioptions-value.x10k            options   200    19.477     19.477     0.09 
 
 Categories (by inclusive)
-Category  Count  Incl ms   Excl ms   Excl%
---------  -----  -------   -------   -----
-options   81     1142.986  1142.986  53.46
+Category  Count  Incl ms    Excl ms    Excl%
+--------  -----  -------    -------    -----
+options   801    18257.104  18257.104  85.87
 
 Call trees
 
 Thread 1
-Id    Name                                   Category  Count  Incl ms  Excl ms
---    ----                                   --------  -----  -------  -------
-1212  options.snapshot-new-scope.x1k         options   20     651.587  651.587
-1213  options.validate-data-annotations.x1k  options   20     470.836  470.836
-1200  options.cold.first-value               options   1      14.778   14.778 
-1211  options.monitor-current-value.x10k     options   20     4.640    4.640  
-1210  options.ioptions-value.x10k            options   20     1.145    1.145  
+Id    Name                                   Category  Count  Incl ms    Excl ms  
+--    ----                                   --------  -----  -------    -------  
+1212  options.snapshot-new-scope.x1k         options   200    10378.683  10378.683
+1213  options.validate-data-annotations.x1k  options   200    7789.419   7789.419 
+1211  options.monitor-current-value.x10k     options   200    38.256     38.256   
+1200  options.cold.first-value               options   1      31.269     31.269   
+1210  options.ioptions-value.x10k            options   200    19.477     19.477   

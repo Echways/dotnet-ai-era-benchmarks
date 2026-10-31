@@ -1,37 +1,68 @@
 # config
 
-Median over processes of the per-process median batch time (ms). Change is relative to `e0-7`; changes under 5% are marked as noise (~). Runs per point: e0-7=2, e2-10=2.
+Median over processes of the per-process median batch time (ms). Change is relative to `e0-7`; changes under 5% are marked as noise (~). Runs per point: e0-6=111, e0-7=111, e1-8=111, e1-9=111, e2-10=111, e2-11=111.
 
-| scope | e0-7 (E0) | e2-10 (E2) |
-|---|---:|---:|
-| `config.cold.build-json2000` | 7.1128 | 7.2934 (~+2.5%) |
-| `config.cold.bind-poco50` | 10.0999 | 10.4737 (~+3.7%) |
-| `config.build-json2000.x10` | 11.0100 | 11.1411 (~+1.2%) |
-| `config.indexer.x10k` | 0.3113 | 0.3277 (+5.3%) |
-| `config.get-section-deep.x10k` | 1.4459 | 2.6870 (+85.8%) |
-| `config.bind-poco50.x1k` | 31.1951 | 29.6223 (-5.0%) |
-| `config.reload-json2000.x10` | 9.8304 | 10.3547 (+5.3%) |
+| scope | e0-6 (E0) | e0-7 (E0) | e1-8 (E1) | e1-9 (E1) | e2-10 (E2) | e2-11 (E2) |
+|---|---:|---:|---:|---:|---:|---:|
+| `config.cold.build-json2000` | 14.6070 (~+1.7%) | 14.3647 | 14.6686 (~+2.1%) | 14.6930 (~+2.3%) | 14.6908 (~+2.3%) | 25.4301 (+77.0%) |
+| `config.cold.bind-poco50` | 28.5044 (+33.8%) | 21.3046 | 20.8235 (~-2.3%) | 21.0691 (~-1.1%) | 21.5734 (~+1.3%) | 22.0105 (~+3.3%) |
+| `config.build-json2000.x10` | 9.3640 (~-1.4%) | 9.4967 | 9.7724 (~+2.9%) | 10.0641 (+6.0%) | 10.1700 (+7.1%) | 9.7005 (~+2.1%) |
+| `config.indexer.x10k` | 0.5742 (~+0.3%) | 0.5723 | 0.5688 (~-0.6%) | 0.5693 (~-0.5%) | 0.5717 (~-0.1%) | 0.5699 (~-0.4%) |
+| `config.get-section-deep.x10k` | 0.3888 (~-1.1%) | 0.3933 | 0.3962 (~+0.7%) | 0.3923 (~-0.2%) | 0.3896 (~-0.9%) | 0.3954 (~+0.6%) |
+| `config.bind-poco50.x1k` | 68.6511 (+13.6%) | 60.4346 | 59.0807 (~-2.2%) | 57.9797 (~-4.1%) | 58.7294 (~-2.8%) | 143.9343 (+138.2%) |
+| `config.reload-json2000.x10` | 7.2681 (~+0.4%) | 7.2420 | 7.6816 (+6.1%) | 7.3838 (~+2.0%) | 7.4678 (~+3.1%) | 7.2454 (~0.0%) |
 
 Allocated bytes per batch (median over processes of the per-process median):
 
-| scope | e0-7 | e2-10 |
-|---|---:|---:|
-| `config.cold.build-json2000` | 904872 | 904936 |
-| `config.cold.bind-poco50` | 232456 | 243864 |
-| `config.build-json2000.x10` | 6365808 | 6365568 |
-| `config.indexer.x10k` | 0 | 0 |
-| `config.get-section-deep.x10k` | 400000 | 400000 |
-| `config.bind-poco50.x1k` | 19232020 | 18412020 |
-| `config.reload-json2000.x10` | 6362688 | 6362928 |
+| scope | e0-6 | e0-7 | e1-8 | e1-9 | e2-10 | e2-11 |
+|---|---:|---:|---:|---:|---:|---:|
+| `config.cold.build-json2000` | 903136 | 903112 | 903176 | 903176 | 903176 | 903280 |
+| `config.cold.bind-poco50` | 318272 | 232456 | 230328 | 231528 | 231528 | 241624 |
+| `config.build-json2000.x10` | 6365248 | 6365408 | 6365568 | 6365568 | 6365568 | 6365568 |
+| `config.indexer.x10k` | 0 | 0 | 0 | 0 | 0 | 0 |
+| `config.get-section-deep.x10k` | 400000 | 400000 | 400000 | 400000 | 400000 | 400000 |
+| `config.bind-poco50.x1k` | 22699736 | 19240000 | 17200000 | 18400000 | 18400000 | 28400000 |
+| `config.reload-json2000.x10` | 6362688 | 6362688 | 6362928 | 6362928 | 6362928 | 6362928 |
+
+## TraceDiff: e0-6 vs e0-7 (representative runs)
+
+```
+Id      Name                 Base ms    Cur ms     Total%     Base p95   Cur p95    p95%
+------  -------------------  ---------  ---------  ---------  ---------  ---------  ---------
+1101    config.cold.bind-po  21.116     29.383     +39.1      21.116     29.383     +39.1
+1113    config.bind-poco50.  12150.138  13747.076  +13.1      66.060     79.692     +20.6
+1100    config.cold.build-j  14.332     15.554     +8.5       14.332     15.554     +8.5
+```
+
+## TraceDiff: e1-8 vs e0-7 (representative runs)
+
+```
+Id      Name                 Base ms    Cur ms     Total%     Base p95   Cur p95    p95%
+------  -------------------  ---------  ---------  ---------  ---------  ---------  ---------
+```
+
+## TraceDiff: e1-9 vs e0-7 (representative runs)
+
+```
+Id      Name                 Base ms    Cur ms     Total%     Base p95   Cur p95    p95%
+------  -------------------  ---------  ---------  ---------  ---------  ---------  ---------
+```
 
 ## TraceDiff: e2-10 vs e0-7 (representative runs)
 
 ```
 Id      Name                 Base ms    Cur ms     Total%     Base p95   Cur p95    p95%
 ------  -------------------  ---------  ---------  ---------  ---------  ---------  ---------
-1112    config.get-section-  27.647     53.030     +91.8      3.168      3.867      +22.1
-1101    config.cold.bind-po  9.832      10.915     +11.0      9.832      10.915     +11.0
-1110    config.build-json20  200.363    217.276    +8.4       12.059     12.321     +2.2
-1100    config.cold.build-j  6.965      7.467      +7.2       6.965      7.467      +7.2
-1114    config.reload-json2  188.894    200.601    +6.2       12.583     11.534     -8.3
+1110    config.build-json20  1897.865   2006.145   +5.7       12.321     13.107     +6.4
+1111    config.indexer.x10k  119.364    125.499    +5.1       0.639      0.672      +5.1
+```
+
+## TraceDiff: e2-11 vs e0-7 (representative runs)
+
+```
+Id      Name                 Base ms    Cur ms     Total%     Base p95   Cur p95    p95%
+------  -------------------  ---------  ---------  ---------  ---------  ---------  ---------
+1113    config.bind-poco50.  12150.138  28756.201  +136.7     66.060     150.995    +128.6
+1100    config.cold.build-j  14.332     25.674     +79.1      14.332     25.674     +79.1
+1101    config.cold.bind-po  21.116     22.253     +5.4       21.116     22.253     +5.4
 ```

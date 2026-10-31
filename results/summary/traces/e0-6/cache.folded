@@ -1,0 +1,7 @@
+cache.parallel8-hit-miss.per-thread-x10k 2611057
+cache.set.x10k 1981833
+cache.get-or-create.x10k 1948265
+cache.size-limit-compact-half.x1 879759
+cache.try-get-hit.x10k 246672
+cache.try-get-miss.x10k 194560
+cache.cold.create-and-first-set 13783

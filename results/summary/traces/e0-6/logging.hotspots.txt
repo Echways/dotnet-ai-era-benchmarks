@@ -1,0 +1,41 @@
+Summary
+Started: 2026-10-30T01:26:39.1181297+00:00
+Duration: 3230.657 ms
+Events: 2809
+ScopeEvents: 2004
+Threads: 1
+DroppedEvents: 0
+DroppedChunks: 0
+SampledOut: 0
+UnmatchedBegin: 0
+UnmatchedEnd: 0
+MismatchedEnd: 0
+
+Hotspots (by inclusive)
+Id    Name                                        Category  Count  Incl ms  Excl ms  Excl%
+--    ----                                        --------  -----  -------  -------  -----
+1313  logging.logger-message-define.x10k          logging   200    888.672  888.672  27.51
+1311  logging.log-information-3args-enabled.x10k  logging   200    885.468  885.468  27.41
+1310  logging.factory-create.x100                 logging   200    465.545  465.545  14.41
+1314  logging.begin-scope.x10k                    logging   200    179.799  179.799  5.57 
+1312  logging.log-debug-3args-disabled.x10k       logging   200    128.907  128.907  3.99 
+1300  logging.cold.factory-create                 logging   1      47.787   47.787   1.48 
+1301  logging.cold.first-log                      logging   1      8.365    8.365    0.26 
+
+Categories (by inclusive)
+Category  Count  Incl ms   Excl ms   Excl%
+--------  -----  -------   -------   -----
+logging   1002   2604.543  2604.543  80.62
+
+Call trees
+
+Thread 1
+Id    Name                                        Category  Count  Incl ms  Excl ms
+--    ----                                        --------  -----  -------  -------
+1313  logging.logger-message-define.x10k          logging   200    888.672  888.672
+1311  logging.log-information-3args-enabled.x10k  logging   200    885.468  885.468
+1310  logging.factory-create.x100                 logging   200    465.545  465.545
+1314  logging.begin-scope.x10k                    logging   200    179.799  179.799
+1312  logging.log-debug-3args-disabled.x10k       logging   200    128.907  128.907
+1300  logging.cold.factory-create                 logging   1      47.787   47.787 
+1301  logging.cold.first-log                      logging   1      8.365    8.365  

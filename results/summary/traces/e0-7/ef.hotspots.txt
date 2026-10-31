@@ -1,8 +1,8 @@
 Summary
-Started: 2026-10-28T22:51:10.4987720+00:00
-Duration: 6471.401 ms
-Events: 1854
-ScopeEvents: 244
+Started: 2026-10-30T02:11:28.1503763+00:00
+Duration: 84578.900 ms
+Events: 23414
+ScopeEvents: 2404
 Threads: 1
 DroppedEvents: 0
 DroppedChunks: 0
@@ -12,32 +12,32 @@ UnmatchedEnd: 0
 MismatchedEnd: 0
 
 Hotspots (by inclusive)
-Id    Name                                   Category  Count  Incl ms   Excl ms   Excl%
---    ----                                   --------  -----  -------   -------   -----
-1512  ef.query-where-orderby-take.x1k        ef        20     2037.180  2037.180  31.48
-1514  ef.detect-changes-10k-tracked.x10      ef        20     599.672   599.672   9.27 
-1501  ef.cold.first-query                    ef        1      468.281   468.281   7.24 
-1510  ef.new-context.x1k                     ef        20     412.316   412.316   6.37 
-1513  ef.save-changes-1000-entities.x1       ef        20     373.809   373.809   5.78 
-1515  ef.to-query-string.x1k                 ef        20     115.213   115.213   1.78 
-1500  ef.cold.open-connection-create-schema  ef        1      29.251    29.251    0.45 
-1511  ef.pooled-context.x1k                  ef        20     10.084    10.084    0.16 
+Id    Name                                   Category  Count  Incl ms    Excl ms    Excl%
+--    ----                                   --------  -----  -------    -------    -----
+1512  ef.query-where-orderby-take.x1k        ef        200    43863.225  43863.225  51.86
+1514  ef.detect-changes-10k-tracked.x10      ef        200    12889.585  12889.585  15.24
+1510  ef.new-context.x1k                     ef        200    7335.198   7335.198   8.67 
+1513  ef.save-changes-1000-entities.x1       ef        200    5599.816   5599.816   6.62 
+1515  ef.to-query-string.x1k                 ef        200    2250.437   2250.437   2.66 
+1501  ef.cold.first-query                    ef        1      981.568    981.568    1.16 
+1500  ef.cold.open-connection-create-schema  ef        1      61.918     61.918     0.07 
+1511  ef.pooled-context.x1k                  ef        200    40.538     40.538     0.05 
 
 Categories (by inclusive)
-Category  Count  Incl ms   Excl ms   Excl%
---------  -----  -------   -------   -----
-ef        122    4045.807  4045.807  62.52
+Category  Count  Incl ms    Excl ms    Excl%
+--------  -----  -------    -------    -----
+ef        1202   73022.285  73022.285  86.34
 
 Call trees
 
 Thread 1
-Id    Name                                   Category  Count  Incl ms   Excl ms 
---    ----                                   --------  -----  -------   ------- 
-1512  ef.query-where-orderby-take.x1k        ef        20     2037.180  2037.180
-1514  ef.detect-changes-10k-tracked.x10      ef        20     599.672   599.672 
-1501  ef.cold.first-query                    ef        1      468.281   468.281 
-1510  ef.new-context.x1k                     ef        20     412.316   412.316 
-1513  ef.save-changes-1000-entities.x1       ef        20     373.809   373.809 
-1515  ef.to-query-string.x1k                 ef        20     115.213   115.213 
-1500  ef.cold.open-connection-create-schema  ef        1      29.251    29.251  
-1511  ef.pooled-context.x1k                  ef        20     10.084    10.084  
+Id    Name                                   Category  Count  Incl ms    Excl ms  
+--    ----                                   --------  -----  -------    -------  
+1512  ef.query-where-orderby-take.x1k        ef        200    43863.225  43863.225
+1514  ef.detect-changes-10k-tracked.x10      ef        200    12889.585  12889.585
+1510  ef.new-context.x1k                     ef        200    7335.198   7335.198 
+1513  ef.save-changes-1000-entities.x1       ef        200    5599.816   5599.816 
+1515  ef.to-query-string.x1k                 ef        200    2250.437   2250.437 
+1501  ef.cold.first-query                    ef        1      981.568    981.568  
+1500  ef.cold.open-connection-create-schema  ef        1      61.918     61.918   
+1511  ef.pooled-context.x1k                  ef        200    40.538     40.538   

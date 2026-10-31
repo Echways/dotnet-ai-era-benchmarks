@@ -1,0 +1,12 @@
+di.validate-on-build100.x100 962413
+di.enumerable20.x10k 842920
+di.build1000.x10 245041
+di.build100.x100 239040
+di.create-scope-dispose.x10k 203459
+di.scoped.x10k 154048
+di.first-resolve-depth5.x100 146301
+di.transient.x10k 77846
+di.open-generic.x10k 76602
+di.singleton.x10k 44575
+di.cold.first-resolve-depth5 9235
+di.cold.build100 656

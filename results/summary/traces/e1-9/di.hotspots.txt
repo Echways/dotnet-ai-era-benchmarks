@@ -1,0 +1,51 @@
+Summary
+Started: 2026-10-30T05:18:50.2988841+00:00
+Duration: 4151.474 ms
+Events: 5029
+ScopeEvents: 4004
+Threads: 1
+DroppedEvents: 0
+DroppedChunks: 0
+SampledOut: 0
+UnmatchedBegin: 0
+UnmatchedEnd: 0
+MismatchedEnd: 0
+
+Hotspots (by inclusive)
+Id    Name                          Category  Count  Incl ms   Excl ms   Excl%
+--    ----                          --------  -----  -------   -------   -----
+1012  di.validate-on-build100.x100  di        200    1269.174  1269.174  30.57
+1024  di.enumerable20.x10k          di        200    844.702   844.702   20.35
+1010  di.build100.x100              di        200    268.278   268.278   6.46 
+1025  di.create-scope-dispose.x10k  di        200    195.826   195.826   4.72 
+1011  di.build1000.x10              di        200    154.645   154.645   3.73 
+1021  di.scoped.x10k                di        200    147.503   147.503   3.55 
+1013  di.first-resolve-depth5.x100  di        200    115.705   115.705   2.79 
+1023  di.open-generic.x10k          di        200    64.987    64.987    1.57 
+1020  di.transient.x10k             di        200    56.018    56.018    1.35 
+1022  di.singleton.x10k             di        200    45.535    45.535    1.10 
+1001  di.cold.first-resolve-depth5  di        1      9.455     9.455     0.23 
+1000  di.cold.build100              di        1      0.664     0.664     0.02 
+
+Categories (by inclusive)
+Category  Count  Incl ms   Excl ms   Excl%
+--------  -----  -------   -------   -----
+di        2002   3172.493  3172.493  76.42
+
+Call trees
+
+Thread 1
+Id    Name                          Category  Count  Incl ms   Excl ms 
+--    ----                          --------  -----  -------   ------- 
+1012  di.validate-on-build100.x100  di        200    1269.174  1269.174
+1024  di.enumerable20.x10k          di        200    844.702   844.702 
+1010  di.build100.x100              di        200    268.278   268.278 
+1025  di.create-scope-dispose.x10k  di        200    195.826   195.826 
+1011  di.build1000.x10              di        200    154.645   154.645 
+1021  di.scoped.x10k                di        200    147.503   147.503 
+1013  di.first-resolve-depth5.x100  di        200    115.705   115.705 
+1023  di.open-generic.x10k          di        200    64.987    64.987  
+1020  di.transient.x10k             di        200    56.018    56.018  
+1022  di.singleton.x10k             di        200    45.535    45.535  
+1001  di.cold.first-resolve-depth5  di        1      9.455     9.455   
+1000  di.cold.build100              di        1      0.664     0.664   

@@ -1,8 +1,8 @@
 Summary
-Started: 2026-10-28T22:51:37.7962152+00:00
-Duration: 410.454 ms
-Events: 309
-ScopeEvents: 204
+Started: 2026-10-30T01:12:05.4264854+00:00
+Duration: 3555.216 ms
+Events: 2884
+ScopeEvents: 2004
 Threads: 1
 DroppedEvents: 0
 DroppedChunks: 0
@@ -14,28 +14,28 @@ MismatchedEnd: 0
 Hotspots (by inclusive)
 Id    Name                                        Category  Count  Incl ms  Excl ms  Excl%
 --    ----                                        --------  -----  -------  -------  -----
-1310  logging.factory-create.x100                 logging   20     105.831  105.831  25.78
-1311  logging.log-information-3args-enabled.x10k  logging   20     88.056   88.056   21.45
-1313  logging.logger-message-define.x10k          logging   20     55.606   55.606   13.55
-1314  logging.begin-scope.x10k                    logging   20     31.199   31.199   7.60 
-1300  logging.cold.factory-create                 logging   1      26.028   26.028   6.34 
-1312  logging.log-debug-3args-disabled.x10k       logging   20     11.738   11.738   2.86 
-1301  logging.cold.first-log                      logging   1      5.138    5.138    1.25 
+1311  logging.log-information-3args-enabled.x10k  logging   200    932.264  932.264  26.22
+1310  logging.factory-create.x100                 logging   200    758.756  758.756  21.34
+1313  logging.logger-message-define.x10k          logging   200    691.768  691.768  19.46
+1314  logging.begin-scope.x10k                    logging   200    246.540  246.540  6.93 
+1312  logging.log-debug-3args-disabled.x10k       logging   200    136.987  136.987  3.85 
+1300  logging.cold.factory-create                 logging   1      57.663   57.663   1.62 
+1301  logging.cold.first-log                      logging   1      10.407   10.407   0.29 
 
 Categories (by inclusive)
-Category  Count  Incl ms  Excl ms  Excl%
---------  -----  -------  -------  -----
-logging   102    323.596  323.596  78.84
+Category  Count  Incl ms   Excl ms   Excl%
+--------  -----  -------   -------   -----
+logging   1002   2834.384  2834.384  79.72
 
 Call trees
 
 Thread 1
 Id    Name                                        Category  Count  Incl ms  Excl ms
 --    ----                                        --------  -----  -------  -------
-1310  logging.factory-create.x100                 logging   20     105.831  105.831
-1311  logging.log-information-3args-enabled.x10k  logging   20     88.056   88.056 
-1313  logging.logger-message-define.x10k          logging   20     55.606   55.606 
-1314  logging.begin-scope.x10k                    logging   20     31.199   31.199 
-1300  logging.cold.factory-create                 logging   1      26.028   26.028 
-1312  logging.log-debug-3args-disabled.x10k       logging   20     11.738   11.738 
-1301  logging.cold.first-log                      logging   1      5.138    5.138  
+1311  logging.log-information-3args-enabled.x10k  logging   200    932.264  932.264
+1310  logging.factory-create.x100                 logging   200    758.756  758.756
+1313  logging.logger-message-define.x10k          logging   200    691.768  691.768
+1314  logging.begin-scope.x10k                    logging   200    246.540  246.540
+1312  logging.log-debug-3args-disabled.x10k       logging   200    136.987  136.987
+1300  logging.cold.factory-create                 logging   1      57.663   57.663 
+1301  logging.cold.first-log                      logging   1      10.407   10.407 

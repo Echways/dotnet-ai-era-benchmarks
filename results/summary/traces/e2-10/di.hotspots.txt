@@ -1,8 +1,8 @@
 Summary
-Started: 2026-10-28T22:51:32.5988315+00:00
-Duration: 726.137 ms
-Events: 584
-ScopeEvents: 404
+Started: 2026-10-29T19:10:24.5087215+00:00
+Duration: 4214.509 ms
+Events: 5039
+ScopeEvents: 4004
 Threads: 1
 DroppedEvents: 0
 DroppedChunks: 0
@@ -12,40 +12,40 @@ UnmatchedEnd: 0
 MismatchedEnd: 0
 
 Hotspots (by inclusive)
-Id    Name                          Category  Count  Incl ms  Excl ms  Excl%
---    ----                          --------  -----  -------  -------  -----
-1012  di.validate-on-build100.x100  di        20     256.243  256.243  35.29
-1024  di.enumerable20.x10k          di        20     55.103   55.103   7.59 
-1010  di.build100.x100              di        20     42.531   42.531   5.86 
-1011  di.build1000.x10              di        20     39.868   39.868   5.49 
-1025  di.create-scope-dispose.x10k  di        20     38.688   38.688   5.33 
-1021  di.scoped.x10k                di        20     37.694   37.694   5.19 
-1013  di.first-resolve-depth5.x100  di        20     22.727   22.727   3.13 
-1023  di.open-generic.x10k          di        20     12.073   12.073   1.66 
-1020  di.transient.x10k             di        20     11.268   11.268   1.55 
-1022  di.singleton.x10k             di        20     10.082   10.082   1.39 
-1001  di.cold.first-resolve-depth5  di        1      4.403    4.403    0.61 
-1000  di.cold.build100              di        1      0.289    0.289    0.04 
+Id    Name                          Category  Count  Incl ms   Excl ms   Excl%
+--    ----                          --------  -----  -------   -------   -----
+1012  di.validate-on-build100.x100  di        200    1302.564  1302.564  30.91
+1024  di.enumerable20.x10k          di        200    850.220   850.220   20.17
+1010  di.build100.x100              di        200    277.577   277.577   6.59 
+1025  di.create-scope-dispose.x10k  di        200    204.277   204.277   4.85 
+1011  di.build1000.x10              di        200    156.783   156.783   3.72 
+1021  di.scoped.x10k                di        200    133.093   133.093   3.16 
+1013  di.first-resolve-depth5.x100  di        200    118.739   118.739   2.82 
+1023  di.open-generic.x10k          di        200    64.815    64.815    1.54 
+1020  di.transient.x10k             di        200    57.131    57.131    1.36 
+1022  di.singleton.x10k             di        200    46.167    46.167    1.10 
+1001  di.cold.first-resolve-depth5  di        1      9.547     9.547     0.23 
+1000  di.cold.build100              di        1      0.631     0.631     0.01 
 
 Categories (by inclusive)
-Category  Count  Incl ms  Excl ms  Excl%
---------  -----  -------  -------  -----
-di        202    530.969  530.969  73.12
+Category  Count  Incl ms   Excl ms   Excl%
+--------  -----  -------   -------   -----
+di        2002   3221.544  3221.544  76.44
 
 Call trees
 
 Thread 1
-Id    Name                          Category  Count  Incl ms  Excl ms
---    ----                          --------  -----  -------  -------
-1012  di.validate-on-build100.x100  di        20     256.243  256.243
-1024  di.enumerable20.x10k          di        20     55.103   55.103 
-1010  di.build100.x100              di        20     42.531   42.531 
-1011  di.build1000.x10              di        20     39.868   39.868 
-1025  di.create-scope-dispose.x10k  di        20     38.688   38.688 
-1021  di.scoped.x10k                di        20     37.694   37.694 
-1013  di.first-resolve-depth5.x100  di        20     22.727   22.727 
-1023  di.open-generic.x10k          di        20     12.073   12.073 
-1020  di.transient.x10k             di        20     11.268   11.268 
-1022  di.singleton.x10k             di        20     10.082   10.082 
-1001  di.cold.first-resolve-depth5  di        1      4.403    4.403  
-1000  di.cold.build100              di        1      0.289    0.289  
+Id    Name                          Category  Count  Incl ms   Excl ms 
+--    ----                          --------  -----  -------   ------- 
+1012  di.validate-on-build100.x100  di        200    1302.564  1302.564
+1024  di.enumerable20.x10k          di        200    850.220   850.220 
+1010  di.build100.x100              di        200    277.577   277.577 
+1025  di.create-scope-dispose.x10k  di        200    204.277   204.277 
+1011  di.build1000.x10              di        200    156.783   156.783 
+1021  di.scoped.x10k                di        200    133.093   133.093 
+1013  di.first-resolve-depth5.x100  di        200    118.739   118.739 
+1023  di.open-generic.x10k          di        200    64.815    64.815  
+1020  di.transient.x10k             di        200    57.131    57.131  
+1022  di.singleton.x10k             di        200    46.167    46.167  
+1001  di.cold.first-resolve-depth5  di        1      9.547     9.547   
+1000  di.cold.build100              di        1      0.631     0.631   
