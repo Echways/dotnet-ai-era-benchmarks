@@ -1,5 +1,6 @@
 import csv
 import re
+import sys
 from datetime import date
 from pathlib import Path
 
@@ -11,9 +12,12 @@ from matplotlib.lines import Line2D
 from matplotlib.patches import Patch, PathPatch
 from matplotlib.path import Path as ShapePath
 
+from figure_texts_en import ENGLISH
+
+ENGLISH_OUTPUT = "--lang=en" in sys.argv
 ROOT = Path(__file__).resolve().parent
 REPORT = ROOT.parent / "docs" / "report.md"
-OUT = ROOT / "figures"
+OUT = ROOT / "figures" / "en" if ENGLISH_OUTPUT else ROOT / "figures"
 STEPS_CSV = ROOT / "data" / "release-steps.csv"
 
 SURFACE = "#ffffff"
@@ -61,8 +65,14 @@ plt.rcParams.update(
 )
 
 
+def tr(text):
+    return ENGLISH[text] if ENGLISH_OUTPUT else text
+
+
 def percent(value, signed=True, digits=0):
-    text = f"{abs(value):.{digits}f}".replace(".", ",")
+    text = f"{abs(value):.{digits}f}"
+    if not ENGLISH_OUTPUT:
+        text = text.replace(".", ",")
     if not signed:
         return f"{text}%"
     sign = "−" if value < 0 else "+"
@@ -115,7 +125,7 @@ def load():
 
 
 def save(figure, name):
-    OUT.mkdir(exist_ok=True)
+    OUT.mkdir(parents=True, exist_ok=True)
     figure.savefig(OUT / name, dpi=220, facecolor=figure.get_facecolor())
     plt.close(figure)
 
@@ -235,8 +245,8 @@ def cover(fixed):
     top = header(
         figure,
         height,
-        "Время 46 операций .NET относительно версии 7.0",
-        "Синие ускорились, красные замедлились, серые в пределах ±5%",
+        tr("Время 46 операций .NET относительно версии 7.0"),
+        tr("Синие ускорились, красные замедлились, серые в пределах ±5%"),
         (COVER_TEXT, COVER_TEXT_2),
         width,
     )
@@ -244,7 +254,7 @@ def cover(fixed):
     axis.set_facecolor(COVER_SURFACE)
     highlights = {
         "options.snapshot-new-scope.x1k": "IOptionsSnapshot",
-        "config.bind-poco50.x1k": "биндинг POCO",
+        "config.bind-poco50.x1k": tr("биндинг POCO"),
         "logging.logger-message-define.x10k": "LoggerMessage",
     }
     positions = range(5)
@@ -263,8 +273,8 @@ def cover(fixed):
         colour = COVER_FASTER if tail < -5 else COVER_SLOWER if tail > 5 else COVER_UNCHANGED
         axis.plot(xs, ys, color=colour, linewidth=1, alpha=0.5, solid_capstyle="round", zorder=2)
     axis.axhline(0, color=COVER_TEXT_2, linewidth=0.8, zorder=1)
-    axis.text(4.1, 0, "без изменений", va="center", ha="left", color=COVER_TEXT_2, fontsize=10, clip_on=False)
-    for x, label in ((0.06, "ChatGPT"), (2.52, "первый PR агента")):
+    axis.text(4.1, 0, tr("без изменений"), va="center", ha="left", color=COVER_TEXT_2, fontsize=10, clip_on=False)
+    for x, label in ((0.06, "ChatGPT"), (2.52, tr("первый PR агента"))):
         axis.plot([x, x], [-48, 168], color=COVER_TEXT_2, linewidth=0.8, zorder=1)
         axis.text(x + 0.04, 168, label, va="top", ha="left", color=COVER_TEXT_2, fontsize=10)
     axis.set_ylim(-50, 170)
@@ -280,33 +290,33 @@ def cover(fixed):
 def epochs():
     height = 2.85
     figure = plt.figure(figsize=(WIDTH, height))
-    top = header(figure, height, "Шесть точек замера и три эпохи", "Граница эпох условна: автодополнение Copilot появилось ещё в 2021 году")
+    top = header(figure, height, tr("Шесть точек замера и три эпохи"), tr("Граница эпох условна: автодополнение Copilot появилось ещё в 2021 году"))
     axis = figure.add_axes([0.1 / WIDTH, 0.05 / height, (WIDTH - 0.2) / WIDTH, (height - top - 0.05) / height])
     chatgpt = date(2022, 11, 30)
     agent = date(2025, 5, 19)
     start, end = date(2021, 6, 1), date(2027, 2, 1)
     bands = [
-        (start, chatgpt, "#f0efec", "до ChatGPT"),
-        (chatgpt, agent, "#cde2fb", "ИИ-ассистенты"),
-        (agent, end, "#86b6ef", "агент открывает PR"),
+        (start, chatgpt, "#f0efec", tr("до ChatGPT")),
+        (chatgpt, agent, "#cde2fb", tr("ИИ-ассистенты")),
+        (agent, end, "#86b6ef", tr("агент открывает PR")),
     ]
     for left, right, colour, label in bands:
         axis.fill_between([left, right], 0.84, 1.0, color=colour, linewidth=0)
         axis.text(left + (right - left) / 2, 0.92, label, ha="center", va="center", color=INK, fontsize=LABEL_SIZE, weight="bold")
     axis.plot([start, end], [0.4, 0.4], color=AXIS, linewidth=1.2, zorder=1)
     releases = [
-        (date(2021, 11, 8), "6.0", "нояб. 2021"),
-        (date(2022, 11, 8), "7.0, база", "нояб. 2022"),
-        (date(2023, 11, 14), "8.0", "нояб. 2023"),
-        (date(2024, 11, 12), "9.0", "нояб. 2024"),
-        (date(2025, 11, 11), "10.0", "нояб. 2025"),
-        (date(2026, 10, 25), "11 RC3", "окт. 2026"),
+        (date(2021, 11, 8), "6.0", tr("нояб. 2021")),
+        (date(2022, 11, 8), tr("7.0, база"), tr("нояб. 2022")),
+        (date(2023, 11, 14), "8.0", tr("нояб. 2023")),
+        (date(2024, 11, 12), "9.0", tr("нояб. 2024")),
+        (date(2025, 11, 11), "10.0", tr("нояб. 2025")),
+        (date(2026, 10, 25), "11 RC3", tr("окт. 2026")),
     ]
     for moment, name, when in releases:
         axis.plot([moment], [0.4], "o", color=INK, markersize=8, markeredgecolor=SURFACE, markeredgewidth=2, zorder=3)
         axis.text(moment, 0.6, name, ha="center", va="bottom", color=INK, fontsize=LABEL_SIZE, weight="bold")
         axis.text(moment, 0.49, when, ha="center", va="bottom", color=INK_2, fontsize=SMALL_SIZE)
-    for moment, label in ((chatgpt, "ChatGPT\n30 нояб. 2022"), (agent, "первый PR агента в dotnet/runtime\n19 мая 2025")):
+    for moment, label in ((chatgpt, tr("ChatGPT\n30 нояб. 2022")), (agent, tr("первый PR агента в dotnet/runtime\n19 мая 2025"))):
         axis.plot([moment, moment], [0.4, 0.26], color=INK_2, linewidth=0.9, zorder=2)
         axis.text(moment, 0.23, label, ha="center", va="top", color=INK_2, fontsize=SMALL_SIZE, linespacing=1.3)
     axis.set_xlim(start, end)
@@ -320,14 +330,14 @@ def two_directions(fixed):
         (FASTER, [
             ("logging.logger-message-define.x10k", "LoggerMessage"),
             ("ef.detect-changes-10k-tracked.x10", "EF: DetectChanges"),
-            ("cache.try-get-miss.x10k", "кэш: промах"),
-            ("di.create-scope-dispose.x10k", "DI: новый scope"),
+            ("cache.try-get-miss.x10k", tr("кэш: промах")),
+            ("di.create-scope-dispose.x10k", tr("DI: новый scope")),
         ]),
         (SLOWER, [
-            ("di.first-resolve-depth5.x100", "DI: первый resolve"),
+            ("di.first-resolve-depth5.x100", tr("DI: первый resolve")),
             ("di.validate-on-build100.x100", "DI: ValidateOnBuild"),
-            ("logging.factory-create.x100", "новый LoggerFactory"),
-            ("ef.new-context.x1k", "EF: новый DbContext"),
+            ("logging.factory-create.x100", tr("новый LoggerFactory")),
+            ("ef.new-context.x1k", tr("EF: новый DbContext")),
         ]),
     ]
     figure, axis = canvas(
@@ -335,8 +345,8 @@ def two_directions(fixed):
         0.62,
         2.72,
         0.34,
-        "Прогретый код ускорился, первый вызов замедлился",
-        "Изменение времени относительно 7.0, режим стенда. Линии EF Core обрываются на 10.0",
+        tr("Прогретый код ускорился, первый вызов замедлился"),
+        tr("Изменение времени относительно 7.0, режим стенда. Линии EF Core обрываются на 10.0"),
     )
     axis.set_xlim(-0.08, 4.04)
     axis.set_ylim(-52, 100)
@@ -360,12 +370,12 @@ def two_directions(fixed):
             candidate = fixed[scope]["e11"]
             axis.plot([x, leader_end], [y, slot], color=AXIS, linewidth=0.7, clip_on=False, zorder=2)
             axis.text(release_right, slot, percent(fixed[scope]["e10"]), va="center", ha="right", fontsize=LABEL_SIZE, weight="bold", color=INK, clip_on=False)
-            axis.text(candidate_right, slot, "нет" if candidate is None else percent(candidate), va="center", ha="right", fontsize=LABEL_SIZE, color=INK_2, clip_on=False)
+            axis.text(candidate_right, slot, tr("нет") if candidate is None else percent(candidate), va="center", ha="right", fontsize=LABEL_SIZE, color=INK_2, clip_on=False)
             axis.text(name_left, slot, label, va="center", ha="left", fontsize=SMALL_SIZE, color=INK_2, clip_on=False)
     axis.text(release_right, 97, "10.0", va="center", ha="right", fontsize=SMALL_SIZE, weight="bold", color=INK, clip_on=False)
     axis.text(candidate_right, 97, "11 RC", va="center", ha="right", fontsize=SMALL_SIZE, color=INK_2, clip_on=False)
-    axis.text(0.05, 97, "первое использование: дороже", va="center", ha="left", fontsize=SMALL_SIZE, color=INK_2)
-    axis.text(0.05, -48, "прогретые операции: дешевле", va="center", ha="left", fontsize=SMALL_SIZE, color=INK_2)
+    axis.text(0.05, 97, tr("первое использование: дороже"), va="center", ha="left", fontsize=SMALL_SIZE, color=INK_2)
+    axis.text(0.05, -48, tr("прогретые операции: дешевле"), va="center", ha="left", fontsize=SMALL_SIZE, color=INK_2)
     axis.set_xticks(list(positions), VERSIONS)
     axis.set_yticks([-40, -20, 0, 20, 40, 60, 80])
     signed_percent_axis(axis, "y")
@@ -385,16 +395,16 @@ def step_colour(verdict):
 
 def release_steps():
     rows = [
-        ("7.0 → 8.0", "первый релиз\nпосле ChatGPT", "e0-7>e1-8"),
+        ("7.0 → 8.0", tr("первый релиз\nпосле ChatGPT"), "e0-7>e1-8"),
         ("8.0 → 9.0", "", "e1-8>e1-9"),
-        ("9.0 → 10.0", "первые PR\nагента", "e1-9>e2-10"),
-        ("10.0 → 11 RC", "без EF Core", "e2-10>e2-11"),
+        ("9.0 → 10.0", tr("первые PR\nагента"), "e1-9>e2-10"),
+        ("10.0 → 11 RC", tr("без EF Core"), "e2-10>e2-11"),
     ]
     callouts = {
-        "e0-7>e1-8": [("logging.logger-message-define.x10k", "LoggerMessage", "left", -11), ("di.first-resolve-depth5.x100", "первый resolve", "right", 1)],
-        "e1-8>e1-9": [("di.build1000.x10", "сборка DI на 1000", "left", -1), ("di.validate-on-build100.x100", "ValidateOnBuild", "center", 0)],
-        "e1-9>e2-10": [("cache.size-limit-compact-half.x1", "Compact в кэше", "right", 1), ("ef.detect-changes-10k-tracked.x10", "DetectChanges", "left", -1)],
-        "e2-10>e2-11": [("di.first-resolve-depth5.x100", "первый resolve", "center", 0), ("config.cold.build-json2000", "сборка JSON", "right", 1)],
+        "e0-7>e1-8": [("logging.logger-message-define.x10k", "LoggerMessage", "left", -11), ("di.first-resolve-depth5.x100", tr("первый resolve"), "right", 1)],
+        "e1-8>e1-9": [("di.build1000.x10", tr("сборка DI на 1000"), "left", -1), ("di.validate-on-build100.x100", "ValidateOnBuild", "center", 0)],
+        "e1-9>e2-10": [("cache.size-limit-compact-half.x1", tr("Compact в кэше"), "right", 1), ("ef.detect-changes-10k-tracked.x10", "DetectChanges", "left", -1)],
+        "e2-10>e2-11": [("di.first-resolve-depth5.x100", tr("первый resolve"), "center", 0), ("config.cold.build-json2000", tr("сборка JSON"), "right", 1)],
     }
     clip = 80
     figure, axis = canvas(
@@ -402,8 +412,8 @@ def release_steps():
         1.28,
         0.92,
         0.36,
-        "Больше всего подтверждённых сдвигов в 8.0",
-        "Точка — операция, положение — изменение относительно предыдущего релиза. Цветные\nподтверждены вердиктом, серые нет. Число на полосе — операции внутри ±5%. Режим стенда",
+        tr("Больше всего подтверждённых сдвигов в 8.0"),
+        tr("Точка — операция, положение — изменение относительно предыдущего релиза. Цветные\nподтверждены вердиктом, серые нет. Число на полосе — операции внутри ±5%. Режим стенда"),
     )
     axis.set_xlim(-50, clip + 8)
     axis.set_ylim(len(rows) - 0.5, -0.62)
@@ -434,8 +444,8 @@ def release_steps():
         if note:
             axis.text(-0.195, row + 0.03, note, transform=axis.get_yaxis_transform(), ha="left", va="top", fontsize=SMALL_SIZE - 1, color=INK_2, linespacing=1.2, clip_on=False)
         axis.text(1.03, row - 0.1, str(confirmed), transform=axis.get_yaxis_transform(), ha="left", va="center", fontsize=17, weight="bold", color=INK, clip_on=False)
-        axis.text(1.03, row + 0.2, f"из {len(selected)}", transform=axis.get_yaxis_transform(), ha="left", va="center", fontsize=SMALL_SIZE, color=INK_2, clip_on=False)
-    axis.text(1.03, -0.56, "подтверждено", transform=axis.get_yaxis_transform(), ha="left", va="center", fontsize=SMALL_SIZE - 1.5, color=INK_2, clip_on=False)
+        axis.text(1.03, row + 0.2, tr("из {}").format(len(selected)), transform=axis.get_yaxis_transform(), ha="left", va="center", fontsize=SMALL_SIZE, color=INK_2, clip_on=False)
+    axis.text(1.03, -0.56, tr("подтверждено"), transform=axis.get_yaxis_transform(), ha="left", va="center", fontsize=SMALL_SIZE - 1.5, color=INK_2, clip_on=False)
     axis.set_yticks([])
     axis.set_xticks([-40, -20, 0, 20, 40, 60])
     signed_percent_axis(axis, "x")
@@ -446,29 +456,29 @@ def release_steps():
 
 def binder_variants():
     rows = [
-        ("10.0, пакет", 29, UNCHANGED, "17,2 КБ"),
-        ("11 RC3, пакет", 120, SLOWER, "27 КБ"),
-        ("11 RC3 + inherit: false", 45, FASTER, "17,2 КБ"),
-        ("11 RC3, строка заменена на false", 29, FASTER, "17,2 КБ"),
-        ("биндер из main, #135672", 45, FASTER, "17,2 КБ"),
-        ("11 RC3, генератор исходников", 12, FASTER, "5,7 КБ"),
+        (tr("10.0, пакет"), 29, UNCHANGED, tr("17,2 КБ")),
+        (tr("11 RC3, пакет"), 120, SLOWER, tr("27 КБ")),
+        ("11 RC3 + inherit: false", 45, FASTER, tr("17,2 КБ")),
+        (tr("11 RC3, строка заменена на false"), 29, FASTER, tr("17,2 КБ")),
+        (tr("биндер из main, #135672"), 45, FASTER, tr("17,2 КБ")),
+        (tr("11 RC3, генератор исходников"), 12, FASTER, tr("5,7 КБ")),
     ]
     figure, axis = canvas(
         3.45,
         2.72,
         0.82,
         0.1,
-        "Почти вся регрессия биндинга сидит в одной строке",
-        "Get<T> для класса на 50 свойств, мкс на вызов. BenchmarkDotNet, без EmberTrace",
+        tr("Почти вся регрессия биндинга сидит в одной строке"),
+        tr("Get<T> для класса на 50 свойств, мкс на вызов. BenchmarkDotNet, без EmberTrace"),
     )
     axis.set_xlim(-2, 145)
     axis.set_ylim(len(rows) - 0.5, -0.8)
     for index, (_, value, colour, _) in enumerate(rows):
         rounded_bar(axis, index, value, 0.56, colour)
-        axis.text(value + 2, index, f"{value} мкс", va="center", ha="left", fontsize=LABEL_SIZE, color=INK, weight="bold" if colour == SLOWER else "normal")
+        axis.text(value + 2, index, tr("{} мкс").format(value), va="center", ha="left", fontsize=LABEL_SIZE, color=INK, weight="bold" if colour == SLOWER else "normal")
     for index, (_, _, _, allocated) in enumerate(rows):
         axis.text(1.02, index, allocated, transform=axis.get_yaxis_transform(), va="center", ha="left", fontsize=SMALL_SIZE, color=INK_2, clip_on=False)
-    axis.text(1.02, -0.72, "память", transform=axis.get_yaxis_transform(), va="center", ha="left", fontsize=SMALL_SIZE, color=INK_2, clip_on=False)
+    axis.text(1.02, -0.72, tr("память"), transform=axis.get_yaxis_transform(), va="center", ha="left", fontsize=SMALL_SIZE, color=INK_2, clip_on=False)
     axis.axvline(0, color=AXIS, linewidth=1, zorder=3)
     axis.set_yticks(range(len(rows)), [row[0] for row in rows], color=INK, fontsize=LABEL_SIZE - 0.5)
     axis.set_xticks([])
@@ -480,19 +490,19 @@ def binder_variants():
 
 def rc11(fixed):
     rows = [
-        ("options.snapshot-new-scope.x1k", "IOptionsSnapshot в новом scope"),
-        ("config.bind-poco50.x1k", "биндинг POCO на 50 полей"),
-        ("config.cold.build-json2000", "холодная сборка конфигурации"),
-        ("options.validate-data-annotations.x1k", "валидация DataAnnotations"),
-        ("cache.cold.create-and-first-set", "холодный старт MemoryCache"),
+        ("options.snapshot-new-scope.x1k", tr("IOptionsSnapshot в новом scope")),
+        ("config.bind-poco50.x1k", tr("биндинг POCO на 50 полей")),
+        ("config.cold.build-json2000", tr("холодная сборка конфигурации")),
+        ("options.validate-data-annotations.x1k", tr("валидация DataAnnotations")),
+        ("cache.cold.create-and-first-set", tr("холодный старт MemoryCache")),
     ]
     figure, axis = canvas(
         3.75,
         2.5,
         0.1,
         0.1,
-        "В 11 RC биндинг и снапшот опций подорожали в 2,4–2,6 раза",
-        "Изменение времени относительно 7.0, режим стенда",
+        tr("В 11 RC биндинг и снапшот опций подорожали в 2,4–2,6 раза"),
+        tr("Изменение времени относительно 7.0, режим стенда"),
     )
     axis.set_xlim(-6, 196)
     axis.set_ylim(len(rows) - 0.5, -0.5)
@@ -522,17 +532,17 @@ def allocations(bytes_change):
     labels = {
         "ef.detect-changes-10k-tracked.x10": "EF: DetectChanges",
         "logging.logger-message-define.x10k": "LoggerMessage.Define",
-        "cache.size-limit-compact-half.x1": "кэш: Compact при лимите",
-        "config.bind-poco50.x1k": "биндинг POCO на 50 полей",
-        "options.snapshot-new-scope.x1k": "IOptionsSnapshot в новом scope",
-        "logging.factory-create.x100": "новый LoggerFactory",
-        "ef.new-context.x1k": "EF: новый DbContext",
-        "di.build100.x100": "DI: сборка, 100 регистраций",
-        "di.build1000.x10": "DI: сборка, 1000 регистраций",
-        "logging.cold.first-log": "первая запись в лог",
-        "ef.cold.first-query": "EF: первый запрос",
+        "cache.size-limit-compact-half.x1": tr("кэш: Compact при лимите"),
+        "config.bind-poco50.x1k": tr("биндинг POCO на 50 полей"),
+        "options.snapshot-new-scope.x1k": tr("IOptionsSnapshot в новом scope"),
+        "logging.factory-create.x100": tr("новый LoggerFactory"),
+        "ef.new-context.x1k": tr("EF: новый DbContext"),
+        "di.build100.x100": tr("DI: сборка, 100 регистраций"),
+        "di.build1000.x10": tr("DI: сборка, 1000 регистраций"),
+        "logging.cold.first-log": tr("первая запись в лог"),
+        "ef.cold.first-query": tr("EF: первый запрос"),
         "ef.query-where-orderby-take.x1k": "EF: Where + OrderBy + Take",
-        "di.validate-on-build100.x100": "DI: сборка с ValidateOnBuild",
+        "di.validate-on-build100.x100": tr("DI: сборка с ValidateOnBuild"),
         "ef.to-query-string.x1k": "EF: ToQueryString",
     }
     rows = sorted(((bytes_change[scope], label) for scope, label in labels.items()), key=lambda row: row[0])
@@ -541,8 +551,8 @@ def allocations(bytes_change):
         2.42,
         0.1,
         0.08,
-        "Аллокации: от −42% у DetectChanges до +51% у ToQueryString",
-        "Байт на пачку вызовов, 10.0 против 7.0. Показаны крупные изменения и биндинг\nс IOptionsSnapshot; у остальных операций сдвиг меньше 10%",
+        tr("Аллокации: от −42% у DetectChanges до +51% у ToQueryString"),
+        tr("Байт на пачку вызовов, 10.0 против 7.0. Показаны крупные изменения и биндинг\nс IOptionsSnapshot; у остальных операций сдвиг меньше 10%"),
     )
     axis.set_xlim(-56, 62)
     axis.set_ylim(len(rows) - 0.5, -0.5)
@@ -562,13 +572,13 @@ def allocations(bytes_change):
 def modes(fixed, stock):
     labels = [
         ("di.singleton.x10k", "DI: singleton"),
-        ("di.open-generic.x10k", "DI: открытый generic"),
+        ("di.open-generic.x10k", tr("DI: открытый generic")),
         ("di.transient.x10k", "DI: transient"),
-        ("di.first-resolve-depth5.x100", "DI: первый resolve"),
+        ("di.first-resolve-depth5.x100", tr("DI: первый resolve")),
         ("options.monitor-current-value.x10k", "IOptionsMonitor.CurrentValue"),
-        ("logging.factory-create.x100", "новый LoggerFactory"),
+        ("logging.factory-create.x100", tr("новый LoggerFactory")),
         ("logging.logger-message-define.x10k", "LoggerMessage.Define"),
-        ("cache.try-get-hit.x10k", "кэш: TryGetValue, попадание"),
+        ("cache.try-get-hit.x10k", tr("кэш: TryGetValue, попадание")),
     ]
     rows = sorted(labels, key=lambda row: -abs(fixed[row[0]]["e10"] - stock[row[0]]["e10"]))
     figure, axis = canvas(
@@ -576,8 +586,8 @@ def modes(fixed, stock):
         2.28,
         0.72,
         0.34,
-        "DI и IOptionsMonitor: режим питания меняет результат на 9–14 п.п.",
-        "Изменение времени, 10.0 против 7.0. Серая полоса — порог шума ±5%",
+        tr("DI и IOptionsMonitor: режим питания меняет результат на 9–14 п.п."),
+        tr("Изменение времени, 10.0 против 7.0. Серая полоса — порог шума ±5%"),
         reserve=0.28,
     )
     for index, (scope, _) in enumerate(rows):
@@ -585,20 +595,20 @@ def modes(fixed, stock):
         axis.plot([left, right], [index, index], color=AXIS, linewidth=2, zorder=2, solid_capstyle="butt")
         axis.plot([left], [index], "o", color=STAND, markersize=8.5, markeredgecolor=SURFACE, markeredgewidth=1.5, zorder=3)
         axis.plot([right], [index], "D", color=STOCK, markersize=7.5, markeredgecolor=SURFACE, markeredgewidth=1.5, zorder=3)
-        axis.text(1.02, index, f"{abs(left - right):.0f} п.п.", transform=axis.get_yaxis_transform(), va="center", ha="left", fontsize=LABEL_SIZE, color=INK, weight="bold", clip_on=False)
+        axis.text(1.02, index, tr("{} п.п.").format(f"{abs(left - right):.0f}"), transform=axis.get_yaxis_transform(), va="center", ha="left", fontsize=LABEL_SIZE, color=INK, weight="bold", clip_on=False)
     axis.axvspan(-5, 5, color=NOISE_BAND, linewidth=0, zorder=0)
     axis.axvline(0, color=AXIS, linewidth=1, zorder=1)
     axis.set_yticks(range(len(rows)), [label for _, label in rows], color=INK, fontsize=LABEL_SIZE - 0.5)
     axis.set_ylim(len(rows) - 0.5, -0.6)
-    axis.text(1.02, 1.02, "разница", transform=axis.transAxes, va="bottom", ha="left", fontsize=SMALL_SIZE, color=INK_2, clip_on=False)
+    axis.text(1.02, 1.02, tr("разница"), transform=axis.transAxes, va="bottom", ha="left", fontsize=SMALL_SIZE, color=INK_2, clip_on=False)
     axis.set_xlim(-45, 68)
     axis.set_xticks([-40, -20, 0, 20, 40, 60])
     signed_percent_axis(axis, "x")
     axis.spines["left"].set_visible(False)
     axis.legend(
         handles=[
-            Line2D([], [], marker="o", linestyle="", color=STAND, markersize=8.5, label="стенд: 2 ГГц, без турбо"),
-            Line2D([], [], marker="D", linestyle="", color=STOCK, markersize=7.5, label="заводские: powersave, турбо"),
+            Line2D([], [], marker="o", linestyle="", color=STAND, markersize=8.5, label=tr("стенд: 2 ГГц, без турбо")),
+            Line2D([], [], marker="D", linestyle="", color=STOCK, markersize=7.5, label=tr("заводские: powersave, турбо")),
         ],
         loc="lower left",
         ncol=2,
