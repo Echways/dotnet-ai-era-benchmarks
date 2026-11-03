@@ -285,7 +285,7 @@ ConfigurationBinder.BindProperty       1000000  551.475   551.475   18.49
 ConfigurationBinder.GetAllProperties   20000    45.165    45.165    1.51
 </code></pre>
 <p>Миллион вызовов и 61% времени на проверку атрибута, которого в этом классе нет. За 3 секунды записано 4 млн событий, ни одно не потеряно. У этого есть цена: со скопами биндинг занял 148 мкс против 120 мкс в бенчмарке, то есть грубо 0,3 мкс на скоп вместе с хешированием имени в <code>Tracer.Id</code>, так что доли здесь приблизительные. Для такой разовой диагностики это приемлемо, а скоп на каждый вызов в продакшене я бы ставить не стал.</p>
-<p>Кроме этого, в EmberTrace есть связи между потоками и <code>async/await</code>, flight recorder, инструментирование через <code>[Trace]</code> и экспорт в Chrome Trace, Perfetto и OpenTelemetry, но в этой статье они не использовались. Скрипты для повторения обоих поисков лежат в <a href="https://github.com/Echways/dotnet-ai-era-benchmarks/tree/main/experiments"><code>experiments/</code></a>.</p>
+<p>Кроме этого, в EmberTrace есть связи между потоками и <code>async/await</code>, flight recorder, инструментирование через <code>[Trace]</code> и экспорт в Chrome Trace, Perfetto и OpenTelemetry, но в этой статье они не использовались. Скрипты для повторения обоих поисков лежат в <a href="https://github.com/Echways/dotnet-ai-era-benchmarks/tree/main/iteration-1/experiments"><code>experiments/</code></a>.</p>
 <h2>Аллокации надёжнее времени</h2>
 <p>Байты на пачку почти детерминированы и от частоты не зависят, поэтому это самый надёжный сигнал в наборе.</p>
 <figure><img alt="Столбчатая диаграмма аллокаций: от минус 42 процентов у DetectChanges до плюс 51 процента у ToQueryString" src="figures/allocations.png"></figure>
