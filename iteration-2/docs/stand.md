@@ -19,7 +19,8 @@ The numbers are only comparable when every run happens on the same, quiet, fixed
 
 - Smoke test: `./scripts/run-matrix.sh --quick`
 - Full matrix: `./scripts/run-matrix.sh --runs 10`. Inside every run the points of each scenario execute in a shuffled order, so drift on the machine is not tied to a point; the order is recorded in `process-order.txt` next to `env.json`.
-- Repeated rounds: `./scripts/run-rounds.sh --runs 3 --prune-traces`; builds happen once, in the first round.
+- Unattended night: `./scripts/overnight.sh --hours 8` applies the stand settings (one `sudo` prompt), measures the counter interval A/B (20 ms, 1 s, 0) on `e0-7,e2-10` into `results/ab-counter/`, then repeats full rounds until the time is up and restores the settings on exit. The tree must be clean; the log is in `results/overnight/`.
+- Repeated rounds: `./scripts/run-rounds.sh --runs 3 --prune-traces` (`--stop-after-hours H` stops starting rounds after a time budget; a failed round stays in `incomplete/` and three failures in a row end the loop); builds happen once, in the first round.
 - Tiering control: `./scripts/run-matrix.sh --runs 10 --no-tiering` (writes to `results/raw-notier/` and `results/summary/notier/`)
 - Cross-check with BenchmarkDotNet: `./scripts/run-bdn.sh` (add `--quick` for a short job)
 

@@ -1,10 +1,10 @@
-using System.Diagnostics;
 using EmberTrace;
 
 namespace Harness.Core;
 
-public sealed class Recorder
+public sealed class Recorder(TimeProvider? timeProvider = null)
 {
+    private readonly TimeProvider _time = timeProvider ?? TimeProvider.System;
     private readonly Dictionary<int, ScopeRecord> _records = new();
     private readonly Dictionary<int, List<double>> _warmupSamples = new();
     private readonly Lock _gate = new();
@@ -80,9 +80,9 @@ public sealed class Recorder
         {
             if (Warming)
             {
-                var started = Stopwatch.GetTimestamp();
+                var started = _time.GetTimestamp();
                 body();
-                AddWarmupSample(scopeId, Stopwatch.GetElapsedTime(started).TotalMilliseconds);
+                AddWarmupSample(scopeId, _time.GetElapsedTime(started).TotalMilliseconds);
             }
             else
             {
