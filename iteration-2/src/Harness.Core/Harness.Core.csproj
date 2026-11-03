@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Harness.Core</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="EmberTrace" />
+    <PackageReference Include="EmberTrace.Abstractions" />
+    <PackageReference Include="EmberTrace.Format" />
+    <PackageReference Include="System.CommandLine" />
+  </ItemGroup>
+</Project>
