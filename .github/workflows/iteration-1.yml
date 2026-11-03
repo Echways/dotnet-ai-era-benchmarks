@@ -1,8 +1,14 @@
-name: build-matrix
+name: iteration-1
 
 on:
   push:
+    paths:
+      - iteration-1/**
+      - .github/workflows/iteration-1.yml
   pull_request:
+    paths:
+      - iteration-1/**
+      - .github/workflows/iteration-1.yml
   workflow_dispatch:
 
 permissions:
@@ -11,6 +17,10 @@ permissions:
 env:
   DOTNET_NOLOGO: "1"
   DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+
+defaults:
+  run:
+    working-directory: iteration-1
 
 jobs:
   points:
@@ -34,7 +44,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-dotnet@v6
         with:
-          global-json-file: global.json
+          global-json-file: iteration-1/global.json
       - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
@@ -60,7 +70,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-dotnet@v6
         with:
-          global-json-file: global.json
+          global-json-file: iteration-1/global.json
       - name: Restore and build ${{ matrix.label }}
         run: dotnet build src/Harness/Harness.csproj -c Release -p:MsExt=${{ matrix.major }} -p:Ef=${{ matrix.major }} -o bin/${{ matrix.label }}
       - name: Run every scenario and the loaded-version check
@@ -71,7 +81,7 @@ jobs:
       - uses: actions/upload-artifact@v7
         with:
           name: smoke-${{ matrix.label }}
-          path: results/raw/${{ matrix.label }}/*.run-meta.json
+          path: iteration-1/results/raw/${{ matrix.label }}/*.run-meta.json
 
   version-guard:
     runs-on: ubuntu-latest
@@ -79,7 +89,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-dotnet@v6
         with:
-          global-json-file: global.json
+          global-json-file: iteration-1/global.json
       - name: Build two adjacent points
         run: |
           dotnet build src/Harness/Harness.csproj -c Release -p:MsExt=7 -p:Ef=7 -o bin/e0-7
@@ -107,7 +117,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-dotnet@v6
         with:
-          global-json-file: global.json
+          global-json-file: iteration-1/global.json
       - name: Install the .NET 11 SDK into .dotnet
         run: ./scripts/ensure-sdk11.sh
       - name: Build and run Track B on net10.0 and net11.0
