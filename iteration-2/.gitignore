@@ -1,0 +1,16 @@
+bin/
+obj/
+.dotnet/
+.work/
+.venv/
+__pycache__/
+.ruff_cache/
+.pytest_cache/
+BenchmarkDotNet.Artifacts/
+results/*
+!results/summary/
+results/summary/plots/*.tmp
+glassbox/src/
+glassbox/generated/
+attribution/cache/
+results/summary/traces/**/*.chrome.json

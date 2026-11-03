@@ -1,0 +1,1495 @@
+{
+  "generated_utc": "2026-10-28T22:25:04Z",
+  "source": "https://api.nuget.org/v3-flatcontainer",
+  "baseline": "e0-7",
+  "sqlitepclraw": {
+    "track_a_minimum_per_point": {
+      "e0-6": "2.1.2",
+      "e0-7": "2.1.4",
+      "e1-8": "2.1.13",
+      "e1-9": "2.1.13",
+      "e2-10": "2.1.13"
+    },
+    "track_a_pinned": "2.1.13",
+    "track_a_single_minor_line": true,
+    "track_b_minimum_per_point": {
+      "e2-11": "3.0.5"
+    },
+    "latest_stable": "3.0.5",
+    "rule": "Track A pins the highest minimum required by any Track A EF point"
+  },
+  "missing": [],
+  "points": [
+    {
+      "label": "e0-6",
+      "epoch": "E0",
+      "major": 6,
+      "msext": "6.0.x",
+      "msext_max": "6.0.4",
+      "ef": "6.0.36",
+      "ef_package_version": "6.0.36",
+      "ef_track": "A",
+      "ef_asset_tfm": "net6.0",
+      "sqlitepclraw_min": "2.1.2",
+      "tfms": {
+        "Microsoft.Data.Sqlite.Core": [
+          "net6.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.EntityFrameworkCore": [
+          "net6.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Abstractions": [
+          "net6.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Analyzers": [
+          "netstandard2.0"
+        ],
+        "Microsoft.EntityFrameworkCore.InMemory": [
+          "net6.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Relational": [
+          "net6.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Sqlite": [
+          "net6.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Sqlite.Core": [
+          "net6.0"
+        ],
+        "Microsoft.Extensions.Caching.Abstractions": [
+          "net461",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Caching.Memory": [
+          "net461",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration": [
+          "net461",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration.Abstractions": [
+          "net461",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration.Binder": [
+          "net461",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration.FileExtensions": [
+          "net461",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration.Json": [
+          "net461",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.DependencyInjection": [
+          "net461",
+          "net6.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.DependencyInjection.Abstractions": [
+          "net461",
+          "net6.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.DependencyModel": [
+          "net461",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.FileProviders.Abstractions": [
+          "net461",
+          "net6.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.FileProviders.Physical": [
+          "net461",
+          "net6.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.FileSystemGlobbing": [
+          "net461",
+          "net6.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Logging": [
+          "net461",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.Logging.Abstractions": [
+          "net461",
+          "net6.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Options": [
+          "net461",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.Options.ConfigurationExtensions": [
+          "net461",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Options.DataAnnotations": [
+          "net461",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.Primitives": [
+          "net461",
+          "net6.0",
+          "netcoreapp3.1",
+          "netstandard2.0"
+        ]
+      },
+      "net10_asset_tfm": {
+        "Microsoft.Extensions.Configuration.Abstractions": "netstandard2.0",
+        "Microsoft.Extensions.Primitives": "net6.0",
+        "Microsoft.Extensions.DependencyModel": "netstandard2.0",
+        "Microsoft.Extensions.Logging": "netstandard2.1",
+        "Microsoft.Extensions.Options": "netstandard2.1",
+        "Microsoft.Extensions.DependencyInjection.Abstractions": "net6.0",
+        "Microsoft.Extensions.Logging.Abstractions": "net6.0",
+        "Microsoft.Extensions.DependencyInjection": "net6.0",
+        "Microsoft.Extensions.Caching.Memory": "netstandard2.0",
+        "Microsoft.Extensions.Caching.Abstractions": "netstandard2.0",
+        "Microsoft.Extensions.Options.DataAnnotations": "netstandard2.1",
+        "Microsoft.Extensions.Options.ConfigurationExtensions": "netstandard2.0",
+        "Microsoft.Extensions.Configuration.Binder": "netstandard2.0",
+        "Microsoft.Extensions.Configuration.Json": "netstandard2.1",
+        "Microsoft.Extensions.FileProviders.Abstractions": "net6.0",
+        "Microsoft.Extensions.Configuration": "netstandard2.0",
+        "Microsoft.Extensions.Configuration.FileExtensions": "netstandard2.0",
+        "Microsoft.Extensions.FileProviders.Physical": "net6.0",
+        "Microsoft.Extensions.FileSystemGlobbing": "net6.0"
+      },
+      "packages": {
+        "Microsoft.Data.Sqlite.Core": "6.0.36",
+        "Microsoft.EntityFrameworkCore": "6.0.36",
+        "Microsoft.EntityFrameworkCore.Abstractions": "6.0.36",
+        "Microsoft.EntityFrameworkCore.Analyzers": "6.0.36",
+        "Microsoft.EntityFrameworkCore.InMemory": "6.0.36",
+        "Microsoft.EntityFrameworkCore.Relational": "6.0.36",
+        "Microsoft.EntityFrameworkCore.Sqlite": "6.0.36",
+        "Microsoft.EntityFrameworkCore.Sqlite.Core": "6.0.36",
+        "Microsoft.Extensions.Caching.Abstractions": "6.0.1",
+        "Microsoft.Extensions.Caching.Memory": "6.0.3",
+        "Microsoft.Extensions.Configuration": "6.0.2",
+        "Microsoft.Extensions.Configuration.Abstractions": "6.0.1",
+        "Microsoft.Extensions.Configuration.Binder": "6.0.1",
+        "Microsoft.Extensions.Configuration.FileExtensions": "6.0.1",
+        "Microsoft.Extensions.Configuration.Json": "6.0.1",
+        "Microsoft.Extensions.DependencyInjection": "6.0.2",
+        "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
+        "Microsoft.Extensions.DependencyModel": "6.0.2",
+        "Microsoft.Extensions.FileProviders.Abstractions": "6.0.1",
+        "Microsoft.Extensions.FileProviders.Physical": "6.0.1",
+        "Microsoft.Extensions.FileSystemGlobbing": "6.0.0",
+        "Microsoft.Extensions.Logging": "6.0.1",
+        "Microsoft.Extensions.Logging.Abstractions": "6.0.4",
+        "Microsoft.Extensions.Options": "6.0.1",
+        "Microsoft.Extensions.Options.ConfigurationExtensions": "6.0.1",
+        "Microsoft.Extensions.Options.DataAnnotations": "6.0.1",
+        "Microsoft.Extensions.Primitives": "6.0.1"
+      },
+      "track_b": {
+        "System.Text.Json": {
+          "version": "6.0.11",
+          "tfms": [
+            "net461",
+            "net6.0",
+            "netcoreapp3.1",
+            "netstandard2.0"
+          ]
+        },
+        "System.Threading.Channels": {
+          "version": "6.0.0",
+          "tfms": [
+            "net461",
+            "net6.0",
+            "netcoreapp3.1",
+            "netstandard2.0",
+            "netstandard2.1"
+          ]
+        },
+        "System.Collections.Immutable": {
+          "version": "6.0.1",
+          "tfms": [
+            "net461",
+            "net6.0",
+            "netstandard2.0"
+          ]
+        },
+        "Microsoft.AspNetCore.App.Ref": {
+          "version": "6.0.36",
+          "tfms": []
+        }
+      }
+    },
+    {
+      "label": "e0-7",
+      "epoch": "E0",
+      "major": 7,
+      "msext": "7.0.x",
+      "msext_max": "7.0.4",
+      "ef": "7.0.20",
+      "ef_package_version": "7.0.20",
+      "ef_track": "A",
+      "ef_asset_tfm": "net6.0",
+      "sqlitepclraw_min": "2.1.4",
+      "tfms": {
+        "Microsoft.Data.Sqlite.Core": [
+          "net6.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.EntityFrameworkCore": [
+          "net6.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Abstractions": [
+          "net6.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Analyzers": [
+          "netstandard2.0"
+        ],
+        "Microsoft.EntityFrameworkCore.InMemory": [
+          "net6.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Relational": [
+          "net6.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Sqlite": [
+          "net6.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Sqlite.Core": [
+          "net6.0"
+        ],
+        "Microsoft.Extensions.Caching.Abstractions": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Caching.Memory": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration.Abstractions": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration.Binder": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration.FileExtensions": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration.Json": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.DependencyInjection": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.DependencyInjection.Abstractions": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.DependencyModel": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.FileProviders.Abstractions": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.FileProviders.Physical": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.FileSystemGlobbing": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Logging": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.Logging.Abstractions": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Options": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.Options.ConfigurationExtensions": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Options.DataAnnotations": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.Primitives": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "netstandard2.0"
+        ]
+      },
+      "net10_asset_tfm": {
+        "Microsoft.Extensions.Configuration.Abstractions": "net7.0",
+        "Microsoft.Extensions.Primitives": "net7.0",
+        "Microsoft.Extensions.DependencyModel": "net7.0",
+        "Microsoft.Extensions.Logging": "net7.0",
+        "Microsoft.Extensions.Options": "net7.0",
+        "Microsoft.Extensions.DependencyInjection.Abstractions": "net7.0",
+        "Microsoft.Extensions.Logging.Abstractions": "net7.0",
+        "Microsoft.Extensions.DependencyInjection": "net7.0",
+        "Microsoft.Extensions.Caching.Memory": "net7.0",
+        "Microsoft.Extensions.Caching.Abstractions": "net7.0",
+        "Microsoft.Extensions.Options.DataAnnotations": "net7.0",
+        "Microsoft.Extensions.Options.ConfigurationExtensions": "net7.0",
+        "Microsoft.Extensions.Configuration.Binder": "net7.0",
+        "Microsoft.Extensions.Configuration.Json": "net7.0",
+        "Microsoft.Extensions.FileProviders.Abstractions": "net7.0",
+        "Microsoft.Extensions.Configuration": "net7.0",
+        "Microsoft.Extensions.Configuration.FileExtensions": "net7.0",
+        "Microsoft.Extensions.FileProviders.Physical": "net7.0",
+        "Microsoft.Extensions.FileSystemGlobbing": "net7.0"
+      },
+      "packages": {
+        "Microsoft.Data.Sqlite.Core": "7.0.20",
+        "Microsoft.EntityFrameworkCore": "7.0.20",
+        "Microsoft.EntityFrameworkCore.Abstractions": "7.0.20",
+        "Microsoft.EntityFrameworkCore.Analyzers": "7.0.20",
+        "Microsoft.EntityFrameworkCore.InMemory": "7.0.20",
+        "Microsoft.EntityFrameworkCore.Relational": "7.0.20",
+        "Microsoft.EntityFrameworkCore.Sqlite": "7.0.20",
+        "Microsoft.EntityFrameworkCore.Sqlite.Core": "7.0.20",
+        "Microsoft.Extensions.Caching.Abstractions": "7.0.0",
+        "Microsoft.Extensions.Caching.Memory": "7.0.0",
+        "Microsoft.Extensions.Configuration": "7.0.0",
+        "Microsoft.Extensions.Configuration.Abstractions": "7.0.0",
+        "Microsoft.Extensions.Configuration.Binder": "7.0.4",
+        "Microsoft.Extensions.Configuration.FileExtensions": "7.0.0",
+        "Microsoft.Extensions.Configuration.Json": "7.0.0",
+        "Microsoft.Extensions.DependencyInjection": "7.0.0",
+        "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0",
+        "Microsoft.Extensions.DependencyModel": "7.0.0",
+        "Microsoft.Extensions.FileProviders.Abstractions": "7.0.0",
+        "Microsoft.Extensions.FileProviders.Physical": "7.0.0",
+        "Microsoft.Extensions.FileSystemGlobbing": "7.0.0",
+        "Microsoft.Extensions.Logging": "7.0.0",
+        "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
+        "Microsoft.Extensions.Options": "7.0.1",
+        "Microsoft.Extensions.Options.ConfigurationExtensions": "7.0.0",
+        "Microsoft.Extensions.Options.DataAnnotations": "7.0.0",
+        "Microsoft.Extensions.Primitives": "7.0.0"
+      },
+      "track_b": {
+        "System.Text.Json": {
+          "version": "7.0.4",
+          "tfms": [
+            "net462",
+            "net6.0",
+            "net7.0",
+            "netstandard2.0"
+          ]
+        },
+        "System.Threading.Channels": {
+          "version": "7.0.0",
+          "tfms": [
+            "net462",
+            "net6.0",
+            "net7.0",
+            "netstandard2.0",
+            "netstandard2.1"
+          ]
+        },
+        "System.Collections.Immutable": {
+          "version": "7.0.0",
+          "tfms": [
+            "net462",
+            "net6.0",
+            "net7.0",
+            "netstandard2.0"
+          ]
+        },
+        "Microsoft.AspNetCore.App.Ref": {
+          "version": "7.0.20",
+          "tfms": []
+        }
+      }
+    },
+    {
+      "label": "e1-8",
+      "epoch": "E1",
+      "major": 8,
+      "msext": "8.0.x",
+      "msext_max": "8.0.3",
+      "ef": "8.0.33",
+      "ef_package_version": "8.0.33",
+      "ef_track": "A",
+      "ef_asset_tfm": "net8.0",
+      "sqlitepclraw_min": "2.1.13",
+      "tfms": {
+        "Microsoft.Data.Sqlite.Core": [
+          "net6.0",
+          "net8.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.EntityFrameworkCore": [
+          "net8.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Abstractions": [
+          "net8.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Analyzers": [
+          "netstandard2.0"
+        ],
+        "Microsoft.EntityFrameworkCore.InMemory": [
+          "net8.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Relational": [
+          "net8.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Sqlite": [
+          "net8.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Sqlite.Core": [
+          "net8.0"
+        ],
+        "Microsoft.Extensions.Caching.Abstractions": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "net8.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Caching.Memory": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "net8.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "net8.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration.Abstractions": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "net8.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration.Binder": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "net8.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration.FileExtensions": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "net8.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration.Json": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "net8.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.DependencyInjection": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "net8.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.DependencyInjection.Abstractions": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "net8.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.DependencyModel": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "net8.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.FileProviders.Abstractions": [
+          "net462",
+          "net6.0",
+          "net8.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.FileProviders.Physical": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "net8.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.FileSystemGlobbing": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "net8.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Logging": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "net8.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.Logging.Abstractions": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "net8.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Options": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "net8.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.Options.ConfigurationExtensions": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "net8.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Options.DataAnnotations": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "net8.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.Primitives": [
+          "net462",
+          "net6.0",
+          "net7.0",
+          "net8.0",
+          "netstandard2.0"
+        ]
+      },
+      "net10_asset_tfm": {
+        "Microsoft.Extensions.Configuration.Abstractions": "net8.0",
+        "Microsoft.Extensions.Primitives": "net8.0",
+        "Microsoft.Extensions.DependencyModel": "net8.0",
+        "Microsoft.Extensions.Logging": "net8.0",
+        "Microsoft.Extensions.Options": "net8.0",
+        "Microsoft.Extensions.DependencyInjection.Abstractions": "net8.0",
+        "Microsoft.Extensions.Logging.Abstractions": "net8.0",
+        "Microsoft.Extensions.DependencyInjection": "net8.0",
+        "Microsoft.Extensions.Caching.Memory": "net8.0",
+        "Microsoft.Extensions.Caching.Abstractions": "net8.0",
+        "Microsoft.Extensions.Options.DataAnnotations": "net8.0",
+        "Microsoft.Extensions.Options.ConfigurationExtensions": "net8.0",
+        "Microsoft.Extensions.Configuration.Binder": "net8.0",
+        "Microsoft.Extensions.Configuration.Json": "net8.0",
+        "Microsoft.Extensions.FileProviders.Abstractions": "net8.0",
+        "Microsoft.Extensions.Configuration": "net8.0",
+        "Microsoft.Extensions.Configuration.FileExtensions": "net8.0",
+        "Microsoft.Extensions.FileProviders.Physical": "net8.0",
+        "Microsoft.Extensions.FileSystemGlobbing": "net8.0"
+      },
+      "packages": {
+        "Microsoft.Data.Sqlite.Core": "8.0.33",
+        "Microsoft.EntityFrameworkCore": "8.0.33",
+        "Microsoft.EntityFrameworkCore.Abstractions": "8.0.33",
+        "Microsoft.EntityFrameworkCore.Analyzers": "8.0.33",
+        "Microsoft.EntityFrameworkCore.InMemory": "8.0.33",
+        "Microsoft.EntityFrameworkCore.Relational": "8.0.33",
+        "Microsoft.EntityFrameworkCore.Sqlite": "8.0.33",
+        "Microsoft.EntityFrameworkCore.Sqlite.Core": "8.0.33",
+        "Microsoft.Extensions.Caching.Abstractions": "8.0.0",
+        "Microsoft.Extensions.Caching.Memory": "8.0.1",
+        "Microsoft.Extensions.Configuration": "8.0.0",
+        "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
+        "Microsoft.Extensions.Configuration.Binder": "8.0.2",
+        "Microsoft.Extensions.Configuration.FileExtensions": "8.0.1",
+        "Microsoft.Extensions.Configuration.Json": "8.0.1",
+        "Microsoft.Extensions.DependencyInjection": "8.0.1",
+        "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.2",
+        "Microsoft.Extensions.DependencyModel": "8.0.2",
+        "Microsoft.Extensions.FileProviders.Abstractions": "8.0.0",
+        "Microsoft.Extensions.FileProviders.Physical": "8.0.0",
+        "Microsoft.Extensions.FileSystemGlobbing": "8.0.0",
+        "Microsoft.Extensions.Logging": "8.0.1",
+        "Microsoft.Extensions.Logging.Abstractions": "8.0.3",
+        "Microsoft.Extensions.Options": "8.0.2",
+        "Microsoft.Extensions.Options.ConfigurationExtensions": "8.0.0",
+        "Microsoft.Extensions.Options.DataAnnotations": "8.0.0",
+        "Microsoft.Extensions.Primitives": "8.0.0"
+      },
+      "track_b": {
+        "System.Text.Json": {
+          "version": "8.0.6",
+          "tfms": [
+            "net462",
+            "net6.0",
+            "net7.0",
+            "net8.0",
+            "netstandard2.0"
+          ]
+        },
+        "System.Threading.Channels": {
+          "version": "8.0.0",
+          "tfms": [
+            "net462",
+            "net6.0",
+            "net7.0",
+            "net8.0",
+            "netstandard2.0",
+            "netstandard2.1"
+          ]
+        },
+        "System.Collections.Immutable": {
+          "version": "8.0.0",
+          "tfms": [
+            "net462",
+            "net6.0",
+            "net7.0",
+            "net8.0",
+            "netstandard2.0"
+          ]
+        },
+        "Microsoft.AspNetCore.App.Ref": {
+          "version": "8.0.33",
+          "tfms": []
+        }
+      }
+    },
+    {
+      "label": "e1-9",
+      "epoch": "E1",
+      "major": 9,
+      "msext": "9.0.x",
+      "msext_max": "9.0.22",
+      "ef": "9.0.22",
+      "ef_package_version": "9.0.22",
+      "ef_track": "A",
+      "ef_asset_tfm": "net8.0",
+      "sqlitepclraw_min": "2.1.13",
+      "tfms": {
+        "Microsoft.Data.Sqlite.Core": [
+          "net6.0",
+          "net8.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.EntityFrameworkCore": [
+          "net8.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Abstractions": [
+          "net8.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Analyzers": [
+          "netstandard2.0"
+        ],
+        "Microsoft.EntityFrameworkCore.InMemory": [
+          "net8.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Relational": [
+          "net8.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Sqlite": [
+          "net8.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Sqlite.Core": [
+          "net8.0"
+        ],
+        "Microsoft.Extensions.Caching.Abstractions": [
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Caching.Memory": [
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration": [
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration.Abstractions": [
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration.Binder": [
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration.FileExtensions": [
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration.Json": [
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.DependencyInjection": [
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.DependencyInjection.Abstractions": [
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.DependencyModel": [
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.FileProviders.Abstractions": [
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.FileProviders.Physical": [
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.FileSystemGlobbing": [
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Logging": [
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.Logging.Abstractions": [
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Options": [
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.Options.ConfigurationExtensions": [
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Options.DataAnnotations": [
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.Primitives": [
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ]
+      },
+      "net10_asset_tfm": {
+        "Microsoft.Extensions.Logging": "net9.0",
+        "Microsoft.Extensions.Options": "net9.0",
+        "Microsoft.Extensions.Primitives": "net9.0",
+        "Microsoft.Extensions.DependencyInjection.Abstractions": "net9.0",
+        "Microsoft.Extensions.Logging.Abstractions": "net9.0",
+        "Microsoft.Extensions.DependencyInjection": "net9.0",
+        "Microsoft.Extensions.Caching.Memory": "net9.0",
+        "Microsoft.Extensions.Caching.Abstractions": "net9.0",
+        "Microsoft.Extensions.Configuration.Abstractions": "net9.0",
+        "Microsoft.Extensions.DependencyModel": "net9.0",
+        "Microsoft.Extensions.Options.DataAnnotations": "net9.0",
+        "Microsoft.Extensions.Options.ConfigurationExtensions": "net9.0",
+        "Microsoft.Extensions.Configuration.Binder": "net9.0",
+        "Microsoft.Extensions.Configuration.Json": "net9.0",
+        "Microsoft.Extensions.FileProviders.Abstractions": "net9.0",
+        "Microsoft.Extensions.Configuration": "net9.0",
+        "Microsoft.Extensions.Configuration.FileExtensions": "net9.0",
+        "Microsoft.Extensions.FileProviders.Physical": "net9.0",
+        "Microsoft.Extensions.FileSystemGlobbing": "net9.0"
+      },
+      "packages": {
+        "Microsoft.Data.Sqlite.Core": "9.0.22",
+        "Microsoft.EntityFrameworkCore": "9.0.22",
+        "Microsoft.EntityFrameworkCore.Abstractions": "9.0.22",
+        "Microsoft.EntityFrameworkCore.Analyzers": "9.0.22",
+        "Microsoft.EntityFrameworkCore.InMemory": "9.0.22",
+        "Microsoft.EntityFrameworkCore.Relational": "9.0.22",
+        "Microsoft.EntityFrameworkCore.Sqlite": "9.0.22",
+        "Microsoft.EntityFrameworkCore.Sqlite.Core": "9.0.22",
+        "Microsoft.Extensions.Caching.Abstractions": "9.0.22",
+        "Microsoft.Extensions.Caching.Memory": "9.0.22",
+        "Microsoft.Extensions.Configuration": "9.0.22",
+        "Microsoft.Extensions.Configuration.Abstractions": "9.0.22",
+        "Microsoft.Extensions.Configuration.Binder": "9.0.22",
+        "Microsoft.Extensions.Configuration.FileExtensions": "9.0.22",
+        "Microsoft.Extensions.Configuration.Json": "9.0.22",
+        "Microsoft.Extensions.DependencyInjection": "9.0.22",
+        "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.22",
+        "Microsoft.Extensions.DependencyModel": "9.0.22",
+        "Microsoft.Extensions.FileProviders.Abstractions": "9.0.22",
+        "Microsoft.Extensions.FileProviders.Physical": "9.0.22",
+        "Microsoft.Extensions.FileSystemGlobbing": "9.0.22",
+        "Microsoft.Extensions.Logging": "9.0.22",
+        "Microsoft.Extensions.Logging.Abstractions": "9.0.22",
+        "Microsoft.Extensions.Options": "9.0.22",
+        "Microsoft.Extensions.Options.ConfigurationExtensions": "9.0.22",
+        "Microsoft.Extensions.Options.DataAnnotations": "9.0.22",
+        "Microsoft.Extensions.Primitives": "9.0.22"
+      },
+      "track_b": {
+        "System.Text.Json": {
+          "version": "9.0.22",
+          "tfms": [
+            "net462",
+            "net8.0",
+            "net9.0",
+            "netstandard2.0"
+          ]
+        },
+        "System.Threading.Channels": {
+          "version": "9.0.22",
+          "tfms": [
+            "net462",
+            "net8.0",
+            "net9.0",
+            "netstandard2.0",
+            "netstandard2.1"
+          ]
+        },
+        "System.Collections.Immutable": {
+          "version": "9.0.22",
+          "tfms": [
+            "net462",
+            "net8.0",
+            "net9.0",
+            "netstandard2.0"
+          ]
+        },
+        "Microsoft.AspNetCore.App.Ref": {
+          "version": "9.0.22",
+          "tfms": []
+        }
+      }
+    },
+    {
+      "label": "e2-10",
+      "epoch": "E2",
+      "major": 10,
+      "msext": "10.0.x",
+      "msext_max": "10.0.14",
+      "ef": "10.0.14",
+      "ef_package_version": "10.0.14",
+      "ef_track": "A",
+      "ef_asset_tfm": "net10.0",
+      "sqlitepclraw_min": "2.1.13",
+      "tfms": {
+        "Microsoft.Data.Sqlite.Core": [
+          "net8.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.EntityFrameworkCore": [
+          "net10.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Abstractions": [
+          "net10.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Analyzers": [
+          "netstandard2.0"
+        ],
+        "Microsoft.EntityFrameworkCore.InMemory": [
+          "net10.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Relational": [
+          "net10.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Sqlite": [
+          "net10.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Sqlite.Core": [
+          "net10.0"
+        ],
+        "Microsoft.Extensions.Caching.Abstractions": [
+          "net10.0",
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Caching.Memory": [
+          "net10.0",
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration": [
+          "net10.0",
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration.Abstractions": [
+          "net10.0",
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration.Binder": [
+          "net10.0",
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration.FileExtensions": [
+          "net10.0",
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration.Json": [
+          "net10.0",
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.DependencyInjection": [
+          "net10.0",
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.DependencyInjection.Abstractions": [
+          "net10.0",
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.DependencyModel": [
+          "net10.0",
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.FileProviders.Abstractions": [
+          "net10.0",
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.FileProviders.Physical": [
+          "net10.0",
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.FileSystemGlobbing": [
+          "net10.0",
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Logging": [
+          "net10.0",
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.Logging.Abstractions": [
+          "net10.0",
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Options": [
+          "net10.0",
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.Options.ConfigurationExtensions": [
+          "net10.0",
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Options.DataAnnotations": [
+          "net10.0",
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.Primitives": [
+          "net10.0",
+          "net462",
+          "net8.0",
+          "net9.0",
+          "netstandard2.0"
+        ]
+      },
+      "net10_asset_tfm": {
+        "Microsoft.Extensions.Logging": "net10.0",
+        "Microsoft.Extensions.Options": "net10.0",
+        "Microsoft.Extensions.Primitives": "net10.0",
+        "Microsoft.Extensions.DependencyInjection.Abstractions": "net10.0",
+        "Microsoft.Extensions.Logging.Abstractions": "net10.0",
+        "Microsoft.Extensions.DependencyInjection": "net10.0",
+        "Microsoft.Extensions.Caching.Memory": "net10.0",
+        "Microsoft.Extensions.Caching.Abstractions": "net10.0",
+        "Microsoft.Extensions.Configuration.Abstractions": "net10.0",
+        "Microsoft.Extensions.DependencyModel": "net10.0",
+        "Microsoft.Extensions.Options.DataAnnotations": "net10.0",
+        "Microsoft.Extensions.Options.ConfigurationExtensions": "net10.0",
+        "Microsoft.Extensions.Configuration.Binder": "net10.0",
+        "Microsoft.Extensions.Configuration": "net10.0",
+        "Microsoft.Extensions.Configuration.Json": "net10.0",
+        "Microsoft.Extensions.FileProviders.Abstractions": "net10.0",
+        "Microsoft.Extensions.Configuration.FileExtensions": "net10.0",
+        "Microsoft.Extensions.FileProviders.Physical": "net10.0",
+        "Microsoft.Extensions.FileSystemGlobbing": "net10.0"
+      },
+      "packages": {
+        "Microsoft.Data.Sqlite.Core": "10.0.14",
+        "Microsoft.EntityFrameworkCore": "10.0.14",
+        "Microsoft.EntityFrameworkCore.Abstractions": "10.0.14",
+        "Microsoft.EntityFrameworkCore.Analyzers": "10.0.14",
+        "Microsoft.EntityFrameworkCore.InMemory": "10.0.14",
+        "Microsoft.EntityFrameworkCore.Relational": "10.0.14",
+        "Microsoft.EntityFrameworkCore.Sqlite": "10.0.14",
+        "Microsoft.EntityFrameworkCore.Sqlite.Core": "10.0.14",
+        "Microsoft.Extensions.Caching.Abstractions": "10.0.14",
+        "Microsoft.Extensions.Caching.Memory": "10.0.14",
+        "Microsoft.Extensions.Configuration": "10.0.14",
+        "Microsoft.Extensions.Configuration.Abstractions": "10.0.14",
+        "Microsoft.Extensions.Configuration.Binder": "10.0.14",
+        "Microsoft.Extensions.Configuration.FileExtensions": "10.0.14",
+        "Microsoft.Extensions.Configuration.Json": "10.0.14",
+        "Microsoft.Extensions.DependencyInjection": "10.0.14",
+        "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.14",
+        "Microsoft.Extensions.DependencyModel": "10.0.14",
+        "Microsoft.Extensions.FileProviders.Abstractions": "10.0.14",
+        "Microsoft.Extensions.FileProviders.Physical": "10.0.14",
+        "Microsoft.Extensions.FileSystemGlobbing": "10.0.14",
+        "Microsoft.Extensions.Logging": "10.0.14",
+        "Microsoft.Extensions.Logging.Abstractions": "10.0.14",
+        "Microsoft.Extensions.Options": "10.0.14",
+        "Microsoft.Extensions.Options.ConfigurationExtensions": "10.0.14",
+        "Microsoft.Extensions.Options.DataAnnotations": "10.0.14",
+        "Microsoft.Extensions.Primitives": "10.0.14"
+      },
+      "track_b": {
+        "System.Text.Json": {
+          "version": "10.0.14",
+          "tfms": [
+            "net10.0",
+            "net462",
+            "net8.0",
+            "net9.0",
+            "netstandard2.0"
+          ]
+        },
+        "System.Threading.Channels": {
+          "version": "10.0.14",
+          "tfms": [
+            "net10.0",
+            "net462",
+            "net8.0",
+            "net9.0",
+            "netstandard2.0",
+            "netstandard2.1"
+          ]
+        },
+        "System.Collections.Immutable": {
+          "version": "10.0.14",
+          "tfms": [
+            "net10.0",
+            "net462",
+            "net8.0",
+            "net9.0",
+            "netstandard2.0"
+          ]
+        },
+        "Microsoft.AspNetCore.App.Ref": {
+          "version": "10.0.14",
+          "tfms": []
+        }
+      }
+    },
+    {
+      "label": "e2-11",
+      "epoch": "E2",
+      "major": 11,
+      "msext": "11.0.x",
+      "msext_max": "11.0.0-rc.3.26522.148",
+      "ef": null,
+      "ef_package_version": "11.0.0-rc.3.26522.148",
+      "ef_track": "B",
+      "ef_asset_tfm": "net11.0",
+      "sqlitepclraw_min": "3.0.5",
+      "tfms": {
+        "Microsoft.Data.Sqlite.Core": [
+          "net10.0"
+        ],
+        "Microsoft.EntityFrameworkCore": [
+          "net11.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Abstractions": [
+          "net10.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Analyzers": [
+          "netstandard2.0"
+        ],
+        "Microsoft.EntityFrameworkCore.InMemory": [
+          "net11.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Relational": [
+          "net11.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Sqlite": [
+          "net11.0"
+        ],
+        "Microsoft.EntityFrameworkCore.Sqlite.Core": [
+          "net11.0"
+        ],
+        "Microsoft.Extensions.Caching.Abstractions": [
+          "net10.0",
+          "net11.0",
+          "net462",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Caching.Memory": [
+          "net10.0",
+          "net11.0",
+          "net462",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration": [
+          "net10.0",
+          "net11.0",
+          "net462",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration.Abstractions": [
+          "net10.0",
+          "net11.0",
+          "net462",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration.Binder": [
+          "net10.0",
+          "net11.0",
+          "net462",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration.FileExtensions": [
+          "net10.0",
+          "net11.0",
+          "net462",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Configuration.Json": [
+          "net10.0",
+          "net11.0",
+          "net462",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.DependencyInjection": [
+          "net10.0",
+          "net11.0",
+          "net462",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.DependencyInjection.Abstractions": [
+          "net10.0",
+          "net11.0",
+          "net462",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.DependencyModel": [
+          "net10.0",
+          "net11.0",
+          "net462",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.FileProviders.Abstractions": [
+          "net10.0",
+          "net11.0",
+          "net462",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.FileProviders.Physical": [
+          "net10.0",
+          "net11.0",
+          "net462",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.FileSystemGlobbing": [
+          "net10.0",
+          "net11.0",
+          "net462",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Logging": [
+          "net10.0",
+          "net11.0",
+          "net462",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.Logging.Abstractions": [
+          "net10.0",
+          "net11.0",
+          "net462",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Options": [
+          "net10.0",
+          "net11.0",
+          "net462",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.Options.ConfigurationExtensions": [
+          "net10.0",
+          "net11.0",
+          "net462",
+          "netstandard2.0"
+        ],
+        "Microsoft.Extensions.Options.DataAnnotations": [
+          "net10.0",
+          "net11.0",
+          "net462",
+          "netstandard2.0",
+          "netstandard2.1"
+        ],
+        "Microsoft.Extensions.Primitives": [
+          "net10.0",
+          "net11.0",
+          "net462",
+          "netstandard2.0"
+        ]
+      },
+      "net10_asset_tfm": {
+        "Microsoft.Extensions.Logging": "net10.0",
+        "Microsoft.Extensions.Options": "net10.0",
+        "Microsoft.Extensions.Primitives": "net10.0",
+        "Microsoft.Extensions.DependencyInjection.Abstractions": "net10.0",
+        "Microsoft.Extensions.Logging.Abstractions": "net10.0",
+        "Microsoft.Extensions.DependencyInjection": "net10.0",
+        "Microsoft.Extensions.Caching.Memory": "net10.0",
+        "Microsoft.Extensions.Caching.Abstractions": "net10.0",
+        "Microsoft.Extensions.DependencyModel": "net10.0",
+        "Microsoft.Extensions.Options.DataAnnotations": "net10.0",
+        "Microsoft.Extensions.Options.ConfigurationExtensions": "net10.0",
+        "Microsoft.Extensions.Configuration.Binder": "net10.0",
+        "Microsoft.Extensions.Configuration": "net10.0",
+        "Microsoft.Extensions.Configuration.Abstractions": "net10.0",
+        "Microsoft.Extensions.Configuration.Json": "net10.0",
+        "Microsoft.Extensions.FileProviders.Abstractions": "net10.0",
+        "Microsoft.Extensions.Configuration.FileExtensions": "net10.0",
+        "Microsoft.Extensions.FileProviders.Physical": "net10.0",
+        "Microsoft.Extensions.FileSystemGlobbing": "net10.0"
+      },
+      "packages": {
+        "Microsoft.Data.Sqlite.Core": "11.0.0-rc.3.26522.148",
+        "Microsoft.EntityFrameworkCore": "11.0.0-rc.3.26522.148",
+        "Microsoft.EntityFrameworkCore.Abstractions": "11.0.0-rc.3.26522.148",
+        "Microsoft.EntityFrameworkCore.Analyzers": "11.0.0-rc.3.26522.148",
+        "Microsoft.EntityFrameworkCore.InMemory": "11.0.0-rc.3.26522.148",
+        "Microsoft.EntityFrameworkCore.Relational": "11.0.0-rc.3.26522.148",
+        "Microsoft.EntityFrameworkCore.Sqlite": "11.0.0-rc.3.26522.148",
+        "Microsoft.EntityFrameworkCore.Sqlite.Core": "11.0.0-rc.3.26522.148",
+        "Microsoft.Extensions.Caching.Abstractions": "11.0.0-rc.3.26522.148",
+        "Microsoft.Extensions.Caching.Memory": "11.0.0-rc.3.26522.148",
+        "Microsoft.Extensions.Configuration": "11.0.0-rc.3.26522.148",
+        "Microsoft.Extensions.Configuration.Abstractions": "11.0.0-rc.3.26522.148",
+        "Microsoft.Extensions.Configuration.Binder": "11.0.0-rc.3.26522.148",
+        "Microsoft.Extensions.Configuration.FileExtensions": "11.0.0-rc.3.26522.148",
+        "Microsoft.Extensions.Configuration.Json": "11.0.0-rc.3.26522.148",
+        "Microsoft.Extensions.DependencyInjection": "11.0.0-rc.3.26522.148",
+        "Microsoft.Extensions.DependencyInjection.Abstractions": "11.0.0-rc.3.26522.148",
+        "Microsoft.Extensions.DependencyModel": "11.0.0-rc.3.26522.148",
+        "Microsoft.Extensions.FileProviders.Abstractions": "11.0.0-rc.3.26522.148",
+        "Microsoft.Extensions.FileProviders.Physical": "11.0.0-rc.3.26522.148",
+        "Microsoft.Extensions.FileSystemGlobbing": "11.0.0-rc.3.26522.148",
+        "Microsoft.Extensions.Logging": "11.0.0-rc.3.26522.148",
+        "Microsoft.Extensions.Logging.Abstractions": "11.0.0-rc.3.26522.148",
+        "Microsoft.Extensions.Options": "11.0.0-rc.3.26522.148",
+        "Microsoft.Extensions.Options.ConfigurationExtensions": "11.0.0-rc.3.26522.148",
+        "Microsoft.Extensions.Options.DataAnnotations": "11.0.0-rc.3.26522.148",
+        "Microsoft.Extensions.Primitives": "11.0.0-rc.3.26522.148"
+      },
+      "track_b": {
+        "System.Text.Json": {
+          "version": "11.0.0-rc.3.26522.148",
+          "tfms": [
+            "net10.0",
+            "net11.0",
+            "net462",
+            "netstandard2.0"
+          ]
+        },
+        "System.Threading.Channels": {
+          "version": "11.0.0-rc.3.26522.148",
+          "tfms": [
+            "net10.0",
+            "net11.0",
+            "net462",
+            "netstandard2.0",
+            "netstandard2.1"
+          ]
+        },
+        "System.Collections.Immutable": {
+          "version": "11.0.0-rc.3.26522.148",
+          "tfms": [
+            "net10.0",
+            "net11.0",
+            "net462",
+            "netstandard2.0"
+          ]
+        },
+        "Microsoft.AspNetCore.App.Ref": {
+          "version": "11.0.0-rc.3.26522.148",
+          "tfms": []
+        }
+      }
+    }
+  ]
+}

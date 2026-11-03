@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Harness.Core/Harness.Core.csproj" />
+    <Project Path="src/Harness/Harness.csproj" />
+    <Project Path="src/Harness/Scenarios/NewOnly/Harness.NewOnly.csproj" />
+    <Project Path="src/Harness.TrackB/Harness.TrackB.csproj" />
+    <Project Path="src/Compare/Compare.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Compare.Tests/Compare.Tests.csproj" />
+    <Project Path="tests/Harness.Core.Tests/Harness.Core.Tests.csproj" />
+  </Folder>
+  <Folder Name="/glassbox/">
+    <Project Path="glassbox/Instrumenter/Instrumenter.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,216 @@
+<Project>
+  <PropertyGroup>
+    <MatrixMajors>;6;7;8;9;10;11;</MatrixMajors>
+    <MatrixTrackAEf>;6;7;8;9;10;</MatrixTrackAEf>
+    <MatrixTrackBEf>;11;</MatrixTrackBEf>
+    <MatrixSqlitePclRawTrackA>2.1.13</MatrixSqlitePclRawTrackA>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(MsExt)' == '6'">
+    <PackageVersion Include="Microsoft.Extensions.Caching.Abstractions" Version="6.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Caching.Memory" Version="6.0.3" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration" Version="6.0.2" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.FileExtensions" Version="6.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="6.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="6.0.2" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyModel" Version="6.0.2" />
+    <PackageVersion Include="Microsoft.Extensions.FileProviders.Abstractions" Version="6.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.FileProviders.Physical" Version="6.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.FileSystemGlobbing" Version="6.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging" Version="6.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.4" />
+    <PackageVersion Include="Microsoft.Extensions.Options" Version="6.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Options.DataAnnotations" Version="6.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Primitives" Version="6.0.1" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Ef)' == '6'">
+    <PackageVersion Include="Microsoft.Data.Sqlite.Core" Version="6.0.36" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="6.0.36" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Abstractions" Version="6.0.36" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Analyzers" Version="6.0.36" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.36" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.36" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.36" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="6.0.36" />
+    <PackageVersion Include="SQLitePCLRaw.bundle_e_sqlite3" Version="2.1.13" />
+    <PackageVersion Include="SQLitePCLRaw.core" Version="2.1.13" />
+    <PackageVersion Include="SQLitePCLRaw.provider.e_sqlite3" Version="2.1.13" />
+    <PackageVersion Include="SQLitePCLRaw.lib.e_sqlite3" Version="2.1.13" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(MsExt)' == '7'">
+    <PackageVersion Include="Microsoft.Extensions.Caching.Abstractions" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Caching.Memory" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.4" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.FileExtensions" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyModel" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.FileProviders.Abstractions" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.FileProviders.Physical" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.FileSystemGlobbing" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Options" Version="7.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Options.DataAnnotations" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Primitives" Version="7.0.0" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Ef)' == '7'">
+    <PackageVersion Include="Microsoft.Data.Sqlite.Core" Version="7.0.20" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="7.0.20" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Abstractions" Version="7.0.20" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Analyzers" Version="7.0.20" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.20" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.20" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.20" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="7.0.20" />
+    <PackageVersion Include="SQLitePCLRaw.bundle_e_sqlite3" Version="2.1.13" />
+    <PackageVersion Include="SQLitePCLRaw.core" Version="2.1.13" />
+    <PackageVersion Include="SQLitePCLRaw.provider.e_sqlite3" Version="2.1.13" />
+    <PackageVersion Include="SQLitePCLRaw.lib.e_sqlite3" Version="2.1.13" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(MsExt)' == '8'">
+    <PackageVersion Include="Microsoft.Extensions.Caching.Abstractions" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Caching.Memory" Version="8.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.2" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.FileExtensions" Version="8.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="8.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyModel" Version="8.0.2" />
+    <PackageVersion Include="Microsoft.Extensions.FileProviders.Abstractions" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.FileProviders.Physical" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.FileSystemGlobbing" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging" Version="8.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.3" />
+    <PackageVersion Include="Microsoft.Extensions.Options" Version="8.0.2" />
+    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Options.DataAnnotations" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Primitives" Version="8.0.0" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Ef)' == '8'">
+    <PackageVersion Include="Microsoft.Data.Sqlite.Core" Version="8.0.33" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="8.0.33" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Abstractions" Version="8.0.33" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Analyzers" Version="8.0.33" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.33" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.33" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.33" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="8.0.33" />
+    <PackageVersion Include="SQLitePCLRaw.bundle_e_sqlite3" Version="2.1.13" />
+    <PackageVersion Include="SQLitePCLRaw.core" Version="2.1.13" />
+    <PackageVersion Include="SQLitePCLRaw.provider.e_sqlite3" Version="2.1.13" />
+    <PackageVersion Include="SQLitePCLRaw.lib.e_sqlite3" Version="2.1.13" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(MsExt)' == '9'">
+    <PackageVersion Include="Microsoft.Extensions.Caching.Abstractions" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.Extensions.Caching.Memory" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyModel" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.Extensions.FileProviders.Abstractions" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.Extensions.FileProviders.Physical" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.Extensions.FileSystemGlobbing" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.Extensions.Logging" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.Extensions.Options" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.Extensions.Options.DataAnnotations" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.Extensions.Primitives" Version="9.0.22" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Ef)' == '9'">
+    <PackageVersion Include="Microsoft.Data.Sqlite.Core" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Abstractions" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Analyzers" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.22" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="9.0.22" />
+    <PackageVersion Include="SQLitePCLRaw.bundle_e_sqlite3" Version="2.1.13" />
+    <PackageVersion Include="SQLitePCLRaw.core" Version="2.1.13" />
+    <PackageVersion Include="SQLitePCLRaw.provider.e_sqlite3" Version="2.1.13" />
+    <PackageVersion Include="SQLitePCLRaw.lib.e_sqlite3" Version="2.1.13" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(MsExt)' == '10'">
+    <PackageVersion Include="Microsoft.Extensions.Caching.Abstractions" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.Extensions.Caching.Memory" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.FileExtensions" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyModel" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.Extensions.FileProviders.Abstractions" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.Extensions.FileProviders.Physical" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.Extensions.FileSystemGlobbing" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.Extensions.Logging" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.Extensions.Options" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.Extensions.Options.DataAnnotations" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.Extensions.Primitives" Version="10.0.14" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Ef)' == '10'">
+    <PackageVersion Include="Microsoft.Data.Sqlite.Core" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Abstractions" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Analyzers" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="10.0.14" />
+    <PackageVersion Include="SQLitePCLRaw.bundle_e_sqlite3" Version="2.1.13" />
+    <PackageVersion Include="SQLitePCLRaw.core" Version="2.1.13" />
+    <PackageVersion Include="SQLitePCLRaw.provider.e_sqlite3" Version="2.1.13" />
+    <PackageVersion Include="SQLitePCLRaw.lib.e_sqlite3" Version="2.1.13" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(MsExt)' == '11'">
+    <PackageVersion Include="Microsoft.Extensions.Caching.Abstractions" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.Extensions.Caching.Memory" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.FileExtensions" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyModel" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.Extensions.FileProviders.Abstractions" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.Extensions.FileProviders.Physical" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.Extensions.FileSystemGlobbing" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.Extensions.Logging" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.Extensions.Options" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.Extensions.Options.DataAnnotations" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.Extensions.Primitives" Version="11.0.0-rc.3.26522.148" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Ef)' == '11'">
+    <PackageVersion Include="Microsoft.Data.Sqlite.Core" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Abstractions" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Analyzers" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="SQLitePCLRaw.bundle_e_sqlite3" Version="3.0.5" />
+    <PackageVersion Include="SQLitePCLRaw.core" Version="3.0.5" />
+  </ItemGroup>
+</Project>
