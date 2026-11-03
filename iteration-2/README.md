@@ -18,4 +18,4 @@ The code in this directory started as a copy of the harness, statistics and glas
 
 ## Not here yet
 
-Package selection by NuGet downloads, call-graph generation, per-method aggregates of glass-box traces, attribution and static metrics for the new packages.
+Package selection by NuGet downloads, call-graph generation, the bootstrap over per-method glass-box times (`src/Compare methods` exports them), the counter-interval A/B check, attribution and static metrics for the new packages.

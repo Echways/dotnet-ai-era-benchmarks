@@ -7,6 +7,7 @@ var matrix = new Option<FileInfo>("--matrix") { Description = "matrix/versions.j
 var minPercent = new Option<double>("--min-percent") { Description = "Smallest change TraceDiff reports", DefaultValueFactory = _ => 5 };
 var pruneTraces = new Option<bool>("--prune-traces") { Description = "Delete .ember traces that are not the representative of their point once their aggregate is stored" };
 var root = new RootCommand("Aggregate .ember traces per matrix point and compare them against the baseline") { raw, summary, matrix, minPercent, pruneTraces };
+root.Subcommands.Add(MethodsCommand.Create());
 root.SetAction(parse =>
 {
     var points = MatrixPoints.Load(parse.GetValue(matrix)!);
