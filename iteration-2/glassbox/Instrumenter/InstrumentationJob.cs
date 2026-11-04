@@ -7,6 +7,7 @@ public sealed class InstrumentationJob(
     string tag,
     DirectoryInfo source,
     IReadOnlyList<string> methods,
+    IReadOnlyList<TargetLocation> locations,
     IReadOnlyList<string> libraries,
     IReadOnlyList<FileInfo> scenarios,
     DirectoryInfo output)
@@ -24,7 +25,7 @@ public sealed class InstrumentationJob(
         var naming = new GlassboxNaming(tag);
         var parseOptions = new CSharpParseOptions(LanguageVersion.Preview, preprocessorSymbols: PreprocessorSymbols);
         var targets = methods.ToHashSet(StringComparer.Ordinal);
-        var hits = targets.ToDictionary(t => t, _ => 0, StringComparer.Ordinal);
+        var hits = targets.Concat(locations.Select(l => l.Id)).Distinct(StringComparer.Ordinal).ToDictionary(t => t, _ => 0, StringComparer.Ordinal);
         var warnings = new List<string>();
         if (output.Exists)
         {
@@ -42,7 +43,11 @@ public sealed class InstrumentationJob(
             {
                 var text = naming.Rename(File.ReadAllText(file.Path));
                 var tree = CSharpSyntaxTree.ParseText(text, parseOptions, file.Path);
-                var injector = new ScopeInjector(targets, hits, warnings, tag);
+                var lineTargets = locations
+                    .Where(l => l.Library == library && l.File == file.RelativePath.Replace('\\', '/'))
+                    .GroupBy(l => (l.Line, l.Ordinal))
+                    .ToDictionary(g => g.Key, g => g.First().Id);
+                var injector = new ScopeInjector(targets, lineTargets, hits, warnings, tag);
                 var rewritten = injector.Visit(tree.GetRoot());
                 var destination = Path.Combine(libraryOut.FullName, "src", file.RelativePath);
                 Directory.CreateDirectory(Path.GetDirectoryName(destination)!);

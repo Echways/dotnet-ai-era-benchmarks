@@ -207,6 +207,23 @@ def test_markdown_lists_scopes_whose_mean_moved_while_the_median_did_not(tmp_pat
     assert "-16.0%" in section
 
 
+def test_markdown_keeps_multimodal_scopes_out_of_the_tally_and_lists_them_separately(tmp_path):
+    frames = []
+    for round_id in ("r0", "r1", "r2"):
+        frames.append(runs_for("e0-7", around(3.2), round_id, mean=around(8.1), quartile_ratio=4))
+        frames.append(runs_for("e2-10", around(4.7), round_id, mean=around(7.4), quartile_ratio=4))
+    results = stats.summarise({"scenario": pd.concat(frames, ignore_index=True)}, np.random.default_rng(1)).reindex(columns=stats.COLUMNS)
+
+    stats.write_markdown(results, tmp_path / "stats.md")
+
+    text = (tmp_path / "stats.md").read_text(encoding="utf-8")
+    tally = text.split("## Verdicts per point (unimodal scopes)")[1].split("## Multimodal scopes")[0]
+    section = text.split("## Multimodal scopes")[1].split("## Mean moved, median did not")[0]
+    assert "e2-10" not in tally
+    assert "`scope`" in section
+    assert "e2-10" in section
+
+
 def allocation_row(baseline_alloc, point_alloc):
     count = len(baseline_alloc)
     return comparison(

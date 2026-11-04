@@ -11,10 +11,10 @@ public static class SourceSelector
     private static readonly string[] ForeignPlatformMarkers = [".netstandard", ".netfx", ".netframework", ".net462", ".netcoreapp3", ".Browser", ".Typeforwards", ".TypeForwards"];
     private static readonly string[] BridgeFiles = ["MemoryCacheServiceCollectionExtensions.cs"];
 
-    public static SourceSelection Select(DirectoryInfo checkout, string library)
+    public static SourceSelection Select(DirectoryInfo checkout, string library, string? sourceDirectory = null)
     {
         var librariesRoot = Path.Combine(checkout.FullName, "src", "libraries");
-        var sourceRoot = Path.Combine(librariesRoot, library, "src");
+        var sourceRoot = sourceDirectory is null ? Path.Combine(librariesRoot, library, "src") : Path.Combine(checkout.FullName, sourceDirectory);
         var project = XDocument.Load(Path.Combine(sourceRoot, library + ".csproj"));
         var files = new List<SourceFile>();
         foreach (var path in Directory.EnumerateFiles(sourceRoot, "*.cs", SearchOption.AllDirectories).Order(StringComparer.Ordinal))
@@ -39,7 +39,7 @@ public static class SourceSelector
                 continue;
             }
 
-            var relative = include.Include["$(CommonPath)".Length..].Replace('\\', Path.DirectorySeparatorChar);
+            var relative = include.Include["$(CommonPath)".Length..].Replace('\\', Path.DirectorySeparatorChar).TrimStart(Path.DirectorySeparatorChar);
             var path = Path.Combine(librariesRoot, "Common", "src", relative);
             if (!File.Exists(path))
             {

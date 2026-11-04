@@ -1,0 +1,13 @@
+{
+  "repos": {
+    "runtime": {"owner": "dotnet", "name": "runtime", "url": "https://github.com/dotnet/runtime.git", "mirror": ".work/repos/runtime.git"},
+    "aspnetcore": {"owner": "dotnet", "name": "aspnetcore", "url": "https://github.com/dotnet/aspnetcore.git", "mirror": ".work/repos/aspnetcore.git"},
+    "efcore": {"owner": "dotnet", "name": "efcore", "url": "https://github.com/dotnet/efcore.git", "mirror": ".work/repos/efcore.git"}
+  },
+  "steps": [
+    {"from": "v7.0.20", "to": "v8.0.33"},
+    {"from": "v8.0.33", "to": "v9.0.22"},
+    {"from": "v9.0.22", "to": "v10.0.14"}
+  ],
+  "servicing": {"majors": [7, 10], "window_days": 365}
+}

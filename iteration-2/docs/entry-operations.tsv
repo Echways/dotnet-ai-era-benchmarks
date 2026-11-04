@@ -1,0 +1,53 @@
+package	operation	entries	description
+Microsoft.Extensions.DependencyInjection.Abstractions	activator.create-instance	ActivatorUtilities.CreateInstance	Create an object resolving constructor arguments from a provider
+Microsoft.Extensions.DependencyInjection.Abstractions	activator.factory	ActivatorUtilities.CreateFactory	Compile a factory for a type with extra arguments
+Microsoft.Extensions.DependencyInjection.Abstractions	collection.add	ServiceDescriptor.Singleton;ServiceDescriptor.Describe;ServiceDescriptor.Transient	Register services in a collection
+Microsoft.Extensions.DependencyInjection.Abstractions	provider.get-required	ServiceProviderServiceExtensions.GetRequiredService;ServiceProviderServiceExtensions.GetServices	Resolve services through the extension methods
+Microsoft.Extensions.Logging.Abstractions	logger-message.define	LoggerMessage.Define;LoggerMessage.DefineScope	Create cached log delegates
+Microsoft.Extensions.Logging.Abstractions	logger.extension	LoggerExtensions.LogInformation;LoggerExtensions.LogError;LoggerExtensions.BeginScope	Write through the Log* extension methods
+Microsoft.Extensions.Logging.Abstractions	logger.null	NullLogger.Log;NullLogger.IsEnabled;NullLoggerFactory.CreateLogger	Disabled logging
+Microsoft.Extensions.Primitives	string-values	StringValues.Concat;StringValues.ToString;StringValues.Equals	Combine and compare header-like value sets
+Microsoft.Extensions.Primitives	string-segment	StringSegment.IndexOf;StringSegment.Split;StringSegment.Equals;StringSegment.Trim	Slice and search without allocating
+Microsoft.Extensions.Primitives	change-token	ChangeToken.OnChange;CompositeChangeToken.RegisterChangeCallback	Subscribe to change notifications
+Microsoft.Extensions.Options	factory.create	OptionsFactory.Create	Create and configure an options instance
+Microsoft.Extensions.Options	monitor.get	OptionsMonitor.Get;OptionsMonitor.get_CurrentValue;OptionsManager.Get	Read options through the monitor and manager
+Microsoft.Extensions.Options	registration	OptionsServiceCollectionExtensions.Configure;OptionsBuilder.Configure;OptionsBuilder.Validate	Register option configuration
+System.Diagnostics.DiagnosticSource	activity	ActivitySource.StartActivity;Activity.Stop;Activity.SetTag	Start, tag and stop an activity
+System.Diagnostics.DiagnosticSource	metrics	Counter.Add;Histogram.Record;Meter.CreateCounter	Record measurements
+System.Diagnostics.DiagnosticSource	listener	DiagnosticListener.Write;DiagnosticListener.IsEnabled	Publish a diagnostic event
+Microsoft.Extensions.Configuration.Abstractions	path	ConfigurationPath.Combine;ConfigurationPath.GetSectionKey;ConfigurationPath.GetParentPath	Compose configuration paths
+Microsoft.Extensions.Configuration.Abstractions	extensions	ConfigurationExtensions.GetConnectionString;ConfigurationExtensions.GetRequiredSection;ConfigurationExtensions.Exists	Read sections through the extension methods
+Microsoft.Extensions.DependencyInjection	build	ServiceCollectionContainerBuilderExtensions.BuildServiceProvider;ServiceProvider.GetService;ServiceProvider.CreateScope	Build a provider and resolve through it
+Microsoft.Extensions.DependencyInjection	scope	ServiceProviderEngineScope.GetService;ServiceProviderEngineScope.Dispose	Resolve and dispose in a scope
+Microsoft.Extensions.Logging	factory	LoggerFactory.Create;LoggerFactory.CreateLogger;LoggerFactory.Dispose	Create a factory and loggers
+Microsoft.Extensions.Logging	log	Logger.Log;Logger.IsEnabled;Logger.BeginScope	Write a message through the factory logger
+Microsoft.Extensions.Logging	registration	LoggingServiceCollectionExtensions.AddLogging;LoggingBuilderExtensions.SetMinimumLevel	Register logging in a collection
+Microsoft.Extensions.Configuration	build	ConfigurationBuilder.Build;ConfigurationManager.GetSection;ConfigurationManager.GetChildren	Build a configuration root
+Microsoft.Extensions.Configuration	read	ConfigurationRoot.get_Item;ConfigurationRoot.GetSection;ConfigurationSection.get_Value;ConfigurationRoot.GetChildren	Read values and sections
+Microsoft.Extensions.Configuration.Binder	bind	ConfigurationBinder.Bind;ConfigurationBinder.Get;ConfigurationBinder.GetValue	Bind configuration onto objects
+Microsoft.Extensions.FileProviders.Abstractions	null-provider	NullFileProvider.GetFileInfo;NullFileProvider.GetDirectoryContents;NullFileProvider.Watch	Do-nothing provider
+System.Text.Json	serialize	JsonSerializer.Serialize	Serialize an object to a string
+System.Text.Json	deserialize	JsonSerializer.Deserialize	Deserialize an object from a string
+System.Text.Json	document	JsonDocument.Parse;JsonElement.GetProperty	Parse into a read-only DOM
+System.Text.Json	reader-writer	Utf8JsonReader.Read;Utf8JsonWriter.WriteString;Utf8JsonWriter.WriteNumber	Forward-only reader and writer
+System.Text.Encodings.Web	encode	TextEncoder.Encode;TextEncoder.EncodeUtf8;TextEncoder.FindFirstCharacterToEncode	Encode strings for output contexts
+Microsoft.Extensions.Hosting.Abstractions	environment	HostEnvironmentEnvExtensions.IsDevelopment;HostEnvironmentEnvExtensions.IsEnvironment	Environment checks
+System.Security.Cryptography.ProtectedData	protect	ProtectedData.Protect;ProtectedData.Unprotect	Protect and unprotect bytes
+System.Configuration.ConfigurationManager	app-settings	ConfigurationManager.get_AppSettings;ConfigurationManager.GetSection	Read application settings
+System.Collections.Immutable	array	ImmutableArray.Add;ImmutableArray.CreateRange;ImmutableArray.CreateBuilder	Immutable arrays
+System.Collections.Immutable	dictionary	ImmutableDictionary.Add;ImmutableDictionary.SetItem;ImmutableDictionary.TryGetValue	Immutable dictionaries
+System.Collections.Immutable	list-set	ImmutableList.Add;ImmutableHashSet.Add;ImmutableSortedDictionary.Add	Immutable lists and sets
+Microsoft.Extensions.Caching.Memory	get-set	MemoryCache.TryGetValue;MemoryCache.CreateEntry;MemoryCache.Remove;CacheEntry.Dispose	Read, create and remove entries
+Microsoft.Extensions.Caching.Memory	maintenance	MemoryCache.Clear;MemoryCache.Compact;MemoryCache.GetCurrentStatistics	Clear, compact and read statistics
+Microsoft.Extensions.FileSystemGlobbing	match	Matcher.Execute;Matcher.AddInclude;Matcher.AddExclude	Glob a directory tree
+Microsoft.Extensions.Caching.Abstractions	extensions	CacheExtensions.Set;CacheExtensions.TryGetValue;CacheExtensions.Get	Extension methods over IMemoryCache
+Microsoft.Extensions.FileProviders.Physical	provider	PhysicalFileProvider.GetFileInfo;PhysicalFileProvider.GetDirectoryContents	Read the file system through the provider
+Microsoft.Extensions.Options.ConfigurationExtensions	configure	OptionsConfigurationServiceCollectionExtensions.Configure;NamedConfigureFromConfigurationOptions.#ctor;ConfigurationChangeTokenSource.GetChangeToken	Bind options to configuration
+Microsoft.Extensions.DependencyModel	context	DependencyContextJsonReader.Read;DependencyContextWriter.Write	Read and write .deps.json
+Microsoft.Extensions.Configuration.FileExtensions	load	FileConfigurationProvider.Load;FileConfigurationExtensions.SetBasePath	Load file configuration
+System.Text.Encoding.CodePages	encoding	CodePagesEncodingProvider.GetEncoding	Resolve a legacy code page encoding
+System.Reflection.Metadata	reader	PEReaderExtensions.GetMetadataReader;MetadataReader.GetTypeDefinition;MetadataReader.GetString;BlobReader.ReadCompressedInteger	Read assembly metadata
+System.Reflection.Metadata	builder	MetadataBuilder.AddTypeDefinition;BlobBuilder.WriteCompressedInteger	Emit assembly metadata
+System.Security.Permissions	principal	PrincipalPermission.Demand;PrincipalPermission.IsUnrestricted	Code access security stubs
+Microsoft.Extensions.Configuration.Json	load	JsonConfigurationProvider.Load;JsonConfigurationFileParser.Parse	Load a JSON configuration file
+Microsoft.Extensions.ObjectPool	pool	DefaultObjectPool.Get;DefaultObjectPool.Return;DefaultObjectPoolProvider.Create	Rent and return pooled objects

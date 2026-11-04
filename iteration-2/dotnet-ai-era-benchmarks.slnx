@@ -7,10 +7,13 @@
     <Project Path="src/Compare/Compare.csproj" />
   </Folder>
   <Folder Name="/tests/">
+    <Project Path="tests/CallGraph.Tests/CallGraph.Tests.csproj" />
     <Project Path="tests/Compare.Tests/Compare.Tests.csproj" />
     <Project Path="tests/Harness.Core.Tests/Harness.Core.Tests.csproj" />
+    <Project Path="tests/Instrumenter.Tests/Instrumenter.Tests.csproj" />
   </Folder>
   <Folder Name="/glassbox/">
+    <Project Path="glassbox/CallGraph/CallGraph.csproj" />
     <Project Path="glassbox/Instrumenter/Instrumenter.csproj" />
   </Folder>
 </Solution>

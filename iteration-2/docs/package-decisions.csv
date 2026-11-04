@@ -1,0 +1,77 @@
+rank,id,version,downloads,source,project,decision,reason
+1,Microsoft.Extensions.DependencyInjection.Abstractions,10.0.14,13699129534,runtime,src/libraries/Microsoft.Extensions.DependencyInjection.Abstractions/src/Microsoft.Extensions.DependencyInjection.Abstractions.csproj,selected,
+2,Microsoft.Extensions.Logging.Abstractions,10.0.14,13332009960,runtime,src/libraries/Microsoft.Extensions.Logging.Abstractions/src/Microsoft.Extensions.Logging.Abstractions.csproj,selected,
+3,Microsoft.Extensions.Primitives,10.0.14,12922218745,runtime,src/libraries/Microsoft.Extensions.Primitives/src/Microsoft.Extensions.Primitives.csproj,selected,
+4,Microsoft.Extensions.Options,10.0.14,11805211058,runtime,src/libraries/Microsoft.Extensions.Options/src/Microsoft.Extensions.Options.csproj,selected,
+5,System.Diagnostics.DiagnosticSource,10.0.14,10449700379,runtime,src/libraries/System.Diagnostics.DiagnosticSource/src/System.Diagnostics.DiagnosticSource.csproj,selected,
+6,Microsoft.NETCore.Platforms,7.0.4,10404913506,runtime,src/libraries/Microsoft.NETCore.Platforms/src/Microsoft.NETCore.Platforms.csproj,excluded,latest version is not from the current line
+7,Microsoft.Extensions.Configuration.Abstractions,10.0.14,10169926376,runtime,src/libraries/Microsoft.Extensions.Configuration.Abstractions/src/Microsoft.Extensions.Configuration.Abstractions.csproj,selected,
+8,System.Runtime.CompilerServices.Unsafe,6.1.2,8787674669,,,excluded,"project not in dotnet/runtime, aspnetcore or efcore at the 10.0 tag"
+9,Microsoft.Extensions.DependencyInjection,10.0.14,8390787614,runtime,src/libraries/Microsoft.Extensions.DependencyInjection/src/Microsoft.Extensions.DependencyInjection.csproj,selected,
+10,Microsoft.Extensions.Logging,10.0.14,8327705789,runtime,src/libraries/Microsoft.Extensions.Logging/src/Microsoft.Extensions.Logging.csproj,selected,
+11,Microsoft.Extensions.Configuration,10.0.14,7416325431,runtime,src/libraries/Microsoft.Extensions.Configuration/src/Microsoft.Extensions.Configuration.csproj,selected,
+12,Microsoft.Extensions.Configuration.Binder,10.0.14,7228005674,runtime,src/libraries/Microsoft.Extensions.Configuration.Binder/src/Microsoft.Extensions.Configuration.Binder.csproj,selected,
+13,Microsoft.Extensions.FileProviders.Abstractions,10.0.14,7000310185,runtime,src/libraries/Microsoft.Extensions.FileProviders.Abstractions/src/Microsoft.Extensions.FileProviders.Abstractions.csproj,selected,
+14,System.Threading.Tasks.Extensions,4.6.3,6997343802,,,excluded,"project not in dotnet/runtime, aspnetcore or efcore at the 10.0 tag"
+15,System.Text.Json,10.0.14,6626815505,runtime,src/libraries/System.Text.Json/src/System.Text.Json.csproj,selected,
+16,System.Memory,4.6.3,6604088746,runtime,src/libraries/System.Memory/src/System.Memory.csproj,excluded,latest version is not from the current line
+17,System.Text.Encodings.Web,10.0.14,6371854263,runtime,src/libraries/System.Text.Encodings.Web/src/System.Text.Encodings.Web.csproj,selected,
+18,System.Buffers,4.6.1,6239504467,,,excluded,"project not in dotnet/runtime, aspnetcore or efcore at the 10.0 tag"
+19,Microsoft.CSharp,4.7.0,5873837896,runtime,src/libraries/Microsoft.CSharp/src/Microsoft.CSharp.csproj,excluded,latest version is not from the current line
+20,Microsoft.Extensions.Hosting.Abstractions,10.0.14,5857433654,runtime,src/libraries/Microsoft.Extensions.Hosting.Abstractions/src/Microsoft.Extensions.Hosting.Abstractions.csproj,selected,
+21,System.Security.Cryptography.ProtectedData,10.0.14,5559625381,runtime,src/libraries/System.Security.Cryptography.ProtectedData/src/System.Security.Cryptography.ProtectedData.csproj,selected,
+22,Microsoft.NETCore.Targets,5.0.0,5230087004,,,excluded,"project not in dotnet/runtime, aspnetcore or efcore at the 10.0 tag"
+23,Microsoft.Bcl.AsyncInterfaces,10.0.14,5082250015,runtime,src/libraries/Microsoft.Bcl.AsyncInterfaces/src/Microsoft.Bcl.AsyncInterfaces.csproj,selected,
+24,System.Security.Cryptography.Cng,5.0.0,4993653450,,,excluded,"project not in dotnet/runtime, aspnetcore or efcore at the 10.0 tag"
+25,System.Security.Principal.Windows,5.0.0,4965697911,runtime,src/libraries/System.Security.Principal.Windows/src/System.Security.Principal.Windows.csproj,excluded,latest version is not from the current line
+26,System.Runtime,4.3.1,4949096500,runtime,src/libraries/System.Runtime/src/System.Runtime.csproj,excluded,latest version is not from the current line
+27,System.Configuration.ConfigurationManager,10.0.14,4787761218,runtime,src/libraries/System.Configuration.ConfigurationManager/src/System.Configuration.ConfigurationManager.csproj,selected,
+28,System.Security.AccessControl,6.0.1,4505102430,runtime,src/libraries/System.Security.AccessControl/src/System.Security.AccessControl.csproj,excluded,latest version is not from the current line
+29,System.Collections.Immutable,10.0.14,4371574102,runtime,src/libraries/System.Collections.Immutable/src/System.Collections.Immutable.csproj,selected,
+30,System.Reflection.TypeExtensions,4.7.0,4353709083,runtime,src/libraries/System.Reflection.TypeExtensions/src/System.Reflection.TypeExtensions.csproj,excluded,latest version is not from the current line
+31,System.IO,4.3.0,4168014017,,,excluded,"project not in dotnet/runtime, aspnetcore or efcore at the 10.0 tag"
+32,Microsoft.Extensions.Caching.Memory,10.0.14,4159614705,runtime,src/libraries/Microsoft.Extensions.Caching.Memory/src/Microsoft.Extensions.Caching.Memory.csproj,selected,
+33,Microsoft.Extensions.FileSystemGlobbing,10.0.14,4143910463,runtime,src/libraries/Microsoft.Extensions.FileSystemGlobbing/src/Microsoft.Extensions.FileSystemGlobbing.csproj,selected,
+34,System.Text.Encoding,4.3.0,4143680955,,,excluded,"project not in dotnet/runtime, aspnetcore or efcore at the 10.0 tag"
+35,System.Reflection.Emit,4.7.0,4138281253,runtime,src/libraries/System.Reflection.Emit/src/System.Reflection.Emit.csproj,excluded,latest version is not from the current line
+36,System.Reflection.Emit.Lightweight,4.7.0,4102809264,runtime,src/libraries/System.Reflection.Emit.Lightweight/src/System.Reflection.Emit.Lightweight.csproj,excluded,latest version is not from the current line
+37,System.Reflection,4.3.0,4097806393,,,excluded,"project not in dotnet/runtime, aspnetcore or efcore at the 10.0 tag"
+38,System.Runtime.Extensions,4.3.1,4096669806,,,excluded,"project not in dotnet/runtime, aspnetcore or efcore at the 10.0 tag"
+39,Microsoft.Extensions.Caching.Abstractions,10.0.14,4086715195,runtime,src/libraries/Microsoft.Extensions.Caching.Abstractions/src/Microsoft.Extensions.Caching.Abstractions.csproj,selected,
+40,System.Threading.Tasks,4.3.0,4070472295,,,excluded,"project not in dotnet/runtime, aspnetcore or efcore at the 10.0 tag"
+41,Microsoft.Extensions.FileProviders.Physical,10.0.14,4061398259,runtime,src/libraries/Microsoft.Extensions.FileProviders.Physical/src/Microsoft.Extensions.FileProviders.Physical.csproj,selected,
+42,System.Reflection.Primitives,4.3.0,4046345369,runtime,src/libraries/System.Reflection.Primitives/src/System.Reflection.Primitives.csproj,excluded,latest version is not from the current line
+43,System.Resources.ResourceManager,4.3.0,4030956800,,,excluded,"project not in dotnet/runtime, aspnetcore or efcore at the 10.0 tag"
+44,System.Globalization,4.3.0,4028451591,,,excluded,"project not in dotnet/runtime, aspnetcore or efcore at the 10.0 tag"
+45,System.Threading,4.3.0,4004244366,runtime,src/libraries/System.Threading/src/System.Threading.csproj,excluded,latest version is not from the current line
+46,System.Collections,4.3.0,3995075694,runtime,src/libraries/System.Collections/src/System.Collections.csproj,excluded,latest version is not from the current line
+47,System.Diagnostics.Debug,4.3.0,3975791791,,,excluded,"project not in dotnet/runtime, aspnetcore or efcore at the 10.0 tag"
+48,Microsoft.Extensions.Options.ConfigurationExtensions,10.0.14,3958250730,runtime,src/libraries/Microsoft.Extensions.Options.ConfigurationExtensions/src/Microsoft.Extensions.Options.ConfigurationExtensions.csproj,selected,
+49,System.Linq,4.3.0,3886355344,runtime,src/libraries/System.Linq/src/System.Linq.csproj,excluded,latest version is not from the current line
+50,NETStandard.Library,2.0.3,3851674352,,,excluded,"project not in dotnet/runtime, aspnetcore or efcore at the 10.0 tag"
+51,Microsoft.Extensions.DependencyModel,10.0.14,3840078642,runtime,src/libraries/Microsoft.Extensions.DependencyModel/src/Microsoft.Extensions.DependencyModel.csproj,selected,
+52,Microsoft.Extensions.Configuration.FileExtensions,10.0.14,3817614307,runtime,src/libraries/Microsoft.Extensions.Configuration.FileExtensions/src/Microsoft.Extensions.Configuration.FileExtensions.csproj,selected,
+53,System.Runtime.InteropServices,4.3.0,3790015841,runtime,src/libraries/System.Runtime.InteropServices/src/System.Runtime.InteropServices.csproj,excluded,latest version is not from the current line
+54,Microsoft.Win32.Registry,5.0.0,3790006510,runtime,src/libraries/Microsoft.Win32.Registry/src/Microsoft.Win32.Registry.csproj,excluded,latest version is not from the current line
+55,System.Text.Encoding.CodePages,10.0.14,3757459201,runtime,src/libraries/System.Text.Encoding.CodePages/src/System.Text.Encoding.CodePages.csproj,selected,
+56,System.Linq.Expressions,4.3.0,3755836314,runtime,src/libraries/System.Linq.Expressions/src/System.Linq.Expressions.csproj,excluded,latest version is not from the current line
+57,System.Reflection.Emit.ILGeneration,4.7.0,3751048813,runtime,src/libraries/System.Reflection.Emit.ILGeneration/src/System.Reflection.Emit.ILGeneration.csproj,excluded,latest version is not from the current line
+58,System.Text.RegularExpressions,4.3.1,3710300735,runtime,src/libraries/System.Text.RegularExpressions/src/System.Text.RegularExpressions.csproj,excluded,latest version is not from the current line
+59,System.Runtime.Handles,4.3.0,3691648973,,,excluded,"project not in dotnet/runtime, aspnetcore or efcore at the 10.0 tag"
+60,System.Net.Http,4.3.4,3679999090,runtime,src/libraries/System.Net.Http/src/System.Net.Http.csproj,excluded,latest version is not from the current line
+61,System.Reflection.Extensions,4.3.0,3672029469,,,excluded,"project not in dotnet/runtime, aspnetcore or efcore at the 10.0 tag"
+62,System.Reflection.Metadata,10.0.14,3659575239,runtime,src/libraries/System.Reflection.Metadata/src/System.Reflection.Metadata.csproj,selected,
+63,System.IO.FileSystem,4.3.0,3603990777,,,excluded,"project not in dotnet/runtime, aspnetcore or efcore at the 10.0 tag"
+64,System.IO.FileSystem.Primitives,4.3.0,3587258530,,,excluded,"project not in dotnet/runtime, aspnetcore or efcore at the 10.0 tag"
+65,System.ObjectModel,4.3.0,3585367447,runtime,src/libraries/System.ObjectModel/src/System.ObjectModel.csproj,excluded,latest version is not from the current line
+66,System.ComponentModel.Annotations,5.0.0,3519722978,runtime,src/libraries/System.ComponentModel.Annotations/src/System.ComponentModel.Annotations.csproj,excluded,latest version is not from the current line
+67,System.Text.Encoding.Extensions,4.3.0,3383710867,runtime,src/libraries/System.Text.Encoding.Extensions/src/System.Text.Encoding.Extensions.csproj,excluded,latest version is not from the current line
+68,System.Security.Permissions,10.0.14,3375784471,runtime,src/libraries/System.Security.Permissions/src/System.Security.Permissions.csproj,selected,
+69,System.Xml.ReaderWriter,4.3.1,3334375189,runtime,src/libraries/System.Xml.ReaderWriter/src/System.Xml.ReaderWriter.csproj,excluded,latest version is not from the current line
+70,Microsoft.Extensions.Configuration.Json,10.0.14,3310006565,runtime,src/libraries/Microsoft.Extensions.Configuration.Json/src/Microsoft.Extensions.Configuration.Json.csproj,selected,
+71,runtime.native.System,4.3.1,3288301128,,,excluded,"project not in dotnet/runtime, aspnetcore or efcore at the 10.0 tag"
+72,System.Runtime.InteropServices.RuntimeInformation,4.3.0,3151621085,,,excluded,"project not in dotnet/runtime, aspnetcore or efcore at the 10.0 tag"
+73,System.Xml.XDocument,4.3.0,3122055422,runtime,src/libraries/System.Xml.XDocument/src/System.Xml.XDocument.csproj,excluded,latest version is not from the current line
+74,System.Diagnostics.Tools,4.3.0,3114259886,,,excluded,"project not in dotnet/runtime, aspnetcore or efcore at the 10.0 tag"
+75,System.Security.Cryptography.Algorithms,4.3.1,3099020359,,,excluded,"project not in dotnet/runtime, aspnetcore or efcore at the 10.0 tag"
+76,Microsoft.Extensions.ObjectPool,10.0.14,3076844406,aspnetcore,src/ObjectPool/src/Microsoft.Extensions.ObjectPool.csproj,selected,

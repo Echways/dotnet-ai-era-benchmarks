@@ -14,3 +14,9 @@ glassbox/src/
 glassbox/generated/
 attribution/cache/
 results/summary/traces/**/*.chrome.json
+callgraph/
+attribution/results/
+static-metrics/results/
+!attribution.md
+!attribution-regression.md
+!static-metrics.csv

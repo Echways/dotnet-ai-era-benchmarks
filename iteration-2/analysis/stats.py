@@ -404,7 +404,9 @@ def allocation_cell(row) -> str:
 
 def write_markdown(results: pd.DataFrame, path: Path) -> None:
     compared = results[results["verdict"] != "baseline"]
-    tally = pd.crosstab(compared["label"], compared["verdict"]).reindex(columns=VERDICT_ORDER, fill_value=0)
+    multimodal = compared[compared["multimodal"].astype(bool)]
+    unimodal = compared[~compared["multimodal"].astype(bool)]
+    tally = pd.crosstab(unimodal["label"], unimodal["verdict"]).reindex(columns=VERDICT_ORDER, fill_value=0)
     lines = [
         "# Statistics",
         "",
@@ -430,14 +432,39 @@ def write_markdown(results: pd.DataFrame, path: Path) -> None:
             "`inconclusive` if they differ but the ranges overlap; `n/a` if no allocation data exists."
         ),
         "",
-        "## Verdicts per point",
+        "## Verdicts per point (unimodal scopes)",
         "",
         "| point | " + " | ".join(VERDICT_ORDER) + " |",
         "|---|" + "---:|" * len(VERDICT_ORDER),
     ]
     for label, row in tally.iterrows():
         lines.append(f"| {label} | " + " | ".join(str(row[verdict]) for verdict in VERDICT_ORDER) + " |")
-    lines += ["", "## Mean moved, median did not", "", "| scope | point | median change | mean change |", "|---|---|---:|---:|"]
+    lines += [
+        "",
+        "## Multimodal scopes",
+        "",
+        (
+            "Median and mean can disagree here, so these are kept out of the tally above and must not be quoted as a single headline change. "
+            "Quote both estimates and the allocation verdict."
+        ),
+        "",
+        "| scope | point | median change | mean change | p75/p25 | verdict (by mean) | allocations |",
+        "|---|---|---:|---:|---:|---|---|",
+    ]
+    for row in multimodal.itertuples(index=False):
+        lines.append(
+            f"| `{row.scope}` | {row.label} | {row.change_pct:+.1f}% | {row.mean_change_pct:+.1f}% | "
+            f"{row.quartile_ratio:.2f} | {row.verdict} | {allocation_cell(row)} |"
+        )
+    lines += [
+        "",
+        "## Mean moved, median did not",
+        "",
+        "The median is flat while the mean moved: a change in the tail, not in the typical batch. Do not quote these as a speed-up or slow-down.",
+        "",
+        "| scope | point | median change | mean change |",
+        "|---|---|---:|---:|",
+    ]
     median_is_flat = (compared["primary_metric"] == "median") & (compared["verdict"] == "noise")
     mean_only = compared[median_is_flat & compared["mean_verdict"].isin(["faster", "slower"])]
     for row in mean_only.itertuples(index=False):

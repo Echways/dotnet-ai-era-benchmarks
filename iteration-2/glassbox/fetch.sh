@@ -2,33 +2,40 @@
 set -euo pipefail
 GLASSBOX="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$GLASSBOX/.." && pwd)"
-TAG="${1:?usage: glassbox/fetch.sh <tag, e.g. v7.0.20>}"
-MIRROR="$REPO_ROOT/.work/repos/runtime.git"
-TARGET="$GLASSBOX/src/$TAG"
+TAG="${1:?usage: glassbox/fetch.sh <tag, e.g. v7.0.20> [runtime|aspnetcore|efcore] [packages.tsv]}"
+REPO="${2:-runtime}"
+PACKAGES="${3:-$GLASSBOX/packages.tsv}"
+MIRROR="$REPO_ROOT/.work/repos/$REPO.git"
+if [[ "$REPO" == "runtime" ]]; then TARGET="$GLASSBOX/src/$TAG"; else TARGET="$GLASSBOX/src/$REPO/$TAG"; fi
 
 if [[ ! -d "$MIRROR" ]]; then
   mkdir -p "$(dirname "$MIRROR")"
-  git clone --bare --filter=blob:none https://github.com/dotnet/runtime.git "$MIRROR"
+  git clone --bare --filter=blob:none "https://github.com/dotnet/$REPO.git" "$MIRROR"
 fi
 if ! git -C "$MIRROR" rev-parse --verify --quiet "refs/tags/$TAG" >/dev/null; then
   git -C "$MIRROR" fetch --filter=blob:none origin "refs/tags/$TAG:refs/tags/$TAG"
 fi
 
-mapfile -t PATTERNS < <(python3 - "$MIRROR" "$TAG" "$GLASSBOX/libraries.txt" <<'PY'
+mapfile -t PATTERNS < <(python3 - "$MIRROR" "$TAG" "$PACKAGES" "$REPO" <<'PY'
+import csv
 import re
 import subprocess
 import sys
 
-mirror, tag, libraries_file = sys.argv[1:4]
-libraries = [line.strip() for line in open(libraries_file) if line.strip()]
+mirror, tag, packages_file, repo = sys.argv[1:5]
+with open(packages_file, encoding="utf-8") as handle:
+    rows = [row for row in csv.DictReader(handle, delimiter="\t") if row["repo"] == repo]
 patterns = set()
-for library in libraries:
-    patterns.add(f"/src/libraries/{library}/src/")
-    patterns.add(f"/src/libraries/{library}/tests/")
-    project = f"src/libraries/{library}/src/{library}.csproj"
-    text = subprocess.run(["git", "-C", mirror, "show", f"{tag}:{project}"], capture_output=True, text=True, check=True).stdout
+for row in rows:
+    source_dir = row["source_dir"]
+    patterns.add(f"/{source_dir}/")
+    if row["tests_dir"]:
+        patterns.add(f"/{row['tests_dir']}/")
+    if repo != "runtime":
+        continue
+    text = subprocess.run(["git", "-C", mirror, "show", f"{tag}:{source_dir}/{row['id']}.csproj"], capture_output=True, text=True, check=False).stdout
     for match in re.finditer(r"\$\(CommonPath\)([^\"]+?\.cs)", text):
-        patterns.add("/src/libraries/Common/src/" + match.group(1).replace("\\", "/"))
+        patterns.add("/src/libraries/Common/src/" + match.group(1).replace("\\", "/").lstrip("/"))
 for pattern in sorted(patterns):
     print(pattern)
 PY
