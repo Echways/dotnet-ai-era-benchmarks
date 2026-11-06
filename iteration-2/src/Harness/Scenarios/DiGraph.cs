@@ -51,6 +51,13 @@ public sealed class Depth4(Depth5 next, SingletonService singleton)
 
 public sealed class Depth5;
 
+public sealed class Activated(Depth5 dependency, string name)
+{
+    public Depth5 Dependency { get; } = dependency;
+
+    public string Name { get; } = name;
+}
+
 public sealed class TransientService;
 
 public sealed class ScopedService;

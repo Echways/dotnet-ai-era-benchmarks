@@ -15,6 +15,10 @@ using Microsoft.Extensions.DependencyInjection;
 [assembly: TraceId(DiScopes.OpenGeneric, "di.open-generic.x10k", "di")]
 [assembly: TraceId(DiScopes.Enumerable, "di.enumerable20.x10k", "di")]
 [assembly: TraceId(DiScopes.CreateScope, "di.create-scope-dispose.x10k", "di")]
+[assembly: TraceId(DiScopes.CollectionAdd, "di.service-descriptors-x3.x1k", "di")]
+[assembly: TraceId(DiScopes.GetServices, "di.get-services-plugin20.x10k", "di")]
+[assembly: TraceId(DiScopes.ActivatorCreate, "di.activator-create-instance.x10k", "di")]
+[assembly: TraceId(DiScopes.ActivatorFactory, "di.activator-create-factory.x100", "di")]
 
 namespace Harness.Scenarios;
 
@@ -32,6 +36,10 @@ public static class DiScopes
     public const int OpenGeneric = 1023;
     public const int Enumerable = 1024;
     public const int CreateScope = 1025;
+    public const int CollectionAdd = 1026;
+    public const int GetServices = 1027;
+    public const int ActivatorCreate = 1028;
+    public const int ActivatorFactory = 1029;
 }
 
 public sealed class DiScenario : IScenario
@@ -156,6 +164,45 @@ public sealed class DiScenario : IScenario
             {
                 using var scope = root.CreateScope();
                 Sink.Keep(scope);
+            }
+        });
+
+        var registrations = _registrations;
+        recorder.Measure(DiScopes.CollectionAdd, 1000, () =>
+        {
+            IServiceCollection services = new ServiceCollection();
+            for (var i = 0; i < 1000; i++)
+            {
+                var (service, implementation) = registrations[i];
+                services.Add(ServiceDescriptor.Transient(service, implementation));
+                services.Add(ServiceDescriptor.Singleton(service, implementation));
+                services.Add(ServiceDescriptor.Describe(service, implementation, ServiceLifetime.Scoped));
+            }
+
+            Sink.Keep(services);
+        });
+
+        recorder.Measure(DiScopes.GetServices, Batch, () =>
+        {
+            for (var i = 0; i < Batch; i++)
+            {
+                Sink.Keep(root.GetServices<IPlugin>());
+            }
+        });
+
+        recorder.Measure(DiScopes.ActivatorCreate, Batch, () =>
+        {
+            for (var i = 0; i < Batch; i++)
+            {
+                Sink.Keep(ActivatorUtilities.CreateInstance<Activated>(root, "activated"));
+            }
+        });
+
+        recorder.Measure(DiScopes.ActivatorFactory, 100, () =>
+        {
+            for (var i = 0; i < 100; i++)
+            {
+                Sink.Keep(ActivatorUtilities.CreateFactory(typeof(Activated), [typeof(string)]));
             }
         });
     }

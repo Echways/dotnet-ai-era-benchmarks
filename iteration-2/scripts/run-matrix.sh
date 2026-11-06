@@ -19,8 +19,8 @@ INCLUDE_NEW=0
 SKIP_ANALYSIS=0
 RAW_OVERRIDE=""
 SUMMARY_OVERRIDE=""
-TRACK_A_SCENARIOS=(di config options logging cache ef)
-TRACK_B_SCENARIOS=(stj channels immutable aspnetcore ef)
+TRACK_A_SCENARIOS=(di config options logging cache primitives files utilities ef)
+TRACK_B_SCENARIOS=(stj channels immutable diagnostics text metadata aspnetcore ef)
 MULTI_THREADED_SCENARIOS=(cache channels aspnetcore)
 
 usage() {

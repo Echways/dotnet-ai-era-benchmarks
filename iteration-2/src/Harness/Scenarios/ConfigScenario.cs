@@ -11,6 +11,13 @@ using Microsoft.Extensions.Configuration;
 [assembly: TraceId(ConfigScopes.DeepSection, "config.get-section-deep.x10k", "config")]
 [assembly: TraceId(ConfigScopes.Bind, "config.bind-poco50.x1k", "config")]
 [assembly: TraceId(ConfigScopes.Reload, "config.reload-json2000.x10", "config")]
+[assembly: TraceId(ConfigScopes.ManagerBuild, "config.manager-build-json2000.x10", "config")]
+[assembly: TraceId(ConfigScopes.GetChildren, "config.get-children.x1k", "config")]
+[assembly: TraceId(ConfigScopes.BindOnto, "config.bind-onto-poco50.x1k", "config")]
+[assembly: TraceId(ConfigScopes.GetValue, "config.get-value-int.x10k", "config")]
+[assembly: TraceId(ConfigScopes.FileBuild, "config.build-json-file2000.x10", "config")]
+[assembly: TraceId(ConfigScopes.Path, "config.path-combine-parent-key.x10k", "config")]
+[assembly: TraceId(ConfigScopes.Extensions, "config.connection-string-required-section-exists.x10k", "config")]
 
 namespace Harness.Scenarios;
 
@@ -23,6 +30,13 @@ public static class ConfigScopes
     public const int DeepSection = 1112;
     public const int Bind = 1113;
     public const int Reload = 1114;
+    public const int ManagerBuild = 1115;
+    public const int GetChildren = 1116;
+    public const int BindOnto = 1117;
+    public const int GetValue = 1118;
+    public const int FileBuild = 1119;
+    public const int Path = 1120;
+    public const int Extensions = 1121;
 }
 
 public sealed class ConfigScenario : IScenario
@@ -34,11 +48,14 @@ public sealed class ConfigScenario : IScenario
     private readonly string _file;
     private IConfigurationRoot _root = null!;
     private IConfigurationRoot _fileRoot = null!;
+    private readonly IConfigurationRoot _small;
 
     public ConfigScenario()
     {
         _file = Path.Combine(_directory, "settings.json");
         File.WriteAllBytes(_file, _json);
+        using var smallStream = new MemoryStream("""{"ConnectionStrings":{"Default":"Server=.;Database=harness"},"Features":{"Alpha":"1"}}"""u8.ToArray(), writable: false);
+        _small = new ConfigurationBuilder().AddJsonStream(smallStream).Build();
     }
 
     public string Name => "config";
@@ -95,12 +112,82 @@ public sealed class ConfigScenario : IScenario
                 fileRoot.Reload();
             }
         });
+
+        recorder.Measure(ConfigScopes.ManagerBuild, 10, () =>
+        {
+            for (var i = 0; i < 10; i++)
+            {
+                using var stream = new MemoryStream(_json, writable: false);
+                using var manager = new ConfigurationManager();
+                manager.AddJsonStream(stream);
+                Sink.Keep(manager.GetSection("Poco"));
+                Sink.Keep(manager.GetChildren().Count());
+            }
+        });
+
+        recorder.Measure(ConfigScopes.GetChildren, 1000, () =>
+        {
+            for (var i = 0; i < 1000; i++)
+            {
+                Sink.Keep(root.GetChildren().Count());
+                Sink.Keep(root.GetSection("S00").GetChildren().Count());
+            }
+        });
+
+        var target = new Poco50();
+        recorder.Measure(ConfigScopes.BindOnto, 1000, () =>
+        {
+            for (var i = 0; i < 1000; i++)
+            {
+                poco.Bind(target);
+            }
+        });
+
+        recorder.Measure(ConfigScopes.GetValue, Batch, () =>
+        {
+            for (var i = 0; i < Batch; i++)
+            {
+                Sink.Keep(root.GetValue<int>("Poco:P05"));
+            }
+        });
+
+        recorder.Measure(ConfigScopes.FileBuild, 10, () =>
+        {
+            for (var i = 0; i < 10; i++)
+            {
+                var built = new ConfigurationBuilder().SetBasePath(_directory).AddJsonFile("settings.json", optional: false, reloadOnChange: false).Build();
+                Sink.Keep(built);
+                (built as IDisposable)?.Dispose();
+            }
+        });
+
+        recorder.Measure(ConfigScopes.Path, Batch, () =>
+        {
+            for (var i = 0; i < Batch; i++)
+            {
+                Sink.Keep(ConfigurationPath.Combine("Section", "Sub", "Key"));
+                Sink.Keep(ConfigurationPath.GetSectionKey("Section:Sub:Key"));
+                Sink.Keep(ConfigurationPath.GetParentPath("Section:Sub:Key"));
+            }
+        });
+
+        var small = _small;
+        recorder.Measure(ConfigScopes.Extensions, Batch, () =>
+        {
+            for (var i = 0; i < Batch; i++)
+            {
+                Sink.Keep(small.GetConnectionString("Default"));
+                Sink.Keep(small.GetRequiredSection("Features"));
+                Sink.Keep(small.GetSection("Features").Exists() ? 1 : 0);
+            }
+        });
     }
 
     public void Dispose()
     {
         (_fileRoot as IDisposable)?.Dispose();
         (_root as IDisposable)?.Dispose();
+        (_small as IDisposable)?.Dispose();
         Directory.Delete(_directory, recursive: true);
     }
 
