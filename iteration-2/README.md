@@ -1,6 +1,6 @@
 # Iteration 2
 
-Status: in preparation. The design is in [`docs/design.md`](docs/design.md); the bench machine checklist is in [`docs/stand.md`](docs/stand.md).
+Status: in preparation; the measurement changes are validated on the iteration 1 scope with 11 full rounds (section 8 of the design). The design is in [`docs/design.md`](docs/design.md); the bench machine checklist is in [`docs/stand.md`](docs/stand.md).
 
 The code in this directory started as a copy of the harness, statistics and glass box of [iteration 1](../iteration-1/README.md), with the measurement changes of section 8 of the design applied. Iteration 1 is left as published.
 
