@@ -140,7 +140,7 @@ Binder (6 rounds, per call): `IsIgnoredProperty` from dotnet/runtime#126396 call
 
 DI (8 rounds, `di.first-resolve-depth5.x100`, ms per batch): 10.0 package 0.565; 350951d, the commit before dotnet/runtime#124331, 0.554; 7603a59, dotnet/runtime#124331 opened by the agent, 0.641; RC3 package 0.653; RC3 sources 0.650; RC3 with only that commit reverted 0.569. Within rounds the commit adds +16.5% (95% CI 14.3 to 18.8, 8 of 8 rounds) and the revert leaves +1.9% against 10.0 (CI -0.6 to 4.1). The pull request fixes the deadlock dotnet/runtime#88390 with a `[ThreadStatic]` `HashSet` in `VisitRootCache`, which is not in the list of 24 hot methods, so only the bisect found it.
 
-Release steps with the previous release as baseline (`habr/release_steps.py`, same verdict rules): full resources 19, 5, 5 and 6 confirmed shifts for 8.0, 9.0, 10.0 and 11.0 RC; limited resources 8, 7, 5 and 6, with much wider intervals. Each major of a package also brings its own TFM asset (`lib/net7.0`, `lib/net8.0`, ...), so these steps cannot separate source edits from conditional compilation.
+Release steps with the previous release as baseline (`articles/release_steps.py`, same verdict rules): full resources 19, 5, 5 and 6 confirmed shifts for 8.0, 9.0, 10.0 and 11.0 RC; limited resources 8, 7, 5 and 6, with much wider intervals. Each major of a package also brings its own TFM asset (`lib/net7.0`, `lib/net8.0`, ...), so these steps cannot separate source edits from conditional compilation.
 
 Commit counts by author, git only, no merges (agent author / commits): 7.0 to 10.0: DI 0/80, Caching 0/33, Configuration 0/67, Options 0/37, Logging 1/52, EF Core 29/867; 10.0 to 11.0 RC: DI 11/21, Caching 1/14, Configuration 1/15, Options 0/7, Logging 3/8, EF Core 73/256.
 
