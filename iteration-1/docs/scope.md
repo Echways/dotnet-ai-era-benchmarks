@@ -1,6 +1,6 @@
 # Iteration 1
 
-Status: complete. The published write-ups ([`habr/article.md`](../habr/article.md), [`medium/article.md`](../medium/article.md)) and [`docs/report.md`](report.md) describe this iteration.
+Status: complete. The published write-ups ([`articles/habr.ru.md`](../articles/habr.ru.md), [`articles/en.md`](../articles/en.md)) and [`docs/report.md`](report.md) describe this iteration.
 
 ## Question
 

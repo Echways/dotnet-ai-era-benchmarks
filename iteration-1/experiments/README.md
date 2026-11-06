@@ -35,4 +35,4 @@ RC=v11.0.0-rc.3.26522.148
 
 ## Release steps
 
-`habr/release_steps.py` reruns `analysis/stats.py` with the previous release as the baseline and writes `habr/data/release-steps.csv`.
+`articles/release_steps.py` reruns `analysis/stats.py` with the previous release as the baseline and writes `articles/data/release-steps.csv`.

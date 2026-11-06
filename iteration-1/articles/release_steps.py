@@ -12,7 +12,7 @@ import stats
 
 SUMMARY = ROOT / "results" / "rounds" / "summary"
 ROUNDS = ROOT / "results" / "rounds" / "rounds"
-OUT = ROOT / "habr" / "data" / "release-steps.csv"
+OUT = ROOT / "articles" / "data" / "release-steps.csv"
 SCENARIOS = ["di", "config", "options", "logging", "cache", "ef"]
 STEPS = [("e0-7", "e1-8"), ("e1-8", "e1-9"), ("e1-9", "e2-10"), ("e2-10", "e2-11")]
 

@@ -4,7 +4,7 @@ Did Microsoft's code get worse with AI? This repository measures performance, th
 
 Timing is recorded with [EmberTrace](https://github.com/Echways/EmberTrace), a .NET tracer by the same author.
 
-The write-up is in [`habr/article.md`](habr/article.md) (in Russian). The full tables are in [`docs/report.md`](docs/report.md).
+The write-up is in [`articles/`](articles/): [Russian](articles/habr.ru.md) and [English](articles/en.md). The full tables are in [`docs/report.md`](docs/report.md).
 
 ## Findings
 
@@ -70,7 +70,7 @@ The design, hypotheses and every deviation from the plan are in [`docs/methodolo
 | `attribution/` | maps commits between tags to pull requests and classifies them as `cca` (agent), `msft-human` or `community` |
 | `static-metrics/` | per-tag line counts, cyclomatic complexity, method length, nesting, analyzer warnings |
 | `bench/Bdn` | BenchmarkDotNet mirror of both tracks, used only for the two-operation check |
-| `habr/` | the article, its figures and the scripts that build them |
+| `articles/` | the write-ups in Russian and English, their figures (`figures/ru`, `figures/en`) and the script that builds the release-step data |
 | `results/summary/` | collected results |
 
 ## Running
