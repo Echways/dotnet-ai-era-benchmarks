@@ -1,0 +1,143 @@
+scope	package	operation	state
+cache.extensions-set-get-try-get.x10k	Microsoft.Extensions.Caching.Abstractions	extensions	measured
+cache.set.x10k	Microsoft.Extensions.Caching.Abstractions	extensions	measured
+cache.cold.create-and-first-set	Microsoft.Extensions.Caching.Memory	get-set	measured
+cache.get-or-create.x10k	Microsoft.Extensions.Caching.Memory	get-set	measured
+cache.parallel8-hit-miss.per-thread-x10k	Microsoft.Extensions.Caching.Memory	get-set	measured
+cache.remove.x10k	Microsoft.Extensions.Caching.Memory	get-set	measured
+cache.set.x10k	Microsoft.Extensions.Caching.Memory	get-set	measured
+cache.try-get-hit.x10k	Microsoft.Extensions.Caching.Memory	get-set	measured
+cache.try-get-miss.x10k	Microsoft.Extensions.Caching.Memory	get-set	measured
+config.build-json2000.x10	Microsoft.Extensions.Configuration	build	measured
+config.cold.build-json2000	Microsoft.Extensions.Configuration	build	measured
+config.manager-build-json2000.x10	Microsoft.Extensions.Configuration	build	measured
+config.get-children.x1k	Microsoft.Extensions.Configuration	read	measured
+config.get-section-deep.x10k	Microsoft.Extensions.Configuration	read	measured
+config.indexer.x10k	Microsoft.Extensions.Configuration	read	measured
+config.connection-string-required-section-exists.x10k	Microsoft.Extensions.Configuration.Abstractions	extensions	measured
+config.path-combine-parent-key.x10k	Microsoft.Extensions.Configuration.Abstractions	path	measured
+config.bind-onto-poco50.x1k	Microsoft.Extensions.Configuration.Binder	bind	measured
+config.bind-poco50.x1k	Microsoft.Extensions.Configuration.Binder	bind	measured
+config.cold.bind-poco50	Microsoft.Extensions.Configuration.Binder	bind	measured
+config.get-value-int.x10k	Microsoft.Extensions.Configuration.Binder	bind	measured
+config.build-json-file2000.x10	Microsoft.Extensions.Configuration.FileExtensions	load	measured
+config.reload-json2000.x10	Microsoft.Extensions.Configuration.FileExtensions	load	measured
+config.build-json-file2000.x10	Microsoft.Extensions.Configuration.Json	load	measured
+config.build-json2000.x10	Microsoft.Extensions.Configuration.Json	load	measured
+config.cold.build-json2000	Microsoft.Extensions.Configuration.Json	load	measured
+config.reload-json2000.x10	Microsoft.Extensions.Configuration.Json	load	measured
+di.build100.x100	Microsoft.Extensions.DependencyInjection	build	measured
+di.build1000.x10	Microsoft.Extensions.DependencyInjection	build	measured
+di.cold.build100	Microsoft.Extensions.DependencyInjection	build	measured
+di.cold.first-resolve-depth5	Microsoft.Extensions.DependencyInjection	build	measured
+di.create-scope-dispose.x10k	Microsoft.Extensions.DependencyInjection	build	measured
+di.enumerable20.x10k	Microsoft.Extensions.DependencyInjection	build	measured
+di.first-resolve-depth5.x100	Microsoft.Extensions.DependencyInjection	build	measured
+di.open-generic.x10k	Microsoft.Extensions.DependencyInjection	build	measured
+di.singleton.x10k	Microsoft.Extensions.DependencyInjection	build	measured
+di.transient.x10k	Microsoft.Extensions.DependencyInjection	build	measured
+di.validate-on-build100.x100	Microsoft.Extensions.DependencyInjection	build	measured
+di.create-scope-dispose.x10k	Microsoft.Extensions.DependencyInjection	scope	measured
+di.scoped.x10k	Microsoft.Extensions.DependencyInjection	scope	measured
+di.activator-create-instance.x10k	Microsoft.Extensions.DependencyInjection.Abstractions	activator.create-instance	measured
+di.activator-create-factory.x100	Microsoft.Extensions.DependencyInjection.Abstractions	activator.factory	measured
+di.service-descriptors-x3.x1k	Microsoft.Extensions.DependencyInjection.Abstractions	collection.add	measured
+di.enumerable20.x10k	Microsoft.Extensions.DependencyInjection.Abstractions	provider.get-required	measured
+di.get-services-plugin20.x10k	Microsoft.Extensions.DependencyInjection.Abstractions	provider.get-required	measured
+di.open-generic.x10k	Microsoft.Extensions.DependencyInjection.Abstractions	provider.get-required	measured
+di.scoped.x10k	Microsoft.Extensions.DependencyInjection.Abstractions	provider.get-required	measured
+di.singleton.x10k	Microsoft.Extensions.DependencyInjection.Abstractions	provider.get-required	measured
+di.transient.x10k	Microsoft.Extensions.DependencyInjection.Abstractions	provider.get-required	measured
+utilities.dependency-context-read.x100	Microsoft.Extensions.DependencyModel	context	measured
+utilities.dependency-context-write.x100	Microsoft.Extensions.DependencyModel	context	measured
+files.null-provider.x10k	Microsoft.Extensions.FileProviders.Abstractions	null-provider	measured
+files.physical-get-directory-contents.x1k	Microsoft.Extensions.FileProviders.Physical	provider	measured
+files.physical-get-file-info.x10k	Microsoft.Extensions.FileProviders.Physical	provider	measured
+files.matcher-execute-tree200.x100	Microsoft.Extensions.FileSystemGlobbing	match	measured
+utilities.host-environment-checks.x10k	Microsoft.Extensions.Hosting.Abstractions	environment	measured
+logging.cold.factory-create	Microsoft.Extensions.Logging	factory	measured
+logging.factory-create.x100	Microsoft.Extensions.Logging	factory	measured
+logging.begin-scope.x10k	Microsoft.Extensions.Logging	log	measured
+logging.cold.first-log	Microsoft.Extensions.Logging	log	measured
+logging.log-debug-3args-disabled.x10k	Microsoft.Extensions.Logging	log	measured
+logging.log-information-3args-enabled.x10k	Microsoft.Extensions.Logging	log	measured
+logging.add-logging-set-minimum-level.x1k	Microsoft.Extensions.Logging	registration	measured
+logging.factory-create.x100	Microsoft.Extensions.Logging	registration	measured
+logging.logger-message-define-create.x1k	Microsoft.Extensions.Logging.Abstractions	logger-message.define	measured
+logging.logger-message-define-scope.x10k	Microsoft.Extensions.Logging.Abstractions	logger-message.define	measured
+logging.logger-message-define.x10k	Microsoft.Extensions.Logging.Abstractions	logger-message.define	measured
+logging.begin-scope.x10k	Microsoft.Extensions.Logging.Abstractions	logger.extension	measured
+logging.cold.first-log	Microsoft.Extensions.Logging.Abstractions	logger.extension	measured
+logging.log-debug-3args-disabled.x10k	Microsoft.Extensions.Logging.Abstractions	logger.extension	measured
+logging.log-error-3args-enabled.x10k	Microsoft.Extensions.Logging.Abstractions	logger.extension	measured
+logging.log-information-3args-enabled.x10k	Microsoft.Extensions.Logging.Abstractions	logger.extension	measured
+logging.null-logger.x10k	Microsoft.Extensions.Logging.Abstractions	logger.null	measured
+utilities.object-pool-create.x1k	Microsoft.Extensions.ObjectPool	pool	measured
+utilities.object-pool-get-return.x10k	Microsoft.Extensions.ObjectPool	pool	measured
+options.cold.first-value	Microsoft.Extensions.Options	factory.create	measured
+options.factory-create-poco50.x1k	Microsoft.Extensions.Options	factory.create	measured
+options.snapshot-new-scope.x1k	Microsoft.Extensions.Options	factory.create	measured
+options.validate-data-annotations.x1k	Microsoft.Extensions.Options	factory.create	measured
+options.monitor-current-value.x10k	Microsoft.Extensions.Options	monitor.get	measured
+options.monitor-get-named.x10k	Microsoft.Extensions.Options	monitor.get	measured
+options.snapshot-new-scope.x1k	Microsoft.Extensions.Options	monitor.get	measured
+options.registration-configure-validate.x1k	Microsoft.Extensions.Options	registration	measured
+options.configuration-change-token-source.x10k	Microsoft.Extensions.Options.ConfigurationExtensions	configure	measured
+options.configure-from-configuration-first-value.x100	Microsoft.Extensions.Options.ConfigurationExtensions	configure	measured
+primitives.change-token-on-change.x1k	Microsoft.Extensions.Primitives	change-token	measured
+primitives.composite-change-token.x1k	Microsoft.Extensions.Primitives	change-token	measured
+primitives.string-segment.x10k	Microsoft.Extensions.Primitives	string-segment	measured
+primitives.string-values.x10k	Microsoft.Extensions.Primitives	string-values	measured
+immutable.array-create-builder-add.x10	System.Collections.Immutable	array	measured
+immutable.builder-add-10k.x10	System.Collections.Immutable	dictionary	measured
+immutable.cold.first-build-10k	System.Collections.Immutable	dictionary	measured
+immutable.dictionary-add-set-item-1k.x10	System.Collections.Immutable	dictionary	measured
+immutable.dictionary-build-10k.x10	System.Collections.Immutable	dictionary	measured
+immutable.dictionary-lookup.x10k	System.Collections.Immutable	dictionary	measured
+immutable.list-set-sorted-dictionary-add-1k.x10	System.Collections.Immutable	list-set	measured
+diagnostics.activity-start-tag-stop.x10k	System.Diagnostics.DiagnosticSource	activity	measured
+diagnostics.listener-is-enabled-write.x10k	System.Diagnostics.DiagnosticSource	listener	measured
+diagnostics.counter-add-histogram-record.x10k	System.Diagnostics.DiagnosticSource	metrics	measured
+diagnostics.meter-create-counter.x1k	System.Diagnostics.DiagnosticSource	metrics	measured
+metadata.builder-types-blobs.x100	System.Reflection.Metadata	builder	measured
+metadata.read-types-methods-signatures.x10	System.Reflection.Metadata	reader	measured
+text.code-pages-get-encoding.x10k	System.Text.Encoding.CodePages	encoding	measured
+text.encode-utf8-find-first.x10k	System.Text.Encodings.Web	encode	measured
+text.encoders-encode.x10k	System.Text.Encodings.Web	encode	measured
+stj.deserialize-reflection.x10k	System.Text.Json	deserialize	measured
+stj.deserialize-sourcegen.x10k	System.Text.Json	deserialize	measured
+stj.jsondocument-get-property.x10k	System.Text.Json	document	measured
+stj.jsondocument-parse-1mb.x10	System.Text.Json	document	measured
+stj.utf8jsonreader-1mb.x10	System.Text.Json	reader-writer	measured
+stj.utf8jsonwriter-object.x10k	System.Text.Json	reader-writer	measured
+stj.cold.first-serialize-reflection	System.Text.Json	serialize	measured
+stj.serialize-reflection.x10k	System.Text.Json	serialize	measured
+stj.serialize-sourcegen.x10k	System.Text.Json	serialize	measured
+cache.size-limit-compact-half.x1	Microsoft.Extensions.Caching.Memory	maintenance	partial
+aspnetcore.cold.first-request			extra
+aspnetcore.cold.start-kestrel			extra
+aspnetcore.hello.batch400			extra
+aspnetcore.hello.request			extra
+aspnetcore.json.batch400			extra
+aspnetcore.json.request			extra
+aspnetcore.routes500.batch400			extra
+aspnetcore.routes500.request			extra
+channels.bounded1024-1p4c.x100k-items			extra
+channels.cold.first-pipeline			extra
+ef.cold.first-query			extra
+ef.cold.open-connection-create-schema			extra
+ef.detect-changes-10k-tracked.x10			extra
+ef.new-context.x1k			extra
+ef.pooled-context.x1k			extra
+ef.query-where-orderby-take.x1k			extra
+ef.save-changes-1000-entities.x1			extra
+ef.to-query-string.x1k			extra
+newonly.bind-poco50-source-generated.x1k			extra
+newonly.keyed-enumerable10.x10k			extra
+newonly.keyed-singleton.x10k			extra
+newonly.keyed-transient.x10k			extra
+options.ioptions-value.x10k			extra
+stj.jsonnode-parse-read.x10k			extra
+	System.Configuration.ConfigurationManager	app-settings	pending
+	System.Security.Cryptography.ProtectedData	protect	unmeasurable
+	System.Security.Permissions	principal	unmeasurable

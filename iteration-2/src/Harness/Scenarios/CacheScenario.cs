@@ -10,6 +10,8 @@ using Microsoft.Extensions.Caching.Memory;
 [assembly: TraceId(CacheScopes.GetOrCreate, "cache.get-or-create.x10k", "cache")]
 [assembly: TraceId(CacheScopes.Compact, "cache.size-limit-compact-half.x1", "cache")]
 [assembly: TraceId(CacheScopes.Parallel, "cache.parallel8-hit-miss.per-thread-x10k", "cache")]
+[assembly: TraceId(CacheScopes.Remove, "cache.remove.x10k", "cache")]
+[assembly: TraceId(CacheScopes.Extensions, "cache.extensions-set-get-try-get.x10k", "cache")]
 
 namespace Harness.Scenarios;
 
@@ -22,6 +24,8 @@ public static class CacheScopes
     public const int GetOrCreate = 1413;
     public const int Compact = 1414;
     public const int Parallel = 1415;
+    public const int Remove = 1416;
+    public const int Extensions = 1417;
 }
 
 public sealed class CacheScenario : IScenario
@@ -102,6 +106,36 @@ public sealed class CacheScenario : IScenario
             }
 
             recorder.Measure(CacheScopes.Compact, 1, () => limited.Compact(0.5));
+        }
+
+        using (var removable = new MemoryCache(new MemoryCacheOptions()))
+        {
+            foreach (var key in keys)
+            {
+                removable.Set(key, Payload);
+            }
+
+            recorder.Measure(CacheScopes.Remove, Batch, () =>
+            {
+                for (var i = 0; i < Batch; i++)
+                {
+                    removable.Remove(keys[i]);
+                }
+            });
+        }
+
+        using (var extended = new MemoryCache(new MemoryCacheOptions()))
+        {
+            IMemoryCache abstraction = extended;
+            recorder.Measure(CacheScopes.Extensions, Batch, () =>
+            {
+                for (var i = 0; i < Batch; i++)
+                {
+                    abstraction.Set(keys[i], Payload);
+                    Sink.Keep(abstraction.Get<object>(keys[i]));
+                    Sink.Keep(abstraction.TryGetValue<object>(keys[i], out var value) ? value : null);
+                }
+            });
         }
 
         recorder.MeasureParallel(CacheScopes.Parallel, Workers, Batch, worker =>

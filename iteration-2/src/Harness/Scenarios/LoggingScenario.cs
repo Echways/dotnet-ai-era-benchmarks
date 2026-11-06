@@ -1,7 +1,9 @@
 using EmberTrace.Abstractions.Attributes;
 using Harness.Core;
 using Harness.Scenarios;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 
 [assembly: TraceId(LoggingScopes.ColdFactory, "logging.cold.factory-create", "logging")]
 [assembly: TraceId(LoggingScopes.ColdFirstLog, "logging.cold.first-log", "logging")]
@@ -10,6 +12,11 @@ using Microsoft.Extensions.Logging;
 [assembly: TraceId(LoggingScopes.Disabled, "logging.log-debug-3args-disabled.x10k", "logging")]
 [assembly: TraceId(LoggingScopes.Define, "logging.logger-message-define.x10k", "logging")]
 [assembly: TraceId(LoggingScopes.BeginScope, "logging.begin-scope.x10k", "logging")]
+[assembly: TraceId(LoggingScopes.NullLogger, "logging.null-logger.x10k", "logging")]
+[assembly: TraceId(LoggingScopes.LogError, "logging.log-error-3args-enabled.x10k", "logging")]
+[assembly: TraceId(LoggingScopes.DefinedScope, "logging.logger-message-define-scope.x10k", "logging")]
+[assembly: TraceId(LoggingScopes.DefineCreate, "logging.logger-message-define-create.x1k", "logging")]
+[assembly: TraceId(LoggingScopes.AddLogging, "logging.add-logging-set-minimum-level.x1k", "logging")]
 
 namespace Harness.Scenarios;
 
@@ -22,6 +29,11 @@ public static class LoggingScopes
     public const int Disabled = 1312;
     public const int Define = 1313;
     public const int BeginScope = 1314;
+    public const int NullLogger = 1315;
+    public const int LogError = 1316;
+    public const int DefinedScope = 1317;
+    public const int DefineCreate = 1318;
+    public const int AddLogging = 1319;
 }
 
 public sealed class LoggingScenario : IScenario
@@ -31,6 +43,8 @@ public sealed class LoggingScenario : IScenario
 
     private static readonly Action<ILogger, int, string, double, Exception?> Defined =
         LoggerMessage.Define<int, string, double>(LogLevel.Information, new EventId(7, "Performed"), Template);
+
+    private static readonly Func<int, Exception?, string> NullFormatter = static (state, _) => "message";
 
     private readonly NoIoLoggerProvider _provider = new();
     private ILoggerFactory _factory = null!;
@@ -90,6 +104,55 @@ public sealed class LoggingScenario : IScenario
             {
                 using var scope = logger.BeginScope("Request {RequestId}", i);
                 Sink.Keep(scope);
+            }
+        });
+
+        recorder.Measure(LoggingScopes.NullLogger, Batch, () =>
+        {
+            var nullLogger = NullLogger.Instance;
+            var nullFactory = NullLoggerFactory.Instance;
+            for (var i = 0; i < Batch; i++)
+            {
+                nullLogger.Log(LogLevel.Information, default, i, null, NullFormatter);
+                Sink.Keep(nullLogger.IsEnabled(LogLevel.Information) ? 1 : 0);
+                Sink.Keep(nullFactory.CreateLogger("Harness.Null"));
+            }
+        });
+
+        recorder.Measure(LoggingScopes.LogError, Batch, () =>
+        {
+            for (var i = 0; i < Batch; i++)
+            {
+                logger.LogError(Template, i, "login", i * 0.5);
+            }
+        });
+
+        var scopeDefinition = LoggerMessage.DefineScope<int>("Request {RequestId}");
+        recorder.Measure(LoggingScopes.DefinedScope, Batch, () =>
+        {
+            for (var i = 0; i < Batch; i++)
+            {
+                using var scope = scopeDefinition(logger, i);
+                Sink.Keep(scope);
+            }
+        });
+
+        recorder.Measure(LoggingScopes.DefineCreate, 1000, () =>
+        {
+            for (var i = 0; i < 1000; i++)
+            {
+                Sink.Keep(LoggerMessage.Define<int, string, double>(LogLevel.Information, new EventId(7, "Performed"), Template));
+                Sink.Keep(LoggerMessage.DefineScope<int>("Request {RequestId}"));
+            }
+        });
+
+        recorder.Measure(LoggingScopes.AddLogging, 1000, () =>
+        {
+            for (var i = 0; i < 1000; i++)
+            {
+                var services = new ServiceCollection();
+                services.AddLogging(builder => builder.SetMinimumLevel(LogLevel.Information));
+                Sink.Keep(services);
             }
         });
     }

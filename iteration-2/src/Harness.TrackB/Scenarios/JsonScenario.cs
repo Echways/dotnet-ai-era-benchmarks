@@ -1,3 +1,4 @@
+using System.Buffers;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using EmberTrace.Abstractions.Attributes;
@@ -12,6 +13,8 @@ using Harness.TrackB.Scenarios;
 [assembly: TraceId(JsonScopes.Reader, "stj.utf8jsonreader-1mb.x10", "stj")]
 [assembly: TraceId(JsonScopes.Document, "stj.jsondocument-parse-1mb.x10", "stj")]
 [assembly: TraceId(JsonScopes.Node, "stj.jsonnode-parse-read.x10k", "stj")]
+[assembly: TraceId(JsonScopes.Writer, "stj.utf8jsonwriter-object.x10k", "stj")]
+[assembly: TraceId(JsonScopes.GetProperty, "stj.jsondocument-get-property.x10k", "stj")]
 
 namespace Harness.TrackB.Scenarios;
 
@@ -25,6 +28,8 @@ public static class JsonScopes
     public const int Reader = 2014;
     public const int Document = 2015;
     public const int Node = 2016;
+    public const int Writer = 2017;
+    public const int GetProperty = 2018;
 }
 
 public sealed class JsonScenario : IScenario
@@ -109,6 +114,34 @@ public sealed class JsonScenario : IScenario
             {
                 var node = JsonNode.Parse(text)!;
                 Sink.Keep(node["Location"]!["City"]!.GetValue<string>());
+            }
+        });
+
+        var buffer = new ArrayBufferWriter<byte>();
+        using var writer = new Utf8JsonWriter(buffer);
+        recorder.Measure(JsonScopes.Writer, Batch, () =>
+        {
+            for (var i = 0; i < Batch; i++)
+            {
+                buffer.ResetWrittenCount();
+                writer.Reset(buffer);
+                writer.WriteStartObject();
+                writer.WriteString("City", "Reykjavik");
+                writer.WriteNumber("Temperature", i);
+                writer.WriteNumber("Humidity", i * 0.5);
+                writer.WriteString("Summary", "overcast");
+                writer.WriteEndObject();
+                writer.Flush();
+                Sink.Keep(buffer.WrittenCount);
+            }
+        });
+
+        recorder.Measure(JsonScopes.GetProperty, Batch, () =>
+        {
+            for (var i = 0; i < Batch; i++)
+            {
+                using var document = JsonDocument.Parse(small);
+                Sink.Keep(document.RootElement.GetProperty("Location").GetProperty("City").GetString());
             }
         });
     }

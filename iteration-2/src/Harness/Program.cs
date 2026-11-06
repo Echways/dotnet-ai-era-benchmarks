@@ -8,6 +8,9 @@ var registrations = new List<ScenarioRegistration>
     new("options", () => new OptionsScenario()),
     new("logging", () => new LoggingScenario()),
     new("cache", () => new CacheScenario()),
+    new("primitives", () => new PrimitivesScenario()),
+    new("files", () => new FilesScenario()),
+    new("utilities", () => new UtilitiesScenario()),
 #if HARNESS_EF
     new("ef", () => new EfScenario()),
 #else

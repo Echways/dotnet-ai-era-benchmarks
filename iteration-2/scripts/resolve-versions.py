@@ -25,6 +25,11 @@ TRACK_A_ROOTS = [
     "Microsoft.Extensions.Options.DataAnnotations",
     "Microsoft.Extensions.Logging",
     "Microsoft.Extensions.Caching.Memory",
+    "Microsoft.Extensions.FileProviders.Physical",
+    "Microsoft.Extensions.FileSystemGlobbing",
+    "Microsoft.Extensions.DependencyModel",
+    "Microsoft.Extensions.Hosting.Abstractions",
+    "Microsoft.Extensions.ObjectPool",
 ]
 EF_ROOTS = [
     "Microsoft.EntityFrameworkCore",

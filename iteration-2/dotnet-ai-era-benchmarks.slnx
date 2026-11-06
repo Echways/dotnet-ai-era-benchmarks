@@ -11,6 +11,7 @@
     <Project Path="tests/Compare.Tests/Compare.Tests.csproj" />
     <Project Path="tests/Harness.Core.Tests/Harness.Core.Tests.csproj" />
     <Project Path="tests/Instrumenter.Tests/Instrumenter.Tests.csproj" />
+    <Project Path="tests/Operations.Tests/Operations.Tests.csproj" />
   </Folder>
   <Folder Name="/glassbox/">
     <Project Path="glassbox/CallGraph/CallGraph.csproj" />
