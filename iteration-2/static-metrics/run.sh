@@ -4,6 +4,12 @@ STATIC="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$STATIC/.." && pwd)"
 cd "$REPO_ROOT"
 WORK="$REPO_ROOT/.work/static"
+OUT="static-metrics/results"
+if [[ "${1:-}" == "--out" ]]; then
+  OUT="${2:?missing --out directory}"
+  WORK="$OUT/raw"
+  shift 2
+fi
 TAGS=("$@")
 [[ ${#TAGS[@]} -gt 0 ]] || TAGS=(v7.0.20 v8.0.33 v9.0.22 v10.0.14)
 
@@ -25,4 +31,4 @@ for tag in "${TAGS[@]}"; do
     done < <(tail -n +2 glassbox/packages.tsv)
   done
 done
-python3 static-metrics/aggregate.py --work "$WORK" --out static-metrics/results
+python3 static-metrics/aggregate.py --work "$WORK" --out "$OUT"

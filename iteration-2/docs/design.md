@@ -47,7 +47,7 @@ A result that technically works but fails the purpose:
 
 ## Key correction from iteration 1 data
 
-Iteration 1 found that in DI and `Caching.Memory` none of 113 commits between v7.0.20 and v10.0.14 came from the agent, while between 10.0 and 11.0 RC3 it has 12 of 35. In EF Core the agent already has 73 of 256 commits before 10.0. So the agent-era effect sits mostly in the step 10.0 to 11.0 for the `dotnet/runtime` libraries, and in 9.0 to 10.0 and later for EF Core. A study limited to 7.0–10.0 would have almost no treated methods outside EF Core. Therefore 11.0 is part of this iteration as a second phase **[author's call]**, collected from the final tag after the release on 2026-11-20 **[maintainer: wait for the release]**.
+Iteration 1 found that in DI and `Caching.Memory` none of 113 commits between v7.0.20 and v10.0.14 came from the agent, while between 10.0 and 11.0 RC3 it has 12 of 35. In EF Core the agent already has 73 of 256 commits before 10.0. So the agent-era effect sits mostly in the step 10.0 to 11.0 for the `dotnet/runtime` libraries, and in 9.0 to 10.0 and later for EF Core. A study limited to 7.0–10.0 would have almost no treated methods outside EF Core. Therefore 11.0 is part of this iteration as a second phase **[author's call]**, collected from the final tag `v11.0.0`, released on 2026-11-10 **[maintainer: wait for the release]**.
 
 ## Design
 

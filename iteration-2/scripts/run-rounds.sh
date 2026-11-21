@@ -3,7 +3,8 @@ set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO_ROOT"
 
-DATA="results/rounds"
+DATA=""
+NET11_ONLY=0
 ROUNDS=0
 PAUSE=0
 POINTS=""
@@ -14,10 +15,11 @@ MATRIX_ARGS=()
 
 usage() {
   cat <<USAGE
-usage: $0 [--data DIR] [--rounds N] [--stop-after-hours H] [--pause SECONDS] [run-matrix.sh options]
+usage: $0 [--net11-only] [--data DIR] [--rounds N] [--stop-after-hours H] [--pause SECONDS] [run-matrix.sh options]
   --rounds 0 (default) repeats until stopped
   --stop-after-hours H starts no new round after H hours; a failed round is kept in incomplete/ and the loop gives up after 3 failures in a row
   --points e0-7,e2-10 limits Track A to these points
+  --net11-only collects e2-11 and b-net11 into results/net11-ga by default
   --prune-traces deletes .ember traces that are not a point's representative once their aggregates are stored
   the points of each scenario run in a shuffled order inside every run, and builds happen once, in the first round
 USAGE
@@ -26,6 +28,7 @@ USAGE
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --data) DATA="$2"; shift 2 ;;
+    --net11-only) NET11_ONLY=1; MATRIX_ARGS+=("$1"); shift ;;
     --rounds) ROUNDS="$2"; shift 2 ;;
     --stop-after-hours) STOP_AFTER_HOURS="$2"; shift 2 ;;
     --pause) PAUSE="$2"; shift 2 ;;
@@ -36,6 +39,12 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
+if [[ "$NET11_ONLY" == 1 ]]; then
+  DATA="${DATA:-results/net11-ga}"
+  POINTS="e2-11"
+else
+  DATA="${DATA:-results/rounds}"
+fi
 mkdir -p "$DATA/rounds" "$DATA/incomplete"
 PYTHON="$(./scripts/ensure-python.sh)"
 if [[ -z "$POINTS" ]]; then
