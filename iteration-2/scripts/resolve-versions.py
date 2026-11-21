@@ -7,11 +7,12 @@ import time
 import urllib.error
 import urllib.request
 import xml.etree.ElementTree as ET
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 FLAT = "https://api.nuget.org/v3-flatcontainer"
 MAJORS = [6, 7, 8, 9, 10, 11]
+PINNED_VERSIONS = {11: "11.0.0"}
 EPOCHS = {6: "E0", 7: "E0", 8: "E1", 9: "E1", 10: "E2", 11: "E2"}
 RUNTIME_TFM = {"track_a": 10, "track_b": 11}
 
@@ -80,10 +81,6 @@ def pick_version(versions: list[str], major: int) -> str | None:
     stable = [v for v in versions if "-" not in v and v.split(".")[0] == str(major)]
     if stable:
         return stable[-1]
-    if major == max(MAJORS):
-        candidates = [v for v in versions if v.startswith(f"{major}.0.0-rc.")]
-        if candidates:
-            return candidates[-1]
     return None
 
 
@@ -159,6 +156,11 @@ class Resolver:
             self.version_cache[package_id] = all_versions(package_id)
         return self.version_cache[package_id]
 
+    def package_version(self, package_id: str, major: int) -> str | None:
+        if major in PINNED_VERSIONS:
+            return PINNED_VERSIONS[major]
+        return pick_version(self.versions(package_id), major)
+
     def groups(self, package_id: str, version: str) -> dict[str, list[tuple[str, str]]]:
         key = (package_id, version)
         if key not in self.nuspec_cache:
@@ -172,7 +174,7 @@ class Resolver:
             package_id = pending.pop()
             if package_id in resolved:
                 continue
-            version = pick_version(self.versions(package_id), major)
+            version = self.package_version(package_id, major)
             if version is None:
                 resolved[package_id] = {"version": None}
                 continue
@@ -217,7 +219,7 @@ def build_point(resolver: Resolver, major: int) -> dict:
     msext_versions = sorted({i["version"] for i in msext.values() if i["version"]}, key=version_key)
     track_b = {}
     for package_id in TRACK_B_PACKAGES:
-        version = pick_version(resolver.versions(package_id), major)
+        version = resolver.package_version(package_id, major)
         groups = resolver.groups(package_id, version) if version else {}
         track_b[package_id] = {"version": version, "tfms": sorted(groups)}
     merged = dict(sorted({**msext, **ef}.items()))
@@ -295,16 +297,31 @@ def main() -> int:
     parser.add_argument("--out", type=Path, default=Path("matrix/versions.json"))
     parser.add_argument("--props", type=Path, default=Path("matrix/versions.props"))
     parser.add_argument("--nuspec-cache", type=Path, default=Path(".work/nuspec-cache"))
-    parser.add_argument("--props-only", action="store_true", help="regenerate the props file from the JSON")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--props-only", action="store_true", help="regenerate the props file from the JSON")
+    mode.add_argument("--refresh-net11", action="store_true", help="update only the .NET 11 GA point in the existing matrix")
     args = parser.parse_args()
     if args.props_only:
         write_props(json.loads(args.out.read_text(encoding="utf-8")), args.props)
         return 0
     resolver = Resolver(args.nuspec_cache)
+    generated_utc = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    if args.refresh_net11:
+        document = json.loads(args.out.read_text(encoding="utf-8"))
+        point = build_point(resolver, 11)
+        document["points"] = [p for p in document["points"] if p["major"] != 11] + [point]
+        if point["ef_track"] != "B":
+            raise ValueError("EF Core 11 must target Track B to refresh only the .NET 11 point")
+        document["sqlitepclraw"]["track_b_minimum_per_point"][point["label"]] = point["sqlitepclraw_min"]
+        document["missing"] = [entry for entry in document["missing"] if entry["label"] != point["label"]]
+        document["generated_utc"] = generated_utc
+        args.out.write_text(json.dumps(document, indent=2) + "\n", encoding="utf-8")
+        write_props(document, args.props)
+        return 0
     points = [build_point(resolver, major) for major in MAJORS]
     missing = [(p["label"], pid) for p in points for pid, v in p["packages"].items() if v is None]
     document = {
-        "generated_utc": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "generated_utc": generated_utc,
         "source": FLAT,
         "baseline": "e0-7",
         "sqlitepclraw": choose_sqlite(resolver, points),

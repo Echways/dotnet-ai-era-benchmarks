@@ -194,38 +194,38 @@
     <PackageVersion Include="SQLitePCLRaw.lib.e_sqlite3" Version="2.1.13" />
   </ItemGroup>
   <ItemGroup Condition="'$(MsExt)' == '11'">
-    <PackageVersion Include="Microsoft.Extensions.Caching.Abstractions" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.Extensions.Caching.Memory" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.Extensions.Configuration" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.Extensions.Configuration.FileExtensions" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.Extensions.DependencyModel" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.Extensions.Diagnostics.Abstractions" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.Extensions.FileProviders.Abstractions" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.Extensions.FileProviders.Physical" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.Extensions.FileSystemGlobbing" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.Extensions.Logging" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.Extensions.ObjectPool" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.Extensions.Options" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.Extensions.Options.DataAnnotations" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.Extensions.Primitives" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.Extensions.Caching.Abstractions" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Caching.Memory" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.FileExtensions" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyModel" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Diagnostics.Abstractions" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.FileProviders.Abstractions" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.FileProviders.Physical" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.FileSystemGlobbing" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.ObjectPool" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Options" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Options.DataAnnotations" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Primitives" Version="11.0.0" />
   </ItemGroup>
   <ItemGroup Condition="'$(Ef)' == '11'">
-    <PackageVersion Include="Microsoft.Data.Sqlite.Core" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Abstractions" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Analyzers" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.Data.Sqlite.Core" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Abstractions" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Analyzers" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="11.0.0" />
     <PackageVersion Include="SQLitePCLRaw.bundle_e_sqlite3" Version="3.0.5" />
     <PackageVersion Include="SQLitePCLRaw.core" Version="3.0.5" />
   </ItemGroup>

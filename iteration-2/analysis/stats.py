@@ -209,7 +209,9 @@ def analyse_scope(scenario: str, track: str, scope: str, group: pd.DataFrame, se
     rows = []
     for label, sample in group.groupby("label", sort=False):
         is_baseline = label == baseline_label
-        rounds = sorted(set(sample["round"]) & baseline_rounds) if not is_baseline and not baseline.empty else sorted(set(sample["round"]))
+        sample_rounds = set(sample["round"])
+        paired_rounds = sample_rounds & baseline_rounds if not is_baseline else set()
+        rounds = sorted(paired_rounds or sample_rounds)
         median_by_round = [medians[(label, r)] for r in rounds]
         mean_by_round = [means[(label, r)] for r in rounds]
         ratio = quartile_ratio(sample)
@@ -232,7 +234,7 @@ def analyse_scope(scenario: str, track: str, scope: str, group: pd.DataFrame, se
             "mean_ci_low_ms": mean["low"],
             "mean_ci_high_ms": mean["high"],
         }
-        if not is_baseline and not baseline.empty:
+        if paired_rounds:
             baseline_median_by_round = [medians[(baseline_label, r)] for r in rounds]
             baseline_mean_by_round = [means[(baseline_label, r)] for r in rounds]
             median_change = compare_metric(median_by_round, baseline_median_by_round, rng)
@@ -276,8 +278,10 @@ def add_verdicts(results: pd.DataFrame) -> pd.DataFrame:
     results["mean_mw_p_adj"] = np.nan
     results.loc[compared, "mw_p_adj"] = stats.false_discovery_control(results.loc[compared, "mw_p"], method="bh")
     results.loc[compared, "mean_mw_p_adj"] = stats.false_discovery_control(results.loc[compared, "mean_mw_p"], method="bh")
+    is_baseline = results["label"].eq(results["baseline"])
     for column in ("verdict", "primary_metric", "median_verdict", "mean_verdict"):
-        results[column] = "baseline"
+        results[column] = np.where(is_baseline, "baseline", None)
+    results.loc[~compared & ~is_baseline, "verdict"] = "no paired baseline"
     results["rounds_agree"] = np.nan
     results["round_change_min_pct"] = np.nan
     results["round_change_max_pct"] = np.nan
@@ -340,6 +344,7 @@ def plot(results: pd.DataFrame, scenario: str, out_dir: Path) -> list[Path]:
     data = results.reindex(columns=COLUMNS)
     if data["change_pct"].notna().sum() == 0:
         return []
+    data = data[data["label"].eq(data["baseline"]) | data["change_pct"].notna()].copy()
     data["x"] = data["label"].map(point_x)
     scopes = list(dict.fromkeys(data.sort_values("x")["scope"]))
     if not scopes:
@@ -403,7 +408,7 @@ def allocation_cell(row) -> str:
 
 
 def write_markdown(results: pd.DataFrame, path: Path) -> None:
-    compared = results[results["verdict"] != "baseline"]
+    compared = results[results["change_pct"].notna()]
     multimodal = compared[compared["multimodal"].astype(bool)]
     unimodal = compared[~compared["multimodal"].astype(bool)]
     tally = pd.crosstab(unimodal["label"], unimodal["verdict"]).reindex(columns=VERDICT_ORDER, fill_value=0)
@@ -482,10 +487,10 @@ def write_markdown(results: pd.DataFrame, path: Path) -> None:
     for row in results.itertuples(index=False):
         median = f"{row.median_ms:.4f} [{row.ci_low_ms:.4f}, {row.ci_high_ms:.4f}]"
         n_rounds = f"{row.n} ({row.rounds})"
-        if row.verdict == "baseline":
+        if pd.isna(row.change_pct):
             lines.append(
                 f"| {row.scenario} | `{row.scope}` | {row.label} | {n_rounds} | {median} | - | {row.mean_ms:.4f} | - | "
-                f"{row.quartile_ratio:.2f} | - | baseline | - | - |"
+                f"{row.quartile_ratio:.2f} | - | {row.verdict} | - | - |"
             )
             continue
         median_change = f"{row.change_pct:+.1f}% [{row.change_ci_low_pct:+.1f}, {row.change_ci_high_pct:+.1f}]"

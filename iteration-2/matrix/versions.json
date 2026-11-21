@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-11-06T14:38:44Z",
+  "generated_utc": "2026-11-21T12:24:50Z",
   "source": "https://api.nuget.org/v3-flatcontainer",
   "baseline": "e0-7",
   "sqlitepclraw": {
@@ -1360,9 +1360,9 @@
       "epoch": "E2",
       "major": 11,
       "msext": "11.0.x",
-      "msext_max": "11.0.0-rc.3.26522.148",
+      "msext_max": "11.0.0",
       "ef": null,
-      "ef_package_version": "11.0.0-rc.3.26522.148",
+      "ef_package_version": "11.0.0",
       "ef_track": "B",
       "ef_asset_tfm": "net11.0",
       "sqlitepclraw_min": "3.0.5",
@@ -1555,40 +1555,40 @@
         "Microsoft.Extensions.Configuration.FileExtensions": "net10.0"
       },
       "packages": {
-        "Microsoft.Data.Sqlite.Core": "11.0.0-rc.3.26522.148",
-        "Microsoft.EntityFrameworkCore": "11.0.0-rc.3.26522.148",
-        "Microsoft.EntityFrameworkCore.Abstractions": "11.0.0-rc.3.26522.148",
-        "Microsoft.EntityFrameworkCore.Analyzers": "11.0.0-rc.3.26522.148",
-        "Microsoft.EntityFrameworkCore.InMemory": "11.0.0-rc.3.26522.148",
-        "Microsoft.EntityFrameworkCore.Relational": "11.0.0-rc.3.26522.148",
-        "Microsoft.EntityFrameworkCore.Sqlite": "11.0.0-rc.3.26522.148",
-        "Microsoft.EntityFrameworkCore.Sqlite.Core": "11.0.0-rc.3.26522.148",
-        "Microsoft.Extensions.Caching.Abstractions": "11.0.0-rc.3.26522.148",
-        "Microsoft.Extensions.Caching.Memory": "11.0.0-rc.3.26522.148",
-        "Microsoft.Extensions.Configuration": "11.0.0-rc.3.26522.148",
-        "Microsoft.Extensions.Configuration.Abstractions": "11.0.0-rc.3.26522.148",
-        "Microsoft.Extensions.Configuration.Binder": "11.0.0-rc.3.26522.148",
-        "Microsoft.Extensions.Configuration.FileExtensions": "11.0.0-rc.3.26522.148",
-        "Microsoft.Extensions.Configuration.Json": "11.0.0-rc.3.26522.148",
-        "Microsoft.Extensions.DependencyInjection": "11.0.0-rc.3.26522.148",
-        "Microsoft.Extensions.DependencyInjection.Abstractions": "11.0.0-rc.3.26522.148",
-        "Microsoft.Extensions.DependencyModel": "11.0.0-rc.3.26522.148",
-        "Microsoft.Extensions.Diagnostics.Abstractions": "11.0.0-rc.3.26522.148",
-        "Microsoft.Extensions.FileProviders.Abstractions": "11.0.0-rc.3.26522.148",
-        "Microsoft.Extensions.FileProviders.Physical": "11.0.0-rc.3.26522.148",
-        "Microsoft.Extensions.FileSystemGlobbing": "11.0.0-rc.3.26522.148",
-        "Microsoft.Extensions.Hosting.Abstractions": "11.0.0-rc.3.26522.148",
-        "Microsoft.Extensions.Logging": "11.0.0-rc.3.26522.148",
-        "Microsoft.Extensions.Logging.Abstractions": "11.0.0-rc.3.26522.148",
-        "Microsoft.Extensions.ObjectPool": "11.0.0-rc.3.26522.148",
-        "Microsoft.Extensions.Options": "11.0.0-rc.3.26522.148",
-        "Microsoft.Extensions.Options.ConfigurationExtensions": "11.0.0-rc.3.26522.148",
-        "Microsoft.Extensions.Options.DataAnnotations": "11.0.0-rc.3.26522.148",
-        "Microsoft.Extensions.Primitives": "11.0.0-rc.3.26522.148"
+        "Microsoft.Data.Sqlite.Core": "11.0.0",
+        "Microsoft.EntityFrameworkCore": "11.0.0",
+        "Microsoft.EntityFrameworkCore.Abstractions": "11.0.0",
+        "Microsoft.EntityFrameworkCore.Analyzers": "11.0.0",
+        "Microsoft.EntityFrameworkCore.InMemory": "11.0.0",
+        "Microsoft.EntityFrameworkCore.Relational": "11.0.0",
+        "Microsoft.EntityFrameworkCore.Sqlite": "11.0.0",
+        "Microsoft.EntityFrameworkCore.Sqlite.Core": "11.0.0",
+        "Microsoft.Extensions.Caching.Abstractions": "11.0.0",
+        "Microsoft.Extensions.Caching.Memory": "11.0.0",
+        "Microsoft.Extensions.Configuration": "11.0.0",
+        "Microsoft.Extensions.Configuration.Abstractions": "11.0.0",
+        "Microsoft.Extensions.Configuration.Binder": "11.0.0",
+        "Microsoft.Extensions.Configuration.FileExtensions": "11.0.0",
+        "Microsoft.Extensions.Configuration.Json": "11.0.0",
+        "Microsoft.Extensions.DependencyInjection": "11.0.0",
+        "Microsoft.Extensions.DependencyInjection.Abstractions": "11.0.0",
+        "Microsoft.Extensions.DependencyModel": "11.0.0",
+        "Microsoft.Extensions.Diagnostics.Abstractions": "11.0.0",
+        "Microsoft.Extensions.FileProviders.Abstractions": "11.0.0",
+        "Microsoft.Extensions.FileProviders.Physical": "11.0.0",
+        "Microsoft.Extensions.FileSystemGlobbing": "11.0.0",
+        "Microsoft.Extensions.Hosting.Abstractions": "11.0.0",
+        "Microsoft.Extensions.Logging": "11.0.0",
+        "Microsoft.Extensions.Logging.Abstractions": "11.0.0",
+        "Microsoft.Extensions.ObjectPool": "11.0.0",
+        "Microsoft.Extensions.Options": "11.0.0",
+        "Microsoft.Extensions.Options.ConfigurationExtensions": "11.0.0",
+        "Microsoft.Extensions.Options.DataAnnotations": "11.0.0",
+        "Microsoft.Extensions.Primitives": "11.0.0"
       },
       "track_b": {
         "System.Text.Json": {
-          "version": "11.0.0-rc.3.26522.148",
+          "version": "11.0.0",
           "tfms": [
             "net10.0",
             "net11.0",
@@ -1597,7 +1597,7 @@
           ]
         },
         "System.Threading.Channels": {
-          "version": "11.0.0-rc.3.26522.148",
+          "version": "11.0.0",
           "tfms": [
             "net10.0",
             "net11.0",
@@ -1607,7 +1607,7 @@
           ]
         },
         "System.Collections.Immutable": {
-          "version": "11.0.0-rc.3.26522.148",
+          "version": "11.0.0",
           "tfms": [
             "net10.0",
             "net11.0",
@@ -1616,7 +1616,7 @@
           ]
         },
         "Microsoft.AspNetCore.App.Ref": {
-          "version": "11.0.0-rc.3.26522.148",
+          "version": "11.0.0",
           "tfms": []
         }
       }

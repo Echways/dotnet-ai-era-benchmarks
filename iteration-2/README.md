@@ -32,6 +32,37 @@ python3 analysis/method_stats.py --methods results/glassbox/methods.csv        #
 
 `attribution/run.sh` needs `gh` logged in (GraphQL, 5,000 points per hour); `.work/repos/{runtime,aspnetcore,efcore}.git` are partial clones made on first use.
 
+## Collect .NET 11 GA
+
+Run these commands from `iteration-2`:
+
+```bash
+./scripts/run-matrix.sh --net11-only --quick
+./scripts/run-rounds.sh --net11-only --rounds 11 --runs 10 --prune-traces
+./scripts/overnight.sh --net11-only --hours 8 --skip-ab
+```
+
+`--net11-only` selects `e2-11` (Microsoft.Extensions 11.0.0 on .NET 10) and `b-net11` (the .NET and ASP.NET Core 11.0.0 shared frameworks and EF Core 11.0.0). Use `--track a` or `--track b` to run one track. Track A and the summary tools use the .NET 10 SDK on `PATH`. Track B builds with SDK 11.0.100 and runs with runtime 11.0.0.
+
+The quick run writes to `results/net11-ga/single/`. Repeated rounds write to `results/net11-ga/rounds/` and `results/net11-ga/summary/`. Keep the stand settings and per-round options aligned with the earlier collection. The .NET 11-only summary describes the two points. Comparisons in the existing statistics pipeline require baseline samples in the same round.
+
+The overnight runner applies the stand settings and restores them on exit. It logs to `results/net11-ga/overnight/`. Omit `--skip-ab` to run counter interval A/B on `e2-11` first, with outputs in `results/net11-ga/ab-counter/`. Pass `--allow-dirty` to run with uncommitted changes.
+
+Collect source data for the GA tag and attribution for the step from 10.0.14:
+
+```bash
+./glassbox/callgraph.sh v11.0.0
+./static-metrics/run.sh --out results/net11-ga/static-metrics v11.0.0
+./glassbox/run.sh --targets Microsoft.Extensions.DependencyInjection,Microsoft.Extensions.Caching.Memory \
+  --out results/net11-ga/glassbox v11.0.0
+(
+  for stage in commits prs classify methods report; do
+    ./attribution/run.sh --from v10.0.14 --to v11.0.0 \
+      --out results/net11-ga/attribution --stage "$stage" || exit
+  done
+)
+```
+
 ## Status
 
 Done: package selection (30 packages, rank 1 to 76, snapshot of 2026-11-04), call graphs of all selected packages at 7.0.20, 8.0.33, 9.0.22 and 10.0.14, instrumentation from the generated list, attribution of commits and traced methods for the three steps 7.0 to 10.0, static metrics, the per-method bootstrap, the counter interval A/B.
@@ -41,5 +72,5 @@ Not done:
 - harness scenarios for the 52 entry operations and Stage 1 measurements;
 - glass-box builds and runs for the packages other than `DependencyInjection` and `Caching.Memory` (project references per package, runner scenarios), and the feasibility gate; three selected packages are already marked `not traceable`;
 - the calibration of the cost of one scope and of the IL-size threshold;
-- everything that needs 11.0: its call graph, attribution of the 10.0 to 11.0 step and the final tag, which is released on 2026-11-20;
+- .NET 11 GA measurements and attribution of the 10.0 to 11.0 step;
 - the second machine for the strongest findings.

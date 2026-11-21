@@ -12,6 +12,7 @@ SKIP_BUILD=0
 PRUNE_TRACES=0
 POINTS=""
 TRACK="all"
+NET11_ONLY=0
 CPUS="2,4"
 PARALLEL_CPUS="2-5"
 NO_TIERING=0
@@ -25,7 +26,7 @@ MULTI_THREADED_SCENARIOS=(cache channels aspnetcore)
 
 usage() {
   cat <<USAGE
-usage: $0 [--quick] [--runs N] [--points e0-7,e2-10] [--iterations N] [--warmup N]
+usage: $0 [--quick] [--net11-only | --points e0-7,e2-10] [--runs N] [--iterations N] [--warmup N]
           [--warmup-max N] [--counter-interval-ms N] [--track a|b|all] [--cpus 2,4] [--parallel-cpus 2-5]
           [--no-tiering] [--include-new] [--skip-build] [--skip-analysis] [--prune-traces] [--raw DIR] [--summary DIR]
 USAGE
@@ -35,6 +36,7 @@ while [[ $# -gt 0 ]]; do
   case "$1" in
     --quick) RUNS=2; ITERATIONS=20; WARMUP=5; WARMUP_MAX=5; POINTS="${POINTS:-e0-7,e2-10}"; shift ;;
     --runs) RUNS="$2"; shift 2 ;;
+    --net11-only) NET11_ONLY=1; shift ;;
     --points) POINTS="$2"; shift 2 ;;
     --iterations) ITERATIONS="$2"; shift 2 ;;
     --warmup) WARMUP="$2"; shift 2 ;;
@@ -55,12 +57,19 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-RAW="results/raw"
-SUMMARY="results/summary"
+DATA="results"
+BIN="bin"
+if [[ "$NET11_ONLY" == 1 ]]; then
+  POINTS="e2-11"
+  DATA="results/net11-ga/single"
+  BIN="bin/net11-ga"
+fi
+RAW="$DATA/raw"
+SUMMARY="$DATA/summary"
 if [[ "$NO_TIERING" == 1 ]]; then
   export DOTNET_TieredCompilation=0
-  RAW="results/raw-notier"
-  SUMMARY="results/summary/notier"
+  RAW="$DATA/raw-notier"
+  SUMMARY="$DATA/summary/notier"
 fi
 RAW="${RAW_OVERRIDE:-$RAW}"
 SUMMARY="${SUMMARY_OVERRIDE:-$SUMMARY}"
@@ -127,13 +136,14 @@ PY
 )
 
 run_harness() {
-  local dll="$1" label="$2" scenario="$3" host="$4"
+  local dll="$1" label="$2" scenario="$3"
+  shift 3
   local extra=()
   [[ "$INCLUDE_NEW" == 1 ]] && extra+=(--include-new)
   local pin
   read -r -a pin <<<"$(pin_command_for "$scenario")"
   set +e
-  "${pin[@]}" "$host" "$dll" --scenario "$scenario" --label "$label" --iterations "$ITERATIONS" --warmup "$WARMUP" --warmup-max "$WARMUP_MAX" --counter-interval-ms "$COUNTER_INTERVAL" --out "$RAW" "${extra[@]}" > "$RAW/$label/$scenario-run.log" 2>&1
+  "${pin[@]}" "$@" "$dll" --scenario "$scenario" --label "$label" --iterations "$ITERATIONS" --warmup "$WARMUP" --warmup-max "$WARMUP_MAX" --counter-interval-ms "$COUNTER_INTERVAL" --out "$RAW" "${extra[@]}" > "$RAW/$label/$scenario-run.log" 2>&1
   local status=$?
   set -e
   case "$status" in
@@ -163,7 +173,7 @@ if [[ "$TRACK" == "a" || "$TRACK" == "all" ]]; then
     read -r label major _ _ <<<"$entry"
     labels+=("$label")
     echo "== Track A build $label (Microsoft.Extensions $major, EF Core $major)"
-    build_unless_skipped "bin/$label" Harness.dll dotnet build src/Harness/Harness.csproj -c Release -p:MsExt="$major" -p:Ef="$major" -o "bin/$label" -nologo -v:q -clp:ErrorsOnly
+    build_unless_skipped "$BIN/$label" Harness.dll dotnet build src/Harness/Harness.csproj -c Release -p:MsExt="$major" -p:Ef="$major" -o "$BIN/$label" -nologo -v:q -clp:ErrorsOnly
     mkdir -p "$RAW/$label"
   done
   for run in $(seq 1 "$RUNS"); do
@@ -172,7 +182,7 @@ if [[ "$TRACK" == "a" || "$TRACK" == "all" ]]; then
     for scenario in "${scenarios[@]}"; do
       mapfile -t order < <(shuffled "${labels[@]}")
       for label in "${order[@]}"; do
-        run_harness "bin/$label/Harness.dll" "$label" "$scenario" dotnet
+        run_harness "$BIN/$label/Harness.dll" "$label" "$scenario" dotnet
       done
     done
     echo "  Track A run $run/$RUNS done"
@@ -181,19 +191,32 @@ fi
 
 if [[ "$TRACK" == "b" || "$TRACK" == "all" ]]; then
   DOTNET11_ROOT="$(./scripts/ensure-sdk11.sh)"
+  DOTNET=./scripts/dotnet11.sh ./scripts/capture-env.sh "$RAW/env-net11.json"
+  frameworks=(net11.0)
+  net10_host="$DOTNET11_ROOT/dotnet"
+  if [[ "$NET11_ONLY" == 0 ]]; then
+    frameworks=(net10.0 net11.0)
+    if ! "$net10_host" --list-runtimes | awk '$2 ~ /^10\./ { seen[$1] = 1 } END { exit !(seen["Microsoft.NETCore.App"] && seen["Microsoft.AspNetCore.App"]) }'; then
+      net10_host=dotnet
+    fi
+  fi
   labels=()
-  for tfm in net10.0 net11.0; do
+  for tfm in "${frameworks[@]}"; do
     label="b-${tfm%.0}"
     labels+=("$label")
     echo "== Track B build $label (in-box libraries of $tfm)"
-    build_unless_skipped "bin/$label" Harness.TrackB.dll ./scripts/dotnet11.sh build src/Harness.TrackB/Harness.TrackB.csproj -c Release -f "$tfm" -o "bin/$label" -nologo -v:q -clp:ErrorsOnly
+    build_unless_skipped "$BIN/$label" Harness.TrackB.dll ./scripts/dotnet11.sh build src/Harness.TrackB/Harness.TrackB.csproj -c Release -f "$tfm" -o "$BIN/$label" -nologo -v:q -clp:ErrorsOnly
     mkdir -p "$RAW/$label"
   done
   for run in $(seq 1 "$RUNS"); do
     for scenario in "${TRACK_B_SCENARIOS[@]}"; do
       mapfile -t order < <(shuffled "${labels[@]}")
       for label in "${order[@]}"; do
-        DOTNET_ROOT="$DOTNET11_ROOT" run_harness "bin/$label/Harness.TrackB.dll" "$label" "$scenario" "$DOTNET11_ROOT/dotnet"
+        if [[ "$label" == "b-net11" ]]; then
+          DOTNET_ROOT="$DOTNET11_ROOT" run_harness "$BIN/$label/Harness.TrackB.dll" "$label" "$scenario" "$DOTNET11_ROOT/dotnet" --roll-forward Disable
+        else
+          run_harness "$BIN/$label/Harness.TrackB.dll" "$label" "$scenario" "$net10_host"
+        fi
       done
     done
     echo "  Track B run $run/$RUNS done"

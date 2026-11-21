@@ -19,7 +19,7 @@ for tag in "${TAGS[@]}"; do
     "$GLASSBOX/fetch.sh" "$tag" "$repo" >/dev/null
     if [[ "$repo" == "runtime" ]]; then checkout="glassbox/src/$tag"; else checkout="glassbox/src/$repo/$tag"; fi
     dotnet bin/glassbox-callgraph/CallGraph.dll --tag "$tag" --source "$checkout" --repo "$repo" \
-      --packages glassbox/packages.tsv --operations docs/entry-operations.tsv --out "$OUT/$tag" || true
+      --packages glassbox/packages.tsv --operations docs/entry-operations.tsv --out "$OUT/$tag" || [[ "$?" == 3 ]]
   done
   find "$OUT/$tag" -name callgraph.json -exec gzip -nf {} +
 done

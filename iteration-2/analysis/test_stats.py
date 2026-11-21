@@ -155,6 +155,21 @@ def test_baseline_row_carries_no_change():
     assert math.isnan(baseline["change_pct"])
 
 
+@pytest.mark.parametrize("baseline_frames", [[], [runs_for("e0-7", around(1.0), "earlier")]])
+def test_net11_without_a_paired_baseline_has_descriptive_statistics(baseline_frames, tmp_path):
+    point = runs_for("e2-11", around(2.0), "ga")
+    runs = pd.concat([*baseline_frames, point], ignore_index=True)
+    results = stats.summarise({"scenario": runs}, np.random.default_rng(1)).reindex(columns=stats.COLUMNS)
+    row = results[results["label"] == "e2-11"].iloc[0]
+
+    assert row["verdict"] == "no paired baseline"
+    assert pd.isna(row["primary_metric"])
+    assert row["median_ms"] == pytest.approx(2.0)
+    assert math.isnan(row["change_pct"])
+    stats.write_markdown(results, tmp_path / "stats.md")
+    assert "| no paired baseline |" in (tmp_path / "stats.md").read_text(encoding="utf-8")
+
+
 def test_prespecified_verdict_keeps_the_original_median_rule():
     frames = []
     for round_id in ("r0", "r1", "r2"):
